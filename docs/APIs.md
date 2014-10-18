@@ -18,7 +18,7 @@ api.user.Login("test","test",function(result)
 #api.user
 >用户信息处理
 
-* ##1.Login(username,password,callback)
+##1.Login(username,password,callback)
 * 说明：使用用户名和密码登录，若登录成功则返回AccessToken并设置token Cookie<br/>
 * 传入参数：
 ```
@@ -48,7 +48,7 @@ api.user.Login("test"               //用户名
                         alert("Failed. message=" + result.message);
 				});
 ```
-* ##2.CreateUser(username,password,email,realname,classindex,sex,callback)
+##2.CreateUser(username,password,email,realname,classindex,sex,callback)
 * 说明：创建一个用户
 * 传入参数：
 ```
@@ -76,7 +76,7 @@ api.user.CreateUser("test","test","test@test.com","测试",999,0,
                     	alert(JSON.stringify(result));
                     });
 ```
-* ##3.UpdateSelfInfo(UserInfoObj,callback)
+##3.UpdateSelfInfo(UserInfoObj,callback)
 * 说明：更新用户自身信息，只能更新当前AccesToken对应的用户信息。PS：无需传入AccessToken，API会自动从Cookie中获取AccessToken。
 * 传入参数：
 ```
