@@ -61,15 +61,15 @@ def API_UpdateSelfInfo(request):
 	username = GetUsernameByToken(AccessToken)
 	input_email = EscapeContent(request.POST.get("email"))
 	input_realname = QuoteEscapeContent(request.POST.get("realname"))
-	if (request.POST.get("classindex")!=None):
-		input_birthday = int(request.POST.get("classindex"))
+	if (request.POST.get("birthday")!=None):
+		input_birthday = int(request.POST.get("birthday"))
 	else:
 		input_birthday = None
 	input_avatar = EscapeContent(request.POST.get("avatar"))
 	
-	if (len(request.POST.getlist("tag"))>0):
+	if (len(request.POST.getlist("tag[]"))>0):
 		input_tag = []
-		for SingleTag in request.POST.getlist("tag"):
+		for SingleTag in request.POST.getlist("tag[]"):
 			input_tag.append(QuoteEscapeContent(SingleTag))
 	else:
 		input_tag = None
@@ -130,6 +130,27 @@ def API_GetUserInfo(request):
 	dbobj = users.objects(username=username)
 	JSONResult = dbobj.first().to_json()
 	return HttpResponse('{"code":1,"message":"Success.","UserInfo":'+ JSONResult +'}',{})
+
+#API_GetUserInfoByUsername(request) [web API function] Retrieve user information by the given username
+#input parameters: HttpRequest Object: COOKIE(token),POST(username[])
+#return value: HttpResponse Object: JSON result
+def API_GetUserInfoByUsername(request):
+	AccessToken = request.COOKIES.get("accesstoken")
+	if (not IsTokenValid(AccessToken)):
+		return HttpResponse('{"code":0,"message":"Token invalid."}',{})
+	if (not len(request.POST.getlist("username[]"))>0):
+		return HttpResponse('{"code":0,"message":"Username array invalid."}',{})
+	UsernameList = request.POST.getlist("username[]")
+	JSONResult = []
+	for username in UsernameList:
+		dbobj = users.objects(username=username)
+		if (not dbobj.count()>0):
+			JSONResult.append({"error":1,"message":"No such user."})
+			continue
+		raw = eval(dbobj.first().to_json())
+		del raw["password"]
+		JSONResult.append(raw)
+	return HttpResponse('{"code":1,"message":"Success.","UserInfo":'+ str(JSONResult) +'}',{})
 
 
 #IsTokenValid(token) To verify valid token
