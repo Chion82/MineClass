@@ -20,16 +20,16 @@ api.user.Login("test","test",function(result)
 >用户信息处理
 
 * ###Js.API
-    * ####1.Login(username,password,callback)
-        * 说明：使用用户名和密码登录，若登录成功则返回AccessToken并设置token Cookie<br/>
-        * 传入参数：
+* ####1.Login(username,password,callback)
+* 说明：使用用户名和密码登录，若登录成功则返回AccessToken并设置token Cookie<br/>
+* 传入参数：
 ```
 String username, //用户名
 String password //密码
 function callback //回调函数，当收到服务器返回的JSON结果时自动调用该函数，并向该函数传入一个包含结果的对象（下同）
 ```
-        * 函数返回值：无。返回的结果会传入callback()中<br/>
-        * 回调函数传入对象：
+* 函数返回值：无。返回的结果会传入callback()中<br/>
+* 回调函数传入对象：
 ```
 object
 {
@@ -38,7 +38,7 @@ object
 	"token"   : String    	//如果登陆成功，返回AccessToken
 }
 ```
-        * 示例：
+* 示例：
 ```javascript
 api.user.Login("test"               //用户名
                 ,"test",             //密码
@@ -50,9 +50,9 @@ api.user.Login("test"               //用户名
                         alert("Failed. message=" + result.message);
 				});
 ```
-    * ###2.CreateUser(username,password,email,realname,classindex,sex,callback)
-        * 说明：创建一个用户
-        * 传入参数：
+* ###2.CreateUser(username,password,email,realname,classindex,sex,callback)
+* 说明：创建一个用户
+* 传入参数：
 ```
 String username,                 //用户名
 String password,                 //密码
@@ -62,8 +62,8 @@ int classindex,                  //班级的索引号
 int sex,                         //性别，0：男，1：女
 function callback                //回调函数
 ```
-        * 函数返回值：无。返回的结果会传入callback()中。
-        * 回调函数传入对象：
+* 函数返回值：无。返回的结果会传入callback()中。
+* 回调函数传入对象：
 ```
 object
 {
@@ -71,21 +71,21 @@ object
 	"message" : String  //备注信息
 }
 ```
-        * 示例：
+* 示例：
 ```javascript
 api.user.CreateUser("test","test","test@test.com","测试",999,0,
                     function(result){
                     	alert(JSON.stringify(result));
                     });
 ```
-    * ###3.UpdateSelfInfo(UserInfoObj,callback)
-        * 说明：更新用户自身信息，只能更新当前AccesToken对应的用户信息。PS：无需传入AccessToken，API会自动从Cookie中获取AccessToken。
-        * 传入参数：
+* ###3.UpdateSelfInfo(UserInfoObj,callback)
+* 说明：更新用户自身信息，只能更新当前AccesToken对应的用户信息。PS：无需传入AccessToken，API会自动从Cookie中获取AccessToken。
+* 传入参数：
 ```
 Object UserInfoObject,			//包含需要更新信息的用户信息对象
 function callback				//回调函数
 ```
-		* 用户信息对象：（对象内参数可选）
+* 用户信息对象：（对象内参数可选）
 ```
 object
 {
@@ -98,8 +98,8 @@ object
 	"sex"       :  int sex				//性别，男：0，女：1[optional]
 }
 ```
-		* 函数返回值：无。返回的结果会传入callback()中。
-		* 回调函数传入对象：
+* 函数返回值：无。返回的结果会传入callback()中。
+* 回调函数传入对象：
 ```
 object
 {
@@ -107,7 +107,7 @@ object
 	"message" :  message			//备注
 }
 ```
-		* 示例：
+* 示例：
 ```javascript
 api.user.UpdateSelfInfo(		//用户信息对象，只需添加需要更新的信息项
 						{
