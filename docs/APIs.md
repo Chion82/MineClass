@@ -1,4 +1,4 @@
->#如何调用js.API？
+#如何调用js.API？
 * 1.在HTML中引入jquery库和mineclassapi.js
 ```html
 <script type="text/javascript" src="static/js/jquery-1.11.1.min.js"></script>
@@ -16,7 +16,7 @@ api.user.Login("test","test",function(result)
 * 4.关于Web API：正常情况下调用js.API即可。如果js.API因为各种原因暂时性失效，web API可用于临时测试
 
 #api.user
->用户信息处理
+用户信息处理
 
 ##1.Login(username,password,callback)
 * 说明：使用用户名和密码登录，若登录成功则返回AccessToken并设置token Cookie<br/>
