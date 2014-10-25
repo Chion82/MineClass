@@ -29,3 +29,6 @@ def Render_API_GetUserInfoByUsername(request):
 
 def Render_APITest(request):
 	return render_to_response("apitest.html",{})
+
+def Render_Hello(request):
+	return render_to_response("hello.html",{})

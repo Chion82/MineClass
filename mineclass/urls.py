@@ -18,4 +18,5 @@ urlpatterns = patterns('',
 
     #Testing page
     url(r'^apitest$','main.views.Render_APITest'),
+    url(r'hello','main.views.Render_Hello'),
 )
