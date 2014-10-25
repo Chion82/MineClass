@@ -28,7 +28,11 @@ def Render_API_GetUserInfoByUsername(request):
 	return API_GetUserInfoByUsername(request)
 
 def Render_APITest(request):
+<<<<<<< HEAD
 	return render_to_response("apitest.html",{})
 
 def Render_Hello(request):
 	return render_to_response("hello.html",{})
+=======
+	return render_to_response("apitest.html",{})
+>>>>>>> 62eaae239e1b1b1771d0813d39f397efa0fdca60
