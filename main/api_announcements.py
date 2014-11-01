@@ -25,7 +25,7 @@ def API_PublishAnnouncement(request):
 		dbobj.attachment = request.POST.get('attachment')
 	tags = []
 	if (len(request.COOKIES.getlist('tag[]'))>0):
-		for (SingleTag in request.COOKIES.getlist('tag[]')):
+		for SingleTag in request.COOKIES.getlist('tag[]'):
 			tags.append(QuoteEscapeContent(SingleTag))
 	dbobj.tag = tags
 
@@ -36,7 +36,7 @@ def API_PublishAnnouncement(request):
 		classes.append(userobj.classindex)
 	else:
 		if (len(request.POST.getlist('class[]'))>0):
-			for (classindex in request.POST.getlist('class[]')):
+			for classindex in request.POST.getlist('class[]'):
 				classes.append(classindex)
 		else:
 			classes.append(userobj.classindex)
@@ -54,9 +54,9 @@ def API_GetAnnouncements(request):
 	userclass = users.objects(username=username).first().classindex
 	dbobj = announcements.objects(classes=userclass).order_by("-PublishmentTime").all()
 	AnnouncementList = []
-	for (RowObj in dbobj):
+	for RowObj in dbobj:
 		if (len(request.GET.getlist('tag[]'))>0):
-			for (SingleTag in RowObj.tag):
+			for SingleTag in RowObj.tag:
 				if (SingleTag in request.GET.getlist('tag[]')):
 					AnnouncementList.append(RowObj)
 					break
@@ -85,7 +85,7 @@ def API_DeleteAnnouncement(request):
 	if (userpriority<=1):
 		classlist = annobj.first().classes
 		index = 0
-		for (SingleClass in classlist):
+		for SingleClass in classlist:
 			if (SingleClass==userclass):
 				del classlist[index]
 				break
