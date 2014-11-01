@@ -26,7 +26,7 @@ def API_PublishTreehole(request):
 		dbobj.pic = request.POST.get("pic")
 		curl.setopt(curl.URL,"https://upload.api.weibo.com/2/statuses/upload.json")
 		curl.setopt(curl.POST,True)
-		curl.setopt(curl.HTTPPOST,[('access_token',(curl.FORM_CONTENTS,WEIBOACCESSTOKEN)), ('status',(curl.FORM_CONTENTS,QuoteContent(request.POST.get("treehole")))), ('pic',(curl.FORM_FILE,request.POST.get("pic")))])
+		curl.setopt(curl.HTTPPOST,[('access_token',(curl.FORM_CONTENTS,WEIBOACCESSTOKEN)), ('status',(curl.FORM_CONTENTS,QuoteContent(request.POST.get("treehole")))), ('pic',(curl.FORM_FILE,'templates/'+request.POST.get("pic")))])
 		curl.perform()
 		curl.close()
 	dbobj.save()
