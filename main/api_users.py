@@ -152,6 +152,16 @@ def API_GetUserInfoByUsername(request):
 		JSONResult.append(raw)
 	return HttpResponse('{"code":1,"message":"Success.","UserInfo":'+ str(JSONResult) +'}',{})
 
+#VerifyToken(request) Veryfy access token with a HttpRequest Object
+#input parameters: HttpRequest object
+#return value: 1 - token valid, 0 - token invalid
+def VerifyToken(request):
+	AccessToken = request.COOKIES.get("accesstoken")
+	if (not IsTokenValid(AccessToken)):
+		return 0
+	else:
+		return 1
+
 
 #IsTokenValid(token) To verify valid token
 #input parameters: String token

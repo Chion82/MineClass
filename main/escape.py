@@ -23,6 +23,13 @@ def QuoteEscapeContent(text):
 	text = text.replace(">","&gt;")
 	return urlquote(text)
 
+def QuoteContent(text):
+	if (text==None):
+		return None
+	text = text.replace("<script","&lt;script")
+	text = text.replace("javascript:","java script:")
+	return urlquote(text)
+
 def md5(src):
 	myMd5 = hashlib.md5()
 	myMd5.update(src.encode("utf-8"))

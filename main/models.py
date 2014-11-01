@@ -18,7 +18,17 @@ class users(Document):
 	sex = IntField()
 	creatingtime = LongField()
 
+#Access Tokens
 class AccessTokens(Document):
 	token = StringField()
 	expires = LongField()
 	username = StringField()
+
+#Announcements
+class announcements(Document):
+	PublishmentTime = LongField()
+	announcement = StringField()
+	publisher = StringField()
+	attachment = StringField()
+	tag = ListField()
+	classes = ListField()

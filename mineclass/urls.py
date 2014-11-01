@@ -8,13 +8,19 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
 
-    #API: user
+    #API: users
     url(r'^api/createuser$','main.views.Render_API_CreateUser'),
     url(r'^api/updateselfinfo$','main.views.Render_API_UpdateSelfInfo'),
     url(r'^api/login$','main.views.Render_API_Login'),
     url(r'^api/logout$','main.views.Render_API_Logout'),
     url(r'^api/getuserinfo$','main.views.Render_API_GetUserInfo'),
     url(r'^api/getuserinfobyusername$','main.views.Render_API_GetUserInfoByUsername'),
+
+    #API: announcements
+
+    url(r'^api/publishannouncement$','main.views.Render_API_PublishAnnouncement'),
+    url(r'^api/getannouncements$','main.views.Render_API_GetAnnouncements'),
+    url(r'^api/deleteannouncement$','main.views.Render_API_DeleteAnnouncement'),
 
     #Testing page
     url(r'^apitest$','main.views.Render_APITest'),

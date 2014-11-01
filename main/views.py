@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render_to_response
 from main.api_users import *
 from django.views.decorators.csrf import csrf_exempt
+from main.api_announcements import *
 
 @csrf_exempt
 def Render_API_CreateUser(request):
@@ -29,3 +30,13 @@ def Render_API_GetUserInfoByUsername(request):
 
 def Render_APITest(request):
 	return render_to_response("apitest.html",{})
+
+@csrf_exempt
+def Render_API_PublishAnnouncement(request):
+	return API_PublishAnnouncement(request)
+
+def Render_API_GetAnnouncements(request):
+	return API_GetAnnouncements(request)
+
+def Render_API_DeleteAnnouncement(request):
+	return API_DeleteAnnouncement(request)

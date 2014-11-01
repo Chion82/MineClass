@@ -25,6 +25,7 @@
 			{
 				api.user.GetUserInfo(function(result){
 					alert(JSON.stringify(result));
+					alert(result.UserInfo._id.$oid);
 				});
 			}
 
