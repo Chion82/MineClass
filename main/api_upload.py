@@ -20,9 +20,9 @@ def API_UploadFile(request):
 	if (not FileType in ALLOWEDFILETYPES):
 		return HttpResponse('{"code":1,"message":"Unsupported file type."}', {})
 
-	path =  "static/upload/" + ("%d" % int(time.time())) + ("%d" % random.randint(100000,999999)) + '.' + FileType
+	path =  "templates/static/upload/" + ("%d" % int(time.time())) + ("%d" % random.randint(100000,999999)) + '.' + FileType
 	while (os.path.exists(os.path.split(os.path.realpath(__file__))[0] + "/" + path)):
-		path = "static/upload/" + ("%d" % int(time.time())) + ("%d" % random.randint(100000,999999)) + '.' + FileType
+		path = "templates/static/upload/" + ("%d" % int(time.time())) + ("%d" % random.randint(100000,999999)) + '.' + FileType
 	dest = open(os.path.split(os.path.realpath(__file__))[0] + "/" + path,'wb+')
 	dest.write(FileObj.read())
 	dest.close()
