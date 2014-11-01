@@ -24,8 +24,8 @@ def API_PublishAnnouncement(request):
 	else:
 		dbobj.attachment = request.POST.get('attachment')
 	tags = []
-	if (len(request.COOKIES.getlist('tag[]'))>0):
-		for SingleTag in request.COOKIES.getlist('tag[]'):
+	if (len(request.POST.getlist('tag[]'))>0):
+		for SingleTag in request.POST.getlist('tag[]'):
 			tags.append(QuoteEscapeContent(SingleTag))
 	dbobj.tag = tags
 
