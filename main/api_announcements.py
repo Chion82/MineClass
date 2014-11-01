@@ -41,8 +41,8 @@ def API_PublishAnnouncement(request):
 		else:
 			classes.append(userobj.classindex)
 	dbobj.classes = classes
-
 	dbobj.save()
+	return HttpResponse('{"code":2,"message":"Success."}')
 
 #API_GetAnnouncements(request) Get list of announcements
 #Input parameters: HttpRequest Object : GET data
