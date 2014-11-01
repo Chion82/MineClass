@@ -5,6 +5,7 @@ import time
 import random
 import os
 from main.config import *
+import string
 
 def API_UploadFile(request):
 	if (request.FILES.get("file")==None):
@@ -26,4 +27,7 @@ def API_UploadFile(request):
 	dest = open(os.path.split(os.path.realpath(__file__))[0] + "/" + path,'wb+')
 	dest.write(FileObj.read())
 	dest.close()
-	return HttpResponse('{"code":2,"message":"Success.","path":"%s"}' % path, {})
+	arr = path.split('/')
+	del arr[0]
+	WebPath = "/".join(arr)
+	return HttpResponse('{"code":2,"message":"Success.","path":"%s"}' % WebPath, {})
