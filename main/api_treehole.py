@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from mongoengine import *
 import random
 import pycurl
+from main.config import *
 
 def API_PublishTreehole(request):
 	if (request.POST.get("treehole")==None):
