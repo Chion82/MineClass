@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response
 from main.api_users import *
 from django.views.decorators.csrf import csrf_exempt
 from main.api_announcements import *
+from main.api_upload import *
 
 @csrf_exempt
 def Render_API_CreateUser(request):
@@ -40,3 +41,14 @@ def Render_API_GetAnnouncements(request):
 
 def Render_API_DeleteAnnouncement(request):
 	return API_DeleteAnnouncement(request)
+
+@csrf_exempt
+def Render_API_UploadFile(request):
+	return API_UploadFile(request)
+
+@csrf_exempt
+def Render_API_PublishTreehole(request):
+	return API_PublishTreehole(request)
+
+def Render_API_GetTreehole(request):
+	return API_GetTreehole(request)

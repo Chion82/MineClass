@@ -22,6 +22,14 @@ urlpatterns = patterns('',
     url(r'^api/getannouncements$','main.views.Render_API_GetAnnouncements'),
     url(r'^api/deleteannouncement$','main.views.Render_API_DeleteAnnouncement'),
 
+    #API: UploadFile
+
+    url(r'^api/upload$','main.views.Render_API_UploadFile'),
+
+    #API: Treehole
+
+    url(r'^api/publishtreehole$','main.views.')
+
     #Testing page
     url(r'^apitest$','main.views.Render_APITest'),
 )

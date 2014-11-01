@@ -16,7 +16,7 @@ def API_PublishAnnouncement(request):
 	if (request.POST.get("announcement")==None or request.POST.get("announcement")==''):
 		return HttpResponse('{"code":1,"message":"Empty content."}',{})
 	dbobj = announcements()
-	dbobj.PublishmentTime = time.time()
+	dbobj.PublishmentTime = int(time.time())
 	dbobj.announcement = QuoteContent(request.POST.get("announcement"))
 	dbobj.publisher = GetUsernameByToken(request.COOKIES.get("accesstoken"))
 	if (request.POST.get("attachment")==None or request.POST.get("attachment")=='none' or request.POST.get("attachment")==''):
@@ -65,7 +65,7 @@ def API_GetAnnouncements(request):
 	return HttpResponse(str(AnnouncementList),{})
 
 #API_DeleteAnnouncement(request) Delete announcement specified by id
-#Input parameters: HttpRequest Object : Get data
+#Input parameters: HttpRequest Object : GET data
 #Return value: HttpResponse Object
 def API_DeleteAnnouncement(request):
 	if (not VerifyToken(request)):

@@ -32,3 +32,9 @@ class announcements(Document):
 	attachment = StringField()
 	tag = ListField()
 	classes = ListField()
+
+#Treehole
+class treehole(Document):
+	PublishmentTime = LongField()
+	treehole = StringField()
+	pic = StringField()
