@@ -28,7 +28,8 @@ urlpatterns = patterns('',
 
     #API: Treehole
 
-    url(r'^api/publishtreehole$','main.views.')
+    url(r'^api/publishtreehole$','main.views.Render_API_PublishTreehole'),
+    url(r'^api/gettreehole$','main.views.Render_API_GetTreehole'),
 
     #Testing page
     url(r'^apitest$','main.views.Render_APITest'),
