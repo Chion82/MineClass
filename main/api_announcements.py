@@ -17,7 +17,7 @@ def API_PublishAnnouncement(request):
 		return HttpResponse('{"code":1,"message":"Empty content."}',{})
 	dbobj = announcements()
 	dbobj.PublishmentTime = time.time()
-	dbobj.announcements = QuoteContent(request.POST.get("announcement"))
+	dbobj.announcement = QuoteContent(request.POST.get("announcement"))
 	dbobj.publisher = GetUsernameByToken(request.COOKIES.get("accesstoken"))
 	if (request.POST.get("attachment")==None or request.POST.get("attachment")=='none' or request.POST.get("attachment")==''):
 		dbobj.attachment = 'none'
