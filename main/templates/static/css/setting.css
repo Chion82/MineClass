@@ -1,0 +1,111 @@
+/* CSS Document */
+@charset "utf-8";
+body{
+	background-color:#efefef;
+	font:14px Microsoft YaHei,SimSun,Arial;
+	margin:0;
+	padding:0;
+	}
+#main{
+	padding:20px 0;
+	}
+#footer{
+	width:200px;
+	font-size:10px;
+	color:rgba(0,0,0,.4);
+	margin:0 auto;
+	}
+#head-preview{
+	display:block;
+	margin:0 112px;
+	}
+.select-file{
+	margin:0 162px;}
+.wrap{
+	width:1200px;
+	margin:0 auto;
+    overflow:hidden;	
+}
+.box{
+	box-shadow:2px 4px 4px -2px rgba(0,0,0,.2);
+	background-color:#fff;
+	}
+.left{
+	width:20%;
+	float:left;
+	margin:5px;
+	}
+.right{
+	width:70%;
+	padding:0 30px;
+	float:right;
+	margin:5px;
+	}
+.wrap-box{
+	font-size:16px;
+	}
+.form-list{
+	width:80%;
+	margin:40px auto;
+	}
+.form-list .label-name{
+	float:left;
+	width:120px;
+	line-height:30px;
+	font-size:14px;
+	text-align:right;
+	color:#656e73;
+	}
+.form-list .list-item{
+	margin-left:135px;
+	width:800px;
+	line-height:33px;
+	}
+.form-list .list-item .input-box{
+	padding:7px 0;
+	width:400px;
+	}
+.form-list .list-item .job-select{
+	padding:7px 0;
+	width:404px;
+	}
+.form-list .list-item .class-select{
+	width:110px;
+	padding:7px;
+	}
+.save-button{
+	color:#fff;
+	font-size:14px;
+	background-color:#ff5722;
+	text-align:center;
+	display:block;
+	width:404px;
+	height:40px;
+	line-height:40px;
+	cursor:pointer;
+	}
+.save-button:hover{
+	background-color:#e64a19;
+	}
+.wrap-box{
+	display:block;
+	padding:0;
+	margin:0;}
+li{
+	border-bottom:1px solid #e6e8e9;
+	}
+li a{
+	color:#333;
+	text-decoration:none;
+	line-height:60px;
+	padding-left:45px;
+	display:block;
+	font-size:14px;
+	}
+li a:hover{
+	color:#ff5722;
+	}
+.active a{
+	border-left:2px solid #ff5722;
+	}
+

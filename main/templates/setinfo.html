@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>个人资料</title>
+<link type="text/css" rel="stylesheet" href="static/css/setting.css"/>
+<link type="text/css" rel="stylesheet" href="static/css/header.css"/>
+<!--标签页、书签的logo显示-->
+<link href="static/images/favicon.ico" rel="bookmark" type="image/x-icon" /> 
+<link href="static/images/favicon.ico" rel="icon" type="image/x-icon" /> 
+<link href="static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<script type="text/javascript">
+function UpdateSelfInfo()
+			{
+				api.user.UpdateSelfInfo({"realname":0,"tag":0,"classindex":0,"sex":0},
+										function(result){
+											alert(JSON.stringify(result));
+										});
+			}
+</script>
+</head>
+<body>
+<div id="header"></div>
+<div id="main">
+		<div class="wrap">
+        
+			<div class="left box">
+            	<ul class="wrap-box">
+                	<li class="active"><a href="">个人资料</a></li>
+                	<li><a href="sethead.html">设置头像</a></li>
+                	<li><a href="setpassword.html">修改密码</a></li>
+                </ul>
+            </div>
+            
+            <div class="right box">
+                	<form class="wrap-box">
+                    	<div class="form-list">
+                        	<label class="label-name" for="nick" >昵称</label>
+                            <div class="list-item">
+                			<input class="input-box" type="text" name="nickname" id="nick" value="MineClass" placeholder="请输入昵称"/>
+                            </div>
+            			</div>
+                        <div class="form-list">
+                        	<label class="label-name" for="job" >我是</label>
+                            <div class="list-item">
+                            <select id="job" class="job-select">
+                            	<option value="0">平民</option>
+                                <option value="1">班长</option>
+                                <option value="2">团支书</option>
+                                <option value="3">学习委员</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-list">
+                        	<label class="label-name" for="level" >班级</label>
+                            <div class="list-item">
+                            <select id="level" class="class-select">
+                            	<option value="0">2014级</option>
+                                <option value="1">2013级</option>
+                                <option value="2">2012级</option>
+                                <option value="3">2011级</option>
+                            </select>
+                            <select id="academy" class="class-select">
+                            	<option value="0">清水寺学院</option>
+                            </select>
+                            <select id="major" class="class-select">
+                            	<option value="0">神马专业</option>
+                            </select>
+                            <select id="class" class="class-select">
+                            	<option value="0">0班</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="form-list">
+                        	<label class="label-name" for="sex">性别</label>
+                            <div class="list-item">
+                            <label><input type="radio" name="sex" value="0">女生</label>
+                            <label><input type="radio" name="sex" value="1">男生</label>
+                            </div>
+                        </div>
+                        <div class="form-list">
+                        	<div class="list-item">
+                        	<span id="info-submit" class="save-button" onClick="UpdateSelfInfo()">保存</span>
+                            </div>
+                        </div>
+                    </form>
+              </div><!--right-->
+                </div>
+            </div>
+        </div>
+</div>
+<div id="footer"></div>
+</body>
+</html>
