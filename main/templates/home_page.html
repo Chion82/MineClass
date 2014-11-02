@@ -3,10 +3,15 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
-	<title>MC首页</title>
+	<title>MineClass-我们的班级</title>
+  
+<!--标签页、书签的logo显示-->
+<link href="static/images/favicon.ico" rel="bookmark" type="image/x-icon" /> 
+<link href="static/images/favicon.ico" rel="icon" type="image/x-icon" /> 
+<link href="static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<style type="text/css">
              body{
-                 background:url('../images/home_page/mybackground.jpg');
+                 background:url('static/images/bg_index.jpg');
                  width:100%;
                  height:100%;
                  background-size:cover;
@@ -16,7 +21,7 @@
                  text-decoration:none;
                  color: #FFF;
 }
-#div1{       //登陆，注册    
+#div1{       /*登陆，注册*/    
     width:100px;
     height:50px;
     //border:2px red solid;
@@ -24,9 +29,9 @@
     right:100px;
     top:20px;
     font-family:"Microsoft Yahei";
-    font-size:30px;
+    font-size:16px;
 }
-#div2{                   //myclass
+#div2{                   /*myclass*/
    width: 300px;
    height: 100px;
    //border:2px red solid;
@@ -35,16 +40,15 @@
    top: 20px;
   font-size:40px;
 }
-#div3{                 //我的班级从这里开始
+#div3{                 /*我的班级从这里开始*/
    width: 100px;
    height: 50px;
    //border: 2px red solid; 
    position:absolute;
-   right: 200px;
-   bottom:230px;
-  font-size:40px;   
+   right: 500px;
+   bottom:230px;   
 }
-#div4{                 //开始
+#div4{                 /*开始*/
   list-style: none;
   position: absolute; 
   right:260px;
@@ -64,11 +68,10 @@
     <a href="#">注册</a>
 </div>
 <div id="div2">
-    <img src="../images/home_page/u2.png" height="50">
-    <b>MineClass</b>
+    <img src="static/images/ic_logo_withtext.png" height="80">
 </div>
 <div id="div3">
-    我的班级，从这里开始
+    <img src="static/images/text_index.png">
 </div>
 <div id="div4">
 <input type="button" value="开始"  style="width: 300px; height: 60px; font-size:20px;" />
