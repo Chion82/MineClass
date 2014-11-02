@@ -33,4 +33,6 @@ urlpatterns = patterns('',
 
     #Testing page
     url(r'^apitest$','main.views.Render_APITest'),
+    url(r'^home_page$','main.views.Render_Index'),
+    url(r'^setinfo$','main.views.Render_Setting'),
 )

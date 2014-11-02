@@ -30,8 +30,13 @@ def Render_API_GetUserInfo(request):
 def Render_API_GetUserInfoByUsername(request):
 	return API_GetUserInfoByUsername(request)
 
+#Add HTML file
 def Render_APITest(request):
 	return render_to_response("apitest.html",{})
+def Render_Index(request):
+	return render_to_response("home_page.html",{})
+def Render_Setting(request):
+	return render_to_response("setinfo.html",{})
 
 @csrf_exempt
 def Render_API_PublishAnnouncement(request):
