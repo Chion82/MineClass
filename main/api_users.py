@@ -129,6 +129,9 @@ def API_GetUserInfo(request):
 	username = GetUsernameByToken(AccessToken)
 	dbobj = users.objects(username=username)
 	JSONResult = dbobj.first().to_json()
+	obj = eval(JSONResult)
+	del obj['password']
+	JSONResult = repr(obj)
 	return HttpResponse('{"code":1,"message":"Success.","UserInfo":'+ JSONResult +'}',{})
 
 #API_GetUserInfoByUsername(request) [web API function] Retrieve user information by the given username
