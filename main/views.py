@@ -41,6 +41,10 @@ def Render_SetHead(request):
 	return render_to_response("sethead.html",{})
 def Render_SetPassword(request):
 	return render_to_response("setpassword.html",{})
+def Render_Inform(request):
+	return render_to_response("inform.html",{})
+def Render_Discuss(request):
+	return render_to_response("setpassword.html",{})
 
 @csrf_exempt
 def Render_API_PublishAnnouncement(request):

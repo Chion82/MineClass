@@ -1,14 +1,162 @@
 /* CSS Document */
-#header{
-	width:100%;
-	height:80px;
-	margin:0 auto;
-	background-color:black;
+body{
+	background-color:#efefef;
+	font:14px Microsoft YaHei,SimSun,Arial;
+	margin:0;
 	padding:0;
 	}
-
-
-.head-btn img{
+#header{
+	/*bug--非全屏时无法占满整个宽度*/
+	width: 100%;
+	height:80px;
+	background-color:#191919;
+	padding:0;
+	}
+/*整个导航栏*/
+#nav{
+	margin: 0 auto;
+	width: 1200px;
+	position: relative;
+}
+/*logo*/
+#logo{
+	background:url(../images/ic_logo_withtext.png);
+	width:172px;
+    height:80px;
+    left:10px;
+    top:0;
+    position:absolute;
+}
+#logo a{
+    display:block;
+    width:100px;
+    height:60px;
+    line-height:60px;
+    text-indent:-200%;
+    overflow:hidden;
+    }
+/*主导航*/
+.nav-item{
+	display: block;
+	float: left;
+	padding-left: 20px;
+	margin: 0 0 0 180px;
+	list-style:none;
+}
+.nav-item li{
+	display: list-item;
+	line-height: 80px;
+	float: left;
+}
+/*
+.nav-item .special{
+	border-right: 1px solid rgba(255,255,255,.3);
+}
+*/
+.nav-item li a{
+	text-decoration:none;
+	color: #B5BDC0;
+	font-size: 16px;
+    margin: 0px 35px;
+	line-height:80px;
+    display:block;
+}
+.nav-item li a:hover{
+	color: #eee;
+}
+/*右边actionBar*/
+.action-bar{
+	padding-left: 0;
+	margin: 0;
+	list-style: none;
+	float: right;
+}
+.action-bar>li{
+	display: list-item;
+	line-height: 80px;
+	float: left;
+}
+.action-bar .addnew{
+	margin-right: 40px;
+}
+#add{
+	width: 40px;
+	height: 80px;
+	display: block;
+	background: url(../images/ic_add_normal.png) no-repeat center center;
+}
+#add:hover{
+	background: url(../images/ic_add_hover.png) no-repeat center center;
+}
+/*
+.action-bar #head-btn{	
+}
+*/
+#head-avatar{
+	margin: 18px 28px 0 0;
+	width: 40px;
+	height: 40px;
+	display: block;
+	overflow: hidden;
+	background: url(../images/ic_head.png) no-repeat center center;
 	border-radius:22px;
-	border:2px solid #ff5722;
+	border:2px solid #B5BDC0;
+}
+#head-avatar:hover{
+	border-color: #ddd;
+}
+/*
+#head-btn img{
+	width:40px;
+	height:40px;
+	border-radius:22px;
+	border:2px solid #B5BDC0;
+}
+*/
+
+/*头像悬停菜单*/
+#action-overflow{
+	background: url(../images/bg_arrow.png) no-repeat;
+	background-position: 127px 0;
+	display: none;
+    z-index:999;
+	padding-top: 9px;
+    width:180px;
+    position:absolute;
+    top:70px;
+    right: 5px;
+   
+}
+#action-overflow .over-ul{
+	box-shadow:2px 2px 2px rgba(0,0,0,.5);
+	padding-left: 0;
+	display: block;
+    background-color:#111;
+    list-style:none;
+}
+#action-overflow li{
+	font-size: 12px;
+	width: 180px;
+	border-bottom: 1px solid rgb(12,12,12);
+}
+#action-overflow li:hover{
+	background-color: rgba(0,0,0,.5);
+}
+#action-overflow li a{
+	height: 50px;
+	display: block;
+	line-height: 50px;
+	padding: 0 50px;
+	color: #B5BDC0;
+	text-decoration: none;
+}
+#action-overflow #setinfo{
+	background-attachment:fixed;
+	background: url(../images/ic_setting1.png) no-repeat;
+	background-position: 20px 17px;
+}
+#action-overflow #logout{
+	background-attachment:fixed;
+	background: url(../images/ic_logout1.png) no-repeat;
+	background-position: 20px 20px;
 }

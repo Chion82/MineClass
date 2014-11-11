@@ -37,4 +37,6 @@ urlpatterns = patterns('',
     url(r'^setinfo$','main.views.Render_SetInfo'),
     url(r'^sethead$','main.views.Render_SetHead'),
     url(r'^setpassword$','main.views.Render_SetPassword'),
+    url(r'^inform$','main.views.Render_Inform'),
+    url(r'^discuss$','main.views.Render_Discuss'),
 )
