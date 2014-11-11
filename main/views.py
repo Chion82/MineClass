@@ -44,7 +44,7 @@ def Render_SetPassword(request):
 def Render_Inform(request):
 	return render_to_response("inform.html",{})
 def Render_Discuss(request):
-	return render_to_response("setpassword.html",{})
+	return render_to_response("discuss.html",{})
 
 @csrf_exempt
 def Render_API_PublishAnnouncement(request):
