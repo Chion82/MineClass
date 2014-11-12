@@ -40,6 +40,9 @@ def API_PublishAnnouncement(request):
 				classes.append(classindex)
 		else:
 			classes.append(userobj.classindex)
+	ReadUsers = []
+	ReadUsers.append(GetUsernameByToken(request.COOKIES.get("accesstoken")))
+	dbobj.ReadUsers = ReadUsers
 	dbobj.classes = classes
 	dbobj.save()
 	return HttpResponse('{"code":2,"message":"Success."}')
@@ -95,3 +98,23 @@ def API_DeleteAnnouncement(request):
 		annobj.delete()
 	return HttpResponse('{"code":4,"message":"Success in deleting announcement."}')
 
+#API_MarkAsRead(request) Mark an announcement as read by user
+#Input Parameters: HttpRequest Object : Get data
+#Return Value: HttpResponse Object
+def API_MarkAsRead(request):
+	if (not VerifyToken(request)):
+		return HttpResponse('{"code":0,"message":"Please login first."}')
+	if (request.GET.get("id")==None or request.GET.get("id")==""):
+		return HttpResponse('{"code":1,"message":"Invalid input"}')
+	annobj = announcements.objects(id=request.GET.get("id"))
+	if (annobj.count()==0):
+		return HttpResponse('{"code":2,"message":"Invalid id"}')
+	ReadUsersList = []
+	row = annobj.first()
+	for ReadUser in row.ReadUsers:
+		ReadUsersList.append(ReadUser)
+	username = GetUsernameByToken(request.COOKIES.get("accesstoken"))
+	if (not username in ReadUsersList):
+		ReadUsersList.append(username)
+	annobj.update(set__ReadUsers=ReadUsersList)
+	return HttpResponse('{"code":3,"message":"Success."}')

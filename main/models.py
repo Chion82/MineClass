@@ -32,6 +32,7 @@ class announcements(Document):
 	attachment = StringField()
 	tag = ListField()
 	classes = ListField()
+	ReadUsers = ListField()
 
 #Treehole
 class treehole(Document):

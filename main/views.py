@@ -56,6 +56,9 @@ def Render_API_GetAnnouncements(request):
 def Render_API_DeleteAnnouncement(request):
 	return API_DeleteAnnouncement(request)
 
+def Render_API_API_MarkAsRead(request):
+	return API_MarkAsRead(request)
+
 @csrf_exempt
 def Render_API_UploadFile(request):
 	return API_UploadFile(request)

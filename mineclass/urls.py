@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^api/publishannouncement$','main.views.Render_API_PublishAnnouncement'),
     url(r'^api/getannouncements$','main.views.Render_API_GetAnnouncements'),
     url(r'^api/deleteannouncement$','main.views.Render_API_DeleteAnnouncement'),
+    url(r'^api/markasread$','main.views.Render_API_API_MarkAsRead'),
 
     #API: UploadFile
 

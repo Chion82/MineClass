@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-    '/home/mineclass/main/templates/static/',
+    os.path.split(os.path.realpath(__file__))[0] + '/../main/templates/static/',
 )
 
 # Application definition
