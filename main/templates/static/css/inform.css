@@ -6,7 +6,36 @@
 	margin: 0 auto;
 	overflow: hidden;
 }
-#input{
-	width: 720px;
+
+/*输入框部分*/
+.input{
+	width: 600px;
 	margin: 0 auto 30px auto;
+	background-color: #fff;
+	box-shadow:2px 4px 4px -2px rgba(0,0,0,.2);
 }
+.input .editor-area{
+
+}
+.input .editor-area .title{
+
+}
+.input .editor-area .umeditor{
+
+}
+.input .editor-area .actionbar{
+
+}
+/*内容*/
+.mylist{}
+.mylist .head{}
+.mylist .content{}
+/*主内容*/
+.mylist .maincontent .who{}
+.mylist .maincontent .text{}
+.mylist .maincontent .actionbar{}
+.mylist .maincontent .actionbar .time{}
+.mylist .maincontent .actionbar .optiontab{}
+.mylist .maincontent .actionbar .optiontab .option{}
+/*评论区*/
+.mylist .discuss{}
