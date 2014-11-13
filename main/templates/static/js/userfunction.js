@@ -24,8 +24,8 @@ function showOverflow()
 //退出
 function Logout(){
     api.user.Logout(function(result){
-      var parsedJson = $.parseJSON(results);
-      if(parsedJson.code=="1")window.location.href="home_page";
+      var myresult = eval(result);
+      if(myresult.code=="1")window.location.href="home_page";
       else alert("似乎出了点问题，你可以反馈给我们。");
     });
 }
