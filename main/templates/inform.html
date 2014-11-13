@@ -9,9 +9,11 @@
 <link href="static/images/favicon.ico" rel="bookmark" type="image/x-icon" /> 
 <link href="static/images/favicon.ico" rel="icon" type="image/x-icon" /> 
 <link href="static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<!--API引入-->
+<script type="text/javascript" src="static/js/mineclassapi.js"></script>
+<script type="text/javascript" src="static/js/userfunction.js"></script>
 
 <!--UMEditor引入-->
-
 <!-- 样式文件 -->
 <link rel="stylesheet" href="static/umeditor/themes/default/css/umeditor.css">
 <!-- 引用jquery -->
@@ -34,23 +36,18 @@
     });
 </script>
 -->
+
+<!--初始化-->
 <script type="text/javascript">
-window.onload=function()
-  {//实现头像点击弹出菜单
-   var oBtn=document.getElementById('head-avatar');
-    var oDiv=document.getElementById('action-overflow');
- oBtn.onclick=function(ev)
- { var oEvent=ev||event;
-   if(oDiv.style.display=='block'){
-        oDiv.style.display='none';
-   }else{ 
-   oDiv.style.display='block';
-   oEvent.cancelBubble=true;
-    }
-}              //取消冒泡
- document.onclick=function()
- {oDiv.style.display='none';} 
- }
+$(document).ready(function(){
+    //退出
+    $("#logout").click(function(event) {
+        /* Act on the event */
+        Logout();
+    });
+    //点击头像显示菜单
+    showOverflow();
+});
 </script>
 
 </head>
@@ -87,7 +84,7 @@ window.onload=function()
                     	   <a id="setinfo" href="setinfo">个人设置</a>
                         </li>
                         <li>
-                     	  <a href="home_page" id="logout">退出</a>
+                     	  <a href="javascript:void(0)" id="logout">退出</a>
                         </li>
                     </ul>
                 </div>
@@ -156,7 +153,8 @@ window.onload=function()
     var um = UM.getEditor('myEditor', {
             /* 传入配置参数,可配参数列表看umeditor.config.js */
             initialFrameWidth:720,
-
+            initialFrameHeight:150,
+            autoHeightEnabled:false,
         });
     um.addListener('blur',function(){
         $('#focush2').html('编辑器失去焦点了')
