@@ -39,3 +39,8 @@ class treehole(Document):
 	PublishmentTime = LongField()
 	treehole = StringField()
 	pic = StringField()
+
+#Class Info
+class classinfo(Document):
+	classindex = IntField()
+	classname = StringField()

@@ -155,6 +155,17 @@ def API_GetUserInfoByUsername(request):
 		JSONResult.append(raw)
 	return HttpResponse('{"code":1,"message":"Success.","UserInfo":'+ str(JSONResult) +'}',{})
 
+def API_GetClassNameByIndex(request):
+	AccessToken = request.COOKIES.get("accesstoken")
+	if (not IsTokenValid(AccessToken)):
+		return HttpResponse('{"code":0,"message":"Token invalid."}',{})
+	if (request.GET.get("index") == None or request.GET.get("index") == ""):
+		return HttpResponse('{"code":1,"message":"Invalid input."}',{})	
+	dbobj = classinfo.objects(classindex=request.GET.get("index"))
+	if (dbobj.count()==0):
+		return HttpResponse('{"code":2,"message":"No such class."}',{})
+	return HttpResponse(dbobj.first().to_json(),{})
+
 #VerifyToken(request) Veryfy access token with a HttpRequest Object
 #input parameters: HttpRequest object
 #return value: 1 - token valid, 0 - token invalid
@@ -256,3 +267,4 @@ def UpdateUserInfo(username,**option):
 		dbobj.update(set__introduction=input_introduction)
 	if(input_sex!=None):
 		dbobj.update(set__sex=input_sex)
+

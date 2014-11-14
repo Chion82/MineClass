@@ -15,6 +15,7 @@ urlpatterns = patterns('',
     url(r'^api/logout$','main.views.Render_API_Logout'),
     url(r'^api/getuserinfo$','main.views.Render_API_GetUserInfo'),
     url(r'^api/getuserinfobyusername$','main.views.Render_API_GetUserInfoByUsername'),
+    url(r'^api/getclassnamebyindex$','main.views.Render_API_GetClassNameByIndex'),
 
     #API: announcements
 
