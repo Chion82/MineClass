@@ -69,3 +69,6 @@ def Render_API_PublishTreehole(request):
 
 def Render_API_GetTreehole(request):
 	return API_GetTreehole(request)
+
+def Render_API_GetClassNameByIndex(request):
+	return API_GetClassNameByIndex(request)
