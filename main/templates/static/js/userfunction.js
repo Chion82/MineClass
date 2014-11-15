@@ -21,6 +21,9 @@ function showOverflow()
  {oDiv.style.display='none';} 
  }
 
+/*点击add出现输入框*/
+//TODO
+
 //退出
 function Logout(){
     api.user.Logout(function(result){

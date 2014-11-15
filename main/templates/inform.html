@@ -90,16 +90,19 @@ $(document).ready(function(){
 <!--主体部分-->
 <div id="main">
     <div class="wrap">
-        <div class="input">
+        <div class="input" id="addarea">
             <div class="editor-area">
-                <div class="title"></div>
+                <div class="title">发布公告</div>
                 <div class="umeditor">          
                 <!-- 加载编辑器的容器 -->
-                <script id="myEditor" name="content" type="text/plain" style="width=500px;height:200px;">
+                <script id="myEditor" name="content" type="text/plain">
                     写一些初始化的东西
                 </script>
                 </div>
-                <div class="actionbar"></div>
+                <div class="actionbar">
+                    <button id="clearAll" class="action-button"><span>清 空</span></button>
+                    <button id="commit" class="action-button"><span>发 布</span></button>
+                </div>
             </div>
         </div>
         <div class="mylist">
