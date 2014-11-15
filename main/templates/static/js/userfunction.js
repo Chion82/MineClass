@@ -32,3 +32,15 @@ function Logout(){
       else alert("退出似乎出了点问题，你可以反馈给我们。");
     });
 }
+
+function showDiscuss(){
+  var disButton=document.getElementById('showDiscuss');
+  var disArea=document.getElementById('discussArea');
+  disButton.onclick=function(){
+    if(disArea.style.display=='block'){
+        disArea.style.display='none';
+   }else{ 
+   disArea.style.display='block';
+    }
+  }  
+}

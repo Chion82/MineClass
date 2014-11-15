@@ -2,15 +2,15 @@
 	padding:20px 20px;
 	}
 .wrap{
-	width: 1200px;
+	width: 600px;
+	padding: 0 10px 30px;
 	margin: 0 auto;
-	overflow: hidden;
 }
 
 /*输入框部分*/
 .input{
 	width: 600px;
-	margin: 0 auto 30px auto;
+	margin: 0 auto;
 	background-color: #fff;
 	box-shadow:2px 4px 4px -2px rgba(0,0,0,.2);
 }
@@ -62,15 +62,141 @@
 }
 
 /*内容*/
-.mylist{}
-.mylist .head{}
-.mylist .content{}
+.mylist{
+	width: 600px;
+	margin: 30px auto;
+	background-color: #fff;
+	border: 1px solid #eee;
+}
+/*头像放中间去了
+.mylist .head{}*/
+.mlist .content{
+}
+.mylist .maincontentBG{
+	box-shadow:0px 4px 4px -2px rgba(0,0,0,.2);
+}
+.mylist .maincontent{
+	width: 550px;
+	margin: 0 auto;
+	padding: 20px 0;
+}
 /*主内容*/
-.mylist .maincontent .who{}
-.mylist .maincontent .text{}
-.mylist .maincontent .actionbar{}
-.mylist .maincontent .actionbar .time{}
-.mylist .maincontent .actionbar .optiontab{}
-.mylist .maincontent .actionbar .optiontab .option{}
+.mylist .maincontent .who{
+	margin-bottom: 15px;
+}
+.mylist .maincontent .who .head{
+	float: left;
+	border: 1px solid #ff9800;
+	width: 40px;
+	height: 40px;
+	margin-right: 15px;
+	border-radius: 22px;
+}
+.mylist .maincontent .who #name{
+	font-size: 16px;
+	color: #666;
+	height: 40px;
+	line-height: 40px;
+}
+.mylist .maincontent .text{
+	clear: both;
+	text-align: left;
+	font-size: 14px;
+	color: #444;
+}
+.mylist .maincontent .actionbar{
+	margin-top: 15px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+	color: #999;
+}
+.actionbar .time{
+	float: left;
+}
+.actionbar .optiontab{
+	float: right;
+}
+.actionbar .optiontab .option{
+	margin-left: 18px;
+}
+.option a{
+	text-decoration: none;
+	color: #999;
+}
+.option a:hover{
+	color: #555;
+}
 /*评论区*/
-.mylist .discuss{}
+.mylist .discussBG{
+	display: none;
+	background-color: rgba(0,0,0,.03);
+	width: 600px;
+	border-top: 1px solid #ccc;
+	box-shadow:2px 4px 4px -2px rgba(0,0,0,.2);
+}
+.mylist .discuss{
+	clear: both;
+	width: 550px;
+	padding: 20px 0;
+	margin: 0 auto;
+}
+.mylist .discuss .adddiscuss{
+	margin-bottom: 10px;
+}
+.mylist .adddiscuss #addDiscuss{
+	width: 400px;
+	max-height: 200px;
+	height: 30px;
+}
+.mylist .adddiscuss #commitDiscuss{
+	float: right;	
+	color: #fff;
+	background-color: #ff5722;	
+	font-family: Microsoft YaHei,SimSun,Arial;
+	border-radius: 2px;
+	font-size: 14px;
+	height: 36px;
+	line-height: 36px;
+	width: 100px;
+	border: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+.mylist .alldiscuss{
+	font-size: 12px;
+	clear: both;
+}
+.mylist .alldiscuss ul{
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+.mylist .alldiscuss .item{
+	clear: both;
+	list-style: none;
+	padding: 5px 0;
+	margin: 5px 0;
+}
+.mylist .item .head{
+	float: left;
+	margin-right: 15px;
+}
+.mylist .item .head img{
+	height: 20px;
+	width: 20px;
+	border-radius: 11px;
+	border: 1px solid #ff9800;
+}
+.mylist .item .discusscontent{
+	line-height: 24px;
+	padding-left: 35px;
+}
+.mylist .item .discusscontent .who{
+	margin-right: 10px;
+	color: #4387fd;
+}
+.mylist .item .discusscontent .maincontent_ds{
+	color: #444;
+}
