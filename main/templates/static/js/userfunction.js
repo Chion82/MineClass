@@ -1,6 +1,7 @@
 /*
 *user常用函数
 *需同时引入mineclassapi.js跟jquery才能使用
+*而且一定要比该js先引入
 */
 
 /*实现点击头像弹出菜单*/

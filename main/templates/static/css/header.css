@@ -7,6 +7,7 @@ body{
 	}
 #header{
 	/*bug--非全屏时无法占满整个宽度*/
+	clear: both;
 	width: 100%;
 	height:80px;
 	background-color:#191919;
@@ -15,7 +16,7 @@ body{
 /*整个导航栏*/
 #nav{
 	margin: 0 auto;
-	width: 1200px;
+	width: 85%;
 	position: relative;
 }
 /*logo*/
@@ -98,7 +99,6 @@ body{
 	width: 40px;
 	height: 40px;
 	display: block;
-	overflow: hidden;
 	background: url(../images/ic_head.png) no-repeat center center;
 	border-radius:22px;
 	border:2px solid #B5BDC0;
@@ -115,12 +115,12 @@ body{
 }
 */
 
-/*头像悬停菜单*/
+/*头像菜单*/
 #action-overflow{
 	background: url(../images/bg_arrow.png) no-repeat;
 	background-position: 127px 0;
 	display: none;
-    z-index:999;
+    z-index:9999;
 	padding-top: 9px;
     width:180px;
     position:absolute;
