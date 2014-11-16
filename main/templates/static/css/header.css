@@ -8,15 +8,13 @@ body{
 #header{
 	/*bug--非全屏时无法占满整个宽度*/
 	clear: both;
-	width: 100%;
 	height:80px;
 	background-color:#191919;
-	padding:0;
 	}
 /*整个导航栏*/
 #nav{
 	margin: 0 auto;
-	width: 85%;
+	width: 1200px;
 	position: relative;
 }
 /*logo*/
@@ -41,7 +39,7 @@ body{
 	display: block;
 	float: left;
 	padding-left: 20px;
-	margin: 0 0 0 180px;
+	margin: 0 0 0 300px;
 	list-style:none;
 }
 .nav-item li{
