@@ -93,7 +93,7 @@ function  registValid() {
                   },
                   /*提交信息*/
                   submitHandler:function(form){
-                  $("#regist").attr("value","创建账户……");
+                  $("#registSubmit").attr("value","创建账户……");
                   function CreateUser()
                     {
                       var names=['m','i','n','e','c','l','a','s','s'];
