@@ -41,4 +41,6 @@ urlpatterns = patterns('',
     url(r'^setpassword$','main.views.Render_SetPassword'),
     url(r'^inform$','main.views.Render_Inform'),
     url(r'^discuss$','main.views.Render_Discuss'),
+    url(r'^login$','main.views.Render_Login'),
+    url(r'^regist$','main.views.Render_Regist'),
 )

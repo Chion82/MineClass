@@ -46,6 +46,10 @@ def Render_Inform(request):
 	return render_to_response("inform.html",{})
 def Render_Discuss(request):
 	return render_to_response("discuss.html",{})
+def Render_Login(request):
+	return render_to_response("login.html",{})
+def Render_Regist(request):
+	return render_to_response("regist.html",{})
 
 @csrf_exempt
 def Render_API_PublishAnnouncement(request):
