@@ -45,3 +45,76 @@ function showDiscuss(){
     }
   }  
 }
+//注册表单合理性
+function  registValid() {
+    $("#regist").validate(
+              {
+                  /*自定义验证规则*/
+                  rules: {
+                    email:{
+                        email:true,
+                        required:true
+                      },
+                    pass: {
+                         required: true,
+                         minlength: 10
+                      },
+                    confirmpass: {
+                         required: true,
+                         minlength: 10,
+                         equalTo: "#pass"
+                      }
+                  },      
+                  /*错误提示位置*/
+                  errorPlacement: function (error, element) {
+                    if(element.is("#email")){
+                      error.appendTo(".email-error");
+                    }else if(element.is("#pass")){
+                      error.appendTo('.pass-error');
+                    }else if(element.is("#confirmpass")){
+                      error.appendTo('.confirmpass-error');
+                    }
+                  },
+                  /*提示信息*/
+                  messages: {
+                    email: {
+                        required: "请输入Email地址",
+                        email: "请输入正确的email地址"
+                       },
+                       pass: {
+                        required: "请输入密码",
+                        minlength: "密码不能小于{0}个字符"
+                       },
+                       confirmpass: {
+                        required: "请输入确认密码",
+                        minlength: "确认密码不能小于10个字符",
+                        equalTo: "两次输入密码不一致"
+                       }
+                  },
+                  /*提交信息*/
+                  submitHandler:function(form){
+                  $("#regist").attr("value","创建账户……");
+                  function CreateUser()
+                    {
+                      var names=['m','i','n','e','c','l','a','s','s'];
+                      var classindex=$("#level option:selected").val()+$("#academy option:selected").val()+$("#major option:selected").val()+$("#class option:selected").val();
+                      api.user.CreateUser(
+                        $("#email").val(),//用户名
+                        $("#pass").val(),
+                        $("#email").val(),//邮箱
+                        "小"+names[Math.floor(Math.random()*9)],//昵称，随机mineclass中的一个
+                        classindex,//班级序号，这里暂时处理为4个String值相加
+                        0,//默认女生
+                        function(result){
+                        var myresult = eval(result);
+                        if(myresult.code==3)window.location.href="inform";
+                        else if(myresult.code==0)alert("参数错误");
+                        else if(myresult.code==1||myresult.code==2)$(".email-error").text('邮箱已被注册，请直接登录');
+                        }
+                      );
+                    }
+                  },
+                  //更多
+              }
+    );
+}

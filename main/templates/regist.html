@@ -3,8 +3,90 @@
 <head>
 	<meta charset="UTF-8">
 	<title>注册</title>
+<link type="text/css" rel="stylesheet" href="static/css/login.css"/>
+<!--标签页、书签的logo显示-->
+<link href="static/images/favicon.ico" rel="bookmark" type="image/x-icon" /> 
+<link href="static/images/favicon.ico" rel="icon" type="image/x-icon" /> 
+<link href="static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<!--API引入-->
+<script type="text/javascript" src="static/js/jquery-1.11.1.min.js"></script>
+<script src="static/js/jquery.validate.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="static/js/mineclassapi.js"></script>
+<script type="text/javascript" src="static/js/userfunction.js"></script>
+<!--初始化-->
+<script type="text/javascript">
+$(document).ready(function(){
+	//表单验证
+	registValid();
+});	
+</script>
 </head>
 <body>
-	
+<!--	div#main>div.mainwrap>div.container>div.heading>div.logo+div.h1^form#regist[name="regist"]>ol>(li>lable[for="email"]{你的邮箱地址}+div.inputwrap+div.email-error)+(li>lable[for="pass"]{设置密码}+div.inputwrap)+(li>lable[for="confirmpass"]{确认密码}+div.pass-error)+(li>lable[for="class"]{我的班级})+(li>div.exist)+(li>input[id="regist"|type="submit"|value="创建账户"])
+-->
+	<div id="main">
+		<div class="mainwrap">
+			<div class="container">
+				<div class="heading">
+					<div class="logo"></div>
+					<h1>注册</h1>
+				</div>
+				<form action="#" id="regist" name="regist">
+					<ul>
+						<li>
+							<lable for="email">你的邮箱地址</lable>
+							<div class="inputwrap">
+								<input type="text" id="email" name="email">
+							</div>
+							<div class="email-error"></div>
+						</li>
+						<li>
+							<lable for="pass">设置密码</lable>
+							<div class="inputwrap">
+								<input type="password" id="pass" name="pass">
+							</div>
+							<div class="pass-error"></div>
+						</li>
+						<li>
+							<lable for="confirmpass">确认密码</lable>
+							<div class="inputwrap">
+								<input type="password" id="confirmpass" name="confirmpass">
+							</div>
+							<div class="confirmpass-error"></div>
+						</li>
+						<li>
+							<lable for="level">班级</lable>
+                            <div class="inputwrap">
+                            <select id="level" class="class-select">
+                            	<option value="0">2014级</option>
+                                <option value="1">2013级</option>
+                                <option value="2">2012级</option>
+                                <option value="3">2011级</option>
+                            </select>
+                            <select id="academy" class="class-select">
+                            	<option value="0">清水寺学院</option>
+                            </select>
+                            <select id="major" class="class-select">
+                            	<option value="0">神马专业</option>
+                            </select>
+                            <select id="class" class="class-select">
+                            	<option value="0">0班</option>
+                            </select>
+                            </div>
+                        	</div>
+						</li>
+						<li>
+							<div class="exist">
+								<span>已有账号，直接</span><a href="login">登录</a>
+							</div>
+						</li>
+						<li>
+							<input id="regist" type="submit" value="创建账户">
+						</li>
+					</ol>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
