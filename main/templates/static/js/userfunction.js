@@ -94,20 +94,30 @@ function  registValid() {
                   /*提交信息*/
                   submitHandler:function(form){
                   $("#registSubmit").attr("value","创建账户……");
-                  function CreateUser()
-                    {
-                      var names=['m','i','n','e','c','l','a','s','s'];
-                      var classindex=$("#level option:selected").val()+$("#academy option:selected").val()+$("#major option:selected").val()+$("#class option:selected").val();
+                  $()
+                  { 
+                      var names=["m","i","n","e","c","l","a","s"];
+                      var classindex=1*($("#level option:selected").val()+$("#academy option:selected").val()+$("#major option:selected").val()+$("#class option:selected").val());
+                      //alert("123");
                       api.user.CreateUser(
                         $("#email").val(),//用户名
                         $("#pass").val(),
                         $("#email").val(),//邮箱
-                        "小"+names[Math.floor(Math.random()*9)],//昵称，随机mineclass中的一个
+                        "小"+names[Math.floor(Math.random()*8)],//昵称，随机mineclass中的一个
                         classindex,//班级序号，这里暂时处理为4个String值相加
                         0,//默认女生
                         function(result){
                         var myresult = eval(result);
-                        if(myresult.code==3)window.location.href="inform";
+                        if(myresult.code==3){
+                      //手动登录
+                      api.user.Login(
+                        $("#email").val(),
+                        $("#pass").val(),
+                          function(result){
+                          });
+                        //跳转到公告                                          
+                          window.location.href="inform";
+                        }
                         else if(myresult.code==0)alert("参数错误");
                         else if(myresult.code==1||myresult.code==2)$(".email-error").text('邮箱已被注册，请直接登录');
                         }
