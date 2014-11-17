@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from main.api_announcements import *
 from main.api_upload import *
 from main.api_treehole import *
+from main.api_schedule import *
 
 @csrf_exempt
 def Render_API_CreateUser(request):

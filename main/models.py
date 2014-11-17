@@ -40,6 +40,15 @@ class treehole(Document):
 	treehole = StringField()
 	pic = StringField()
 
+#Schedule
+class schedule(Docunment):
+    PublishmentTime=LongField()
+    publisher=StringField()
+    title=StringField()
+    introduction=StringField()
+    startdate=LongField()
+    enddate=LongField()
+
 #Class Info
 class classinfo(Document):
 	classindex = IntField()
