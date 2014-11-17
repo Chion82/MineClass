@@ -29,6 +29,18 @@
 <link href="static/images/favicon.ico" rel="bookmark" type="image/x-icon" /> 
 <link href="static/images/favicon.ico" rel="icon" type="image/x-icon" /> 
 <link href="static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+<!--API引入-->
+<script type="text/javascript" src="static/js/jquery-1.11.1.min.js"></script>
+
+<script type="text/javascript">
+$(function() {
+  $(".begin-btn").click(function(event) {
+    /* Act on the event */
+    window.location.href="regist";
+  });
+});
+</script>
 	<style type="text/css">
              body{
                  background:url('static/images/bg_index.jpg');
@@ -82,12 +94,13 @@
 .begin-btn{
   color:#fff;
   font-size:16px;
+  border: 0;
   background-color:#ff5722;
   text-align:center;
   display:block;
   width:404px;
   height:50px;
-  border-radius:22px;
+  border-radius:10px;
   line-height:50px;
   cursor:pointer;
 }
@@ -98,9 +111,9 @@
 </head>
 <body>
 <div id="div1">
-    <a href="#">登录</a>
+    <a href="login">登录</a>
 	&nbsp;&nbsp;&nbsp;
-    <a href="#">注册</a>
+    <a href="regist">注册</a>
 </div>
 <div id="div2">
     <img src="static/images/ic_logo_withtext.png" height="80">
@@ -109,7 +122,7 @@
     <img src="static/images/text_index.png">
 </div>
 <div id="div4">
-<span class="begin-btn">开始</span>
+<button class="begin-btn"><span>开 始</span></button>
 </div>
 </body>
 </html>

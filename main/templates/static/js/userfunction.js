@@ -45,7 +45,7 @@ function showDiscuss(){
     }
   }  
 }
-//注册表单合理性
+//注册
 function  registValid() {
     $("#regist").validate(
               {
@@ -57,11 +57,11 @@ function  registValid() {
                       },
                     pass: {
                          required: true,
-                         minlength: 10
+                         minlength: 6
                       },
                     confirmpass: {
                          required: true,
-                         minlength: 10,
+                         minlength: 6,
                          equalTo: "#pass"
                       }
                   },      
@@ -83,11 +83,11 @@ function  registValid() {
                        },
                        pass: {
                         required: "请输入密码",
-                        minlength: "密码不能小于{0}个字符"
+                        minlength: "密码长度不能小于{0}个字符"
                        },
                        confirmpass: {
                         required: "请输入确认密码",
-                        minlength: "确认密码不能小于10个字符",
+                        //minlength: "确认密码不能小于6个字符",
                         equalTo: "两次输入密码不一致"
                        }
                   },
@@ -120,6 +120,62 @@ function  registValid() {
                         }
                         else if(myresult.code==0)alert("参数错误");
                         else if(myresult.code==1||myresult.code==2)$(".email-error").text('邮箱已被注册，请直接登录');
+                        }
+                      );
+                    }
+                  },
+                  //更多
+              }
+    );
+}
+//登录
+function  loginValid() {
+    $("#login").validate(
+              {
+                  /*自定义验证规则*/
+                  rules: {
+                    email:{
+                        email:true,
+                        required:true
+                      },
+                    pass: {
+                         required: true,
+                         minlength: 6
+                      }
+                  },      
+                  /*错误提示位置*/
+                  errorPlacement: function (error, element) {
+                    if(element.is("#email")){
+                      error.appendTo(".email-error");
+                    }else if(element.is("#pass")){
+                      error.appendTo('.pass-error');
+                    }
+                  },
+                  /*提示信息*/
+                  messages: {
+                    email: {
+                        required: "请输入Email地址",
+                        email: "请输入正确的email地址"
+                       },
+                       pass: {
+                        required: "请输入密码",
+                        minlength: "密码长度不能小于{0}个字符"
+                       }
+                  },
+                  /*提交信息*/
+                  submitHandler:function(form){
+                  $("#loginSubmit").attr("value","登录中……");
+                  $()
+                  { 
+                      //登录
+                      api.user.Login(
+                        $("#email").val(),
+                        $("#pass").val(),
+                          function(result){
+                            var myresult = eval(result);
+                        if(myresult.code==2)window.location.href="inform";     
+                        else if(myresult.code==0)$(".email-error").text('用户不存在，请先注册');
+                        else if(myresult.code==1||myresult.code==2)$(".pass-error").text('密码错误，请重新输入');
                         }
                       );
                     }

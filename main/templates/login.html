@@ -10,14 +10,51 @@
 <link href="static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <!--API引入-->
 <script type="text/javascript" src="static/js/jquery-1.11.1.min.js"></script>
+<script src="static/js/jquery.validate.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="static/js/mineclassapi.js"></script>
 <script type="text/javascript" src="static/js/userfunction.js"></script>
 <!--初始化-->
 <script type="text/javascript">
-	
+$(document).ready(function(){
+	//表单验证
+	loginValid();
+});	
 </script>
 </head>
 <body>
-	
+	<div id="main">
+		<div class="mainwrap">
+			<div class="container">
+				<div class="heading">
+					<div class="logo"></div>
+					<h1>登录</h1>
+				</div>
+				<form action="#" id="login" name="login">
+					<ul>
+						<li>
+							<lable for="email">电子邮箱</lable>
+							<div class="inputwrap">
+								<input type="text" id="email" name="email">
+							</div>
+							<div class="email-error"></div>
+						</li>
+						<li>
+							<lable for="pass">密码</lable>
+							<div class="inputwrap">
+								<input type="password" id="pass" name="pass">
+							</div>
+							<div class="pass-error"></div>
+						</li>
+						<li>
+							<div class="exist">
+								<span>没有账号，点此</span><a href="regist">注册</a>
+							</div>
+						</li>
+						<li><input id="loginSubmit" type="submit" value="登录"></li>
+					</ol>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
