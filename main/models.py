@@ -46,6 +46,7 @@ class schedule(Document):
     publisher=StringField()
     title=StringField()
     introduction=StringField()
+    classes = ListField()
     startdate=LongField()
     enddate=LongField()
 
