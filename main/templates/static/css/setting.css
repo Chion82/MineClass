@@ -47,13 +47,16 @@ body{
 	}
 .form-list{
 	width:80%;
-	margin:40px auto;
+	margin:30px auto;
 	}
 /*password的form-list*/
 .form-list-pass{
 	width:80%;
 	margin:10px auto 10px;
 	}
+.form-first{
+	
+}
 .label-name{
 	float:left;
 	width:100px;

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>注册</title>
+	<title>创建账户</title>
 <link type="text/css" rel="stylesheet" href="static/css/login.css"/>
 <!--标签页、书签的logo显示-->
 <link href="static/images/favicon.ico" rel="bookmark" type="image/x-icon" /> 
@@ -29,34 +29,34 @@ $(document).ready(function(){
 			<div class="container">
 				<div class="heading">
 					<div class="logo"></div>
-					<h1>注册</h1>
+					<h1>新同学注册</h1>
 				</div>
-				<form action="#" id="regist" name="regist">
+				<form action="#" id="regist" name="regist" class="form-class">
 					<ul>
 						<li>
 							<lable for="email">你的邮箱地址</lable>
 							<div class="inputwrap">
-								<input type="text" id="email" name="email">
+								<input class="inputbox" type="text" id="email" name="email">
 							</div>
-							<div class="email-error"></div>
+							<div class="email-error error"></div>
 						</li>
 						<li>
 							<lable for="pass">设置密码</lable>
 							<div class="inputwrap">
-								<input type="password" id="pass" name="pass" maxlength="16">
+								<input class="inputbox" type="password" id="pass" name="pass" maxlength="16">
 							</div>
-							<div class="pass-error"></div>
+							<div class="pass-error error"></div>
 						</li>
 						<li>
 							<lable for="confirmpass">确认密码</lable>
 							<div class="inputwrap">
-								<input type="password" id="confirmpass" name="confirmpass" maxlength="16">
+								<input class="inputbox" type="password" id="confirmpass" name="confirmpass" maxlength="16">
 							</div>
-							<div class="confirmpass-error"></div>
+							<div class="confirmpass-error error"></div>
 						</li>
 						<li>
 							<lable for="level">班级</lable>
-                            <div class="inputwrap">
+                            <div class="selectwrap">
                             <select id="level" class="class-select">
                             	<option value="0">2014级</option>
                                 <option value="1">2013级</option>
@@ -73,7 +73,6 @@ $(document).ready(function(){
                             	<option value="0">0班</option>
                             </select>
                             </div>
-                        	</div>
 						</li>
 						<li>
 							<div class="exist">
@@ -81,9 +80,9 @@ $(document).ready(function(){
 							</div>
 						</li>
 						<li>
-							<input id="registSubmit" type="submit" value="注册">
+							<input id="registSubmit" class="submitBtn" type="submit" value="注册">
 						</li>
-					</ol>
+					</ul>
 				</form>
 			</div>
 		</div>
