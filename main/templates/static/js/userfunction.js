@@ -122,7 +122,10 @@ function  registValid() {
                           window.location.href="inform";
                         }
                         else if(myresult.code==0)alert("参数错误");
-                        else if(myresult.code==1||myresult.code==2)$(".email-error").text('邮箱已被注册，请直接登录');
+                        else if(myresult.code==1||myresult.code==2){
+                          $("#infoSubmit").attr("value","保存中……");
+                          $(".email-error").text('邮箱已被注册，请直接登录');
+                        }
                         }
                       );
                     }
@@ -176,12 +179,18 @@ function  loginValid() {
                       api.user.Login(
                         $("#email").val(),
                         $("#pass").val(),
-                          function(result){
+                      function(result){
                             var myresult = eval(result);
                         if(myresult.code==2)window.location.href="inform";     
-                        else if(myresult.code==0)$(".email-error").text('用户不存在，请先注册');
-                        else if(myresult.code==1||myresult.code==2)$(".pass-error").text('密码错误，请重新输入');
+                        else if(myresult.code==0){
+                          $("#infoSubmit").attr("value","保存");
+                          $(".email-error").text('用户不存在，请先注册');
                         }
+                        else if(myresult.code==1||myresult.code==2){
+                          $("#infoSubmit").attr("value","保存");
+                          $(".pass-error").text('密码错误，请重新输入');
+                        }
+                      }
                       );
                     }
                   },

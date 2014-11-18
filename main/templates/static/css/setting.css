@@ -47,9 +47,14 @@ body{
 	}
 .form-list{
 	width:80%;
+	margin:40px auto;
+	}
+/*password的form-list*/
+.form-list-pass{
+	width:80%;
 	margin:10px auto 10px;
 	}
-.form-list .label-name{
+.label-name{
 	float:left;
 	width:100px;
 	line-height:30px;
@@ -57,27 +62,29 @@ body{
 	text-align:right;
 	color:#656e73;
 	}
-.form-list .list-item{
+.list-item{
 	margin-left:115px;
 	width:800px;
 	line-height:33px;
 	}
 /*输入框*/
-.form-list .list-item .input-box{
+.list-item .input-box{
+	color: black;
 	height: 30px;
 	width:400px;
 	}
 /*密码输入框*/
-.form-list .list-item .pass-box{
+.list-item .pass-box{
 	font-size: 1.5em;
+	color: black;
 	height: 30px;
 	width:400px;
 	}
-.form-list .list-item .job-select{
+.list-item .job-select{
 	padding:7px 0;
 	width:404px;
 	}
-.form-list .list-item .class-select{
+.list-item .class-select{
 	width:110px;
 	padding:7px;
 	}
