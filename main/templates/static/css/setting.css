@@ -84,7 +84,7 @@ body{
 .save-button{
 	border: 0;
 	color:#fff;
-	font-size:14px;
+	font:14px Microsoft YaHei,SimSun,Arial;
 	background-color:#ff5722;
 	text-align:center;
 	display:block;
