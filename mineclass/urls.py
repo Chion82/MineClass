@@ -15,7 +15,14 @@ urlpatterns = patterns('',
     url(r'^api/logout$','main.views.Render_API_Logout'),
     url(r'^api/getuserinfo$','main.views.Render_API_GetUserInfo'),
     url(r'^api/getuserinfobyusername$','main.views.Render_API_GetUserInfoByUsername'),
-    url(r'^api/getclassnamebyindex$','main.views.Render_API_GetClassNameByIndex'),
+    url(r'^api/setuserpriority$','main.views.Render_API_SetUserPriority'),
+    url(r'^api/deleteuser$','main.views.Render_API_DeleteUser'),
+
+    #API: class info
+    url(r'^api/createclass$','main.views.Render_API_CreateClass'),
+    url(r'^api/getclassinfobyindex$','main.views.Render_API_GetClassInfoByIndex'),
+    url(r'^api/getallclassinfo$','main.views.Render_API_GetAllClassInfo'),
+    url(r'^api/deleteclassbyindex$','main.views.Render_API_DeleteClassByIndex'),
 
     #API: announcements
 

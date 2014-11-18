@@ -155,16 +155,35 @@ def API_GetUserInfoByUsername(request):
 		JSONResult.append(raw)
 	return HttpResponse('{"code":1,"message":"Success.","UserInfo":'+ str(JSONResult) +'}',{})
 
-def API_GetClassNameByIndex(request):
-	AccessToken = request.COOKIES.get("accesstoken")
-	if (not IsTokenValid(AccessToken)):
-		return HttpResponse('{"code":0,"message":"Token invalid."}',{})
-	if (request.GET.get("index") == None or request.GET.get("index") == ""):
-		return HttpResponse('{"code":1,"message":"Invalid input."}',{})	
-	dbobj = classinfo.objects(classindex=request.GET.get("index"))
+def API_SetUserPriority(request):
+	if (not VerifyToken(request)):
+		return HttpResponse('{"code":0,"message":"Invalid Token."}',{})
+	input_priority = request.GET.get("priority")
+	input_username = request.GET.get("username")
+	if (input_priority==None or input_priority=="" or input_username==None or input_username==""):
+		return HttpResponse('{"code":1,"message":"Invalid Input."}',{})
+	if (int(input_priority) > GetUserPriorityByRequest(request) or GetUserPriorityByRequest(request)==0):
+		return HttpResponse('{"code":2,"message":"Permission Denied."}',{})
+	dbobj = users.objects(username=input_username)
 	if (dbobj.count()==0):
-		return HttpResponse('{"code":2,"message":"No such class."}',{})
-	return HttpResponse(dbobj.first().to_json(),{})
+		return HttpResponse('{"code":3,"message":"User doesn\'t exist."}',{})
+	dbobj.update(set__priority=int(input_priority))
+	return HttpResponse('{"code":4,"message":"Success."}',{})
+
+def API_DeleteUser(request):
+	if (not VerifyToken(request)):
+		return HttpResponse('{"code":0,"message":"Invalid Token."}',{})
+	input_username = request.GET.get("username")
+	if (input_username==None or input_username==""):
+		return HttpResponse('{"code":1,"message":"Invalid Input."}',{})
+	if (GetUserPriorityByRequest(request)!=3):
+		return HttpResponse('{"code":2,"message":"Permission Denied."}',{})
+	dbobj = users.objects(username=input_username)
+	if (dbobj.count()==0):
+		return HttpResponse('{"code":3,"message":"User doesn\'t exist."}',{})
+	dbobj.delete()
+	return HttpResponse('{"code":4,"message":"Success."}',{})
+
 
 #VerifyToken(request) Veryfy access token with a HttpRequest Object
 #input parameters: HttpRequest object
@@ -268,3 +287,7 @@ def UpdateUserInfo(username,**option):
 	if(input_sex!=None):
 		dbobj.update(set__sex=input_sex)
 
+def GetUserPriorityByRequest(request):
+	AccessToken = request.COOKIES.get("accesstoken")
+	username = GetUsernameByToken(AccessToken)
+	return int(users.objects(username=username).first().priority)

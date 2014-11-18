@@ -6,6 +6,7 @@ from main.api_announcements import *
 from main.api_upload import *
 from main.api_treehole import *
 from main.api_schedule import *
+from main.api_classinfo import *
 
 @csrf_exempt
 def Render_API_CreateUser(request):
@@ -75,5 +76,22 @@ def Render_API_PublishTreehole(request):
 def Render_API_GetTreehole(request):
 	return API_GetTreehole(request)
 
-def Render_API_GetClassNameByIndex(request):
-	return API_GetClassNameByIndex(request)
+
+#Added on 18/11
+def Render_API_SetUserPriority(request):
+	return API_SetUserPriority(request)
+
+def Render_API_DeleteUser(request):
+	return API_DeleteUser(request)
+
+def Render_API_CreateClass(request):
+	return API_CreateClass(request)
+
+def Render_API_GetClassInfoByIndex(request):
+	return API_GetClassInfoByIndex(request)
+
+def Render_API_GetAllClassInfo(request):
+	return API_GetAllClassInfo(request)
+
+def Render_API_DeleteClassByIndex(request):
+	return API_DeleteClassByIndex(request)

@@ -53,3 +53,5 @@ class schedule(Document):
 class classinfo(Document):
 	classindex = IntField()
 	classname = StringField()
+	major = StringField()
+	period = StringField()
