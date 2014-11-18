@@ -29,19 +29,19 @@ $(document).ready(function(){
 					<div class="logo"></div>
 					<h1>登录</h1>
 				</div>
-				<form action="#" id="login" name="login">
+				<form action="#" id="login" name="login" class="form-class">
 					<ul>
 						<li>
 							<lable for="email">电子邮箱</lable>
 							<div class="inputwrap">
-								<input type="text" id="email" name="email">
+								<input class="inputbox" type="text" id="email" name="email">
 							</div>
-							<div class="email-error"></div>
+							<div class="email-error error"></div>
 						</li>
 						<li>
 							<lable for="pass">密码</lable>
 							<div class="inputwrap">
-								<input type="password" id="pass" name="pass">
+								<input class="inputbox" type="password" id="pass" name="pass" maxlength="16">
 							</div>
 							<div class="pass-error"></div>
 						</li>
@@ -50,8 +50,10 @@ $(document).ready(function(){
 								<span>没有账号，点此</span><a href="regist">注册</a>
 							</div>
 						</li>
-						<li><input id="loginSubmit" type="submit" value="登录"></li>
-					</ol>
+						<li>
+							<input id="loginSubmit" class="submitBtn" type="submit" value="登录">
+						</li>
+					</ul>
 				</form>
 			</div>
 		</div>

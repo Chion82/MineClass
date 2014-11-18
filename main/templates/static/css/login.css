@@ -1,0 +1,128 @@
+/*login和regist共用的CSS*/
+body{
+	background-color:rgba(0,0,0,.1);
+	font:14px Microsoft YaHei,SimSun,Arial;
+	margin:0;
+	padding:0;
+	}
+#main{
+	padding:20px 20px;
+	}
+.mainwrap{
+	width: 600px;
+	margin: 0 auto;
+}
+.container{
+	padding: 20px;
+	width: 500px;
+	margin: 0 auto;
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,.1);
+	box-shadow:2px 4px 4px -2px rgba(0,0,0,.2);
+}
+/*head*/
+.heading{
+	clear: both;
+	width: 100%;
+	text-align: center;
+	margin:20px auto 20px;
+}
+.heading .logo{
+	display: none;
+	width: 56px;
+	height: 67px;
+	float: left;
+	background:url(../images/mineclass_icon.png) no-repeat center top;
+}
+.heading h1{
+	margin: 0;
+	display: inline-block;
+	font-family: 幼圆,SimSun,Arial;
+	color: #555;
+	font-size: 32px;
+	font-weight: normal;
+}
+
+/*form部分*/
+.form-class{
+	clear: both;
+	width: 350px;
+	margin: 0 auto;
+}
+.form-class ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+li{
+
+}
+lable{
+	font-size: 14px;
+	color: #747474;
+}
+.inputwrap{
+	clear: both;
+	height: 30px;
+}
+.inputbox{
+	font-size: 1.3em;
+	padding: 4px;
+	border: 1px solid #cacaca;
+	color: black;
+	width:340px;
+}
+.error{
+	/*BUG--错误后会把error样式给inputbox*/
+	clear: both;
+	height: 20px;	
+	font-size: 12px;
+/*	
+	color: #b92219;
+*/
+	color: #e51c23;
+}
+.pass-error{
+	/*BUG--错误后会把error样式给inputbox*/
+	clear: both;
+	height: 20px;	
+	font-size: 12px;
+/*	
+	color: #b92219;
+*/
+	color: #e51c23;	
+}
+.selectwrap{
+	margin-bottom: 20px;
+}
+.class-select{
+	border: 1px solid #cacaca;
+	padding: 5px;
+	margin-right: 1px;
+}
+.exist{
+	font-size: 15px;
+	color: #545454;
+	margin-bottom: 20px;
+}
+.exist a{
+	text-decoration: none;
+	color: #ff5722;
+}
+.exist a:hover{
+	color: #e64a19;
+}
+.submitBtn{
+	color: #fff;
+	font:16px Microsoft YaHei,SimSun,Arial;
+	border: 0;
+	width: 350px;
+	height: 40px;
+	border-radius: 3px;
+	background-color: #ff5722;
+	margin-bottom: 20px;
+}
+.submitBtn:hover{
+	background-color: #e64a19;
+}
+
