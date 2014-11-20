@@ -291,3 +291,7 @@ def GetUserPriorityByRequest(request):
 	AccessToken = request.COOKIES.get("accesstoken")
 	username = GetUsernameByToken(AccessToken)
 	return int(users.objects(username=username).first().priority)
+
+def GetUsernameByRequest(request):
+	AccessToken = request.COOKIES.get("accesstoken")
+	return GetUsernameByToken(AccessToken)

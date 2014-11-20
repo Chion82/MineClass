@@ -57,3 +57,4 @@ def API_DeleteClassByIndex(request):
 		return HttpResponse('{"code":3,"message":"Class doesn\'t exit"}')
 	result.delete()
 	return HttpResponse('{"code":4,"message":"Success."}',{})
+	

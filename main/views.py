@@ -7,6 +7,7 @@ from main.api_upload import *
 from main.api_treehole import *
 from main.api_schedule import *
 from main.api_classinfo import *
+from main.api_comments import *
 
 @csrf_exempt
 def Render_API_CreateUser(request):
@@ -84,6 +85,7 @@ def Render_API_SetUserPriority(request):
 def Render_API_DeleteUser(request):
 	return API_DeleteUser(request)
 
+@csrf_exempt
 def Render_API_CreateClass(request):
 	return API_CreateClass(request)
 
@@ -95,3 +97,14 @@ def Render_API_GetAllClassInfo(request):
 
 def Render_API_DeleteClassByIndex(request):
 	return API_DeleteClassByIndex(request)
+
+#Comments Operations
+@csrf_exempt
+def Render_API_PublishComment(request):
+	return API_PublishComment(request)
+
+def Render_API_GetCommentsByID(request):
+	return API_GetCommentsByID(request)
+
+def Render_API_DeleteCommentByID(request):
+	return API_DeleteCommentByID(request)

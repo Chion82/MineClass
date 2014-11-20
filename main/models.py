@@ -56,3 +56,10 @@ class classinfo(Document):
 	classname = StringField()
 	major = StringField()
 	period = StringField()
+
+class comments(Document):
+	CommentType = IntField()  #0:Announcements, 1:Treeholes
+	comment = StringField()
+	publisher = StringField()
+	PublishmentTime = LongField()
+	objid = StringField()

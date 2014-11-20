@@ -40,6 +40,13 @@ urlpatterns = patterns('',
     url(r'^api/publishtreehole$','main.views.Render_API_PublishTreehole'),
     url(r'^api/gettreehole$','main.views.Render_API_GetTreehole'),
 
+    #API: Comments
+
+    url(r'^api/publishcomment$','main.views.Render_API_PublishComment'),
+    url(r'^api/getcommentsbyid$','main.views.Render_API_GetCommentsByID'),
+    url(r'^api/deletecommentbyid$','main.views.Render_API_DeleteCommentByID'),
+
+
     #Testing page
     url(r'^apitest$','main.views.Render_APITest'),
     url(r'^home_page$','main.views.Render_Index'),
