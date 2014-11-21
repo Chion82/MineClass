@@ -97,8 +97,7 @@ body{
 	width: 40px;
 	height: 40px;
 	display: block;
-	background: url(../images/ic_head.png) no-repeat center center;
-	border-radius:22px;
+	border-radius:23px;
 	border:2px solid #B5BDC0;
 }
 #head-avatar:hover{

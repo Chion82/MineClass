@@ -363,6 +363,6 @@ function isLogin(){
 function showAvatar(){
     api.user.GetUserInfo(function(result){
       var infoResult = eval(result);
-      $("#head-avatar").css('background', 'url('+infoResult.UserInfo.avatar+') no-repeat center center');
+      $("#head-avatar").attr('src', infoResult.UserInfo.avatar);
     });
 }
