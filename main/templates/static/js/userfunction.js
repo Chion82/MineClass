@@ -329,7 +329,7 @@ function initInfo(){
       $("#infoSetting").text(infoResult.UserInfo.realname);
       $("#nick").attr("value",infoResult.UserInfo.realname);//设置昵称
       //我是
-      if(infoResult.UserInfo.tag=='0')
+      if(infoResult.UserInfo.tag=='0'){
         $("#job option[value='0']").attr('selected', true);//平民
       }else if(infoResult.UserInfo.tag=='1'){
         $("#job option[value='1']").attr('selected', true);//班长
