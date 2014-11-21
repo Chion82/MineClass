@@ -46,6 +46,12 @@ urlpatterns = patterns('',
     url(r'^api/getcommentsbyid$','main.views.Render_API_GetCommentsByID'),
     url(r'^api/deletecommentbyid$','main.views.Render_API_DeleteCommentByID'),
 
+    #API: Disk
+    url(r'^api/addfile$','main.views.Render_API_AddFile'),
+    url(r'^api/explorefolder$','main.views.Render_API_ExploreFolder'),
+    url(r'^api/createfolder$','main.views.Render_API_CreateFolder'),
+    url(r'^api/deletefileorfolder','main.views.Render_API_DeleteFileOrFolder'),
+
 
     #Testing page
     url(r'^apitest$','main.views.Render_APITest'),
