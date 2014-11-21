@@ -320,13 +320,13 @@ function initInfo(){
     window.location.href="regist";
         });
     }
-    else if(infoResult.UserInfo.tag=="平民")$("#addarea").style.display='none';
+    else if(infoResult.UserInfo.tag=="平民")$("#addarea").hide();
     else {
         $(".begin-btn").click(function(event) {
     window.location.href="inform";
         });
-      $("#div1").style.display='none';
-      $("#welcome").style.display='blcok';
+      $("#div1").hide();
+      $("#welcome").show();
       $("#infoSetting").attr("text",infoResult.UserInfo.realname);
       $("#nick").attr("value",infoResult.UserInfo.realname);//设置昵称
       $("#job option[value='+infoResult.UserInfo.tag+']").attr('selected', true);//我是
