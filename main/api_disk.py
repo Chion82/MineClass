@@ -55,7 +55,7 @@ def API_ExploreFolder(request):
 def API_CreateFolder(request):
 	if (not VerifyToken(request)):
 		return HttpResponse('{"code":0,"message":"AccessToken invalid. Please login first."}',{})
-	input_folder = QuoteEscapeContent(request.POST.get("folder"))
+	input_folder = QuoteEscapeContent(request.GET.get("folder"))
 	if (input_folder==None or input_folder==""):
 		return HttpResponse('{"code":1,"message":"Invalid Input."}',{})
 	if (input_folder[-3:]==QuoteEscapeContent("/")):
