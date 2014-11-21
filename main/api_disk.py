@@ -45,13 +45,11 @@ def API_ExploreFolder(request):
 		return HttpResponse('{"code":2,"message":"Folder doesn\'t exist"}',{})
 	dbobj = disk.objects(folder=input_folder,FileName__ne="$FOLDER$")
 	files = dbobj.all().to_json()
-	SubFolderQuery = disk.objects(folder__startswith=input_folder,folder__ne=input_folder,FileName="$FOLDER$")
+	SubFolderQuery = disk.objects(FileName="$FOLDER$",folder__startswith=input_folder)
 	SubFolderList = []
-	if (SubFolderQuery.count()>0):
-		AllResult = SubFolderQuery.all()
-		for SubFolder in AllResult:
-			if (SubFolder.folder.count(QuoteEscapeContent("/"))==input_folder.count(QuoteEscapeContent("/"))+1):
-				SubFolderList.append(SubFolder.to_json())
+	for SubFolder in SubFolderQuery:
+		if (SubFolder.folder.count(QuoteEscapeContent("/"))==input_folder.count(QuoteEscapeContent("/"))+1 and SubFolder.folder!=input_folder):
+			SubFolderList.append(SubFolder.to_json())
 	return HttpResponse('{"code":3,"message":"Success","files":%s,"folders":%s}' % (files,str(SubFolderList)),{})
 
 def API_CreateFolder(request):
