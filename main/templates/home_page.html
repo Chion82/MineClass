@@ -44,6 +44,8 @@ $(document).ready(function(){
         $(".begin-btn").click(function(event) {
           window.location.href="regist";
         });
+      $("#div1").show();
+      $("#welcome").hide();
     }else {
       $(".begin-btn").click(function(event) {
         window.location.href="inform";
@@ -78,7 +80,6 @@ $(document).ready(function(){
     font-family:"Microsoft Yahei";
     font-size:16px;
     font-weight:bold;
-    display:none;
 }
 #welcome{
     height:80px;
@@ -87,6 +88,7 @@ $(document).ready(function(){
     margin-right:100px;
     font-family:"Microsoft Yahei";
     font-size:16px;
+    display:none;
 }
 #welcome a{
   /*color:#03a9f4;*/

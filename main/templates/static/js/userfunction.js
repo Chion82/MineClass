@@ -314,8 +314,6 @@ function modifyInfo(){
 function initInfo(){
   api.user.GetUserInfo(function(result){
     var infoResult = eval(result);
-      //header头像显示
-      $("#head-avatar").css('background', 'url('+'infoResult.UserInfo.avatar'+') no-repeat center center');
       //设置昵称
       $("#nick").attr("value",infoResult.UserInfo.realname);
       //我是
@@ -359,5 +357,12 @@ function isLogin(){
       if(infoResult.code==0){
         window.location.href="home_page";
       }
+    });
+}
+//显示头像
+function showAvatar(){
+    api.user.GetUserInfo(function(result){
+      var infoResult = eval(result);
+      $("#head-avatar").css('background', 'url('+infoResult.UserInfo.avatar+') no-repeat center center');
     });
 }
