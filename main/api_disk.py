@@ -42,7 +42,7 @@ def API_ExploreFolder(request):
 	SubFolderList = []
 	for SubFolder in SubFolderQuery:
 		if (SubFolder.folder.count(QuoteEscapeContent("/"))==input_folder.count(QuoteEscapeContent("/"))+1 and SubFolder.folder!=input_folder):
-			SubFolderList.append(SubFolder.to_json())
+			SubFolderList.append(eval(SubFolder.to_json()))
 	return HttpResponse('{"code":3,"message":"Success","files":%s,"folders":%s}' % (files,json.dumps(SubFolderList)),{})
 
 def API_CreateFolder(request):
