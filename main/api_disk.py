@@ -48,7 +48,7 @@ def API_ExploreFolder(request):
 	dbobj = disk.objects(folder__startswith=input_folder,folder__ne=input_folder,FileName="$FOLDER$").all()
 	FolderList = []
 	for SubFolder in dbobj:
-		if (SubFolder.count(QuoteEscapeContent("/"))==input_folder.count(QuoteEscapeContent("/"))+1):
+		if (SubFolder.folder.count(QuoteEscapeContent("/"))==input_folder.count(QuoteEscapeContent("/"))+1):
 			FolderList.append(SubFolder.to_json())
 	return HttpResponse('{"code":3,"message":"Success","files":%s,"folders":%s}' % (files,str(FolderList)),{})
 
