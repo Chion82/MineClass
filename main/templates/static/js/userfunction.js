@@ -327,9 +327,9 @@ function initInfo(){
         });
       $("#div1").hide();
       $("#welcome").show();
-      $("#infoSetting").attr("text",infoResult.UserInfo.realname);
+      $("#infoSetting").text(infoResult.UserInfo.realname);
       $("#nick").attr("value",infoResult.UserInfo.realname);//设置昵称
-      $("#job option[value='+infoResult.UserInfo.tag+']").attr('selected', true);//我是
+      $("#job option[value=infoResult.UserInfo.tag]").attr('selected', true);//我是
 
       if(infoResult.UserInfo.classindex==0){
         $("#level option[value='0']").attr('selected', true);
@@ -341,7 +341,7 @@ function initInfo(){
         $("#level option[value='1']").attr('selected', true);
       }//班级部分
 
-      $("input[name='sex'][value='+infoResult.UserInfo.sex+']").attr("checked",true);//性别
+      $("input[name='sex'][value=infoResult.UserInfo.sex]").attr("checked",true);//性别
     }
         });
 }
