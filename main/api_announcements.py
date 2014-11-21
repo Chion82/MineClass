@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from mongoengine import *
 import random
 from main.api_users import *
+import json
 
 #API_PublishAnnouncement(request) Publish announcement
 #Input parameters: HttpRequest Object : POST data
@@ -61,11 +62,11 @@ def API_GetAnnouncements(request):
 		if (len(request.GET.getlist('tag[]'))>0):
 			for SingleTag in RowObj.tag:
 				if (SingleTag in request.GET.getlist('tag[]')):
-					AnnouncementList.append(RowObj.to_json())
+					AnnouncementList.append(RowObj)
 					break
 		else:
-			AnnouncementList.append(RowObj.to_json())
-	return HttpResponse(str(AnnouncementList),{})
+			AnnouncementList.append(RowObj)
+	return HttpResponse(json.dumps(AnnouncementList),{})
 
 #API_DeleteAnnouncement(request) Delete announcement specified by id
 #Input parameters: HttpRequest Object : GET data
