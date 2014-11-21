@@ -13,10 +13,6 @@ def API_AddFile(request):
 	input_FileName = QuoteEscapeContent(request.POST.get("filename"))
 	input_folder = QuoteEscapeContent(request.POST.get("folder"))
 	input_URL = QuoteEscapeContent(request.POST.get("url"))
-	if (input_folder[-3:]==QuoteEscapeContent("/")):
-		input_folder[-1]=""
-		input_folder[-2]=""
-		input_folder[-3]=""
 	if (input_FileName==None or input_FileName=="" or input_folder==None or input_folder=="" or input_URL==None or input_URL==""):
 		return HttpResponse('{"code":1,"message":"Invalid Input."}',{})
 	if(disk.objects(folder=input_folder,FileName="$FOLDER$").count()==0):
@@ -37,10 +33,6 @@ def API_ExploreFolder(request):
 	input_folder = QuoteEscapeContent(request.GET.get("folder"))
 	if (input_folder==None or input_folder==""):
 		return HttpResponse('{"code":1,"message":"Invalid Input."}',{})
-	if (input_folder[-3:]==QuoteEscapeContent("/")):
-		input_folder[-1]=""
-		input_folder[-2]=""
-		input_folder[-3]=""
 	if (disk.objects(folder=input_folder,FileName="$FOLDER$").count()==0):
 		return HttpResponse('{"code":2,"message":"Folder doesn\'t exist"}',{})
 	dbobj = disk.objects(folder=input_folder,FileName__ne="$FOLDER$")
@@ -58,10 +50,6 @@ def API_CreateFolder(request):
 	input_folder = QuoteEscapeContent(request.GET.get("folder"))
 	if (input_folder==None or input_folder==""):
 		return HttpResponse('{"code":1,"message":"Invalid Input."}',{})
-	if (input_folder[-3:]==QuoteEscapeContent("/")):
-		input_folder[-1]=""
-		input_folder[-2]=""
-		input_folder[-3]=""
 	if(disk.objects(folder=input_folder,FileName="$FOLDER$").count()!=0):
 		return HttpResponse('{"code":2,"message":"Folder exists"}',{})
 	dbobj = disk()
