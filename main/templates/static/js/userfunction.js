@@ -355,9 +355,9 @@ function initInfo(){
 //判断当前是否已经登录，未登录将跳转到首页
 function isLogin(){
     api.user.GetUserInfo(function(result){
-    var infoResult = eval(result);
-    if(infoResult.code==0){
-      window.location.href="home_page";
-    }
-    return infoResult.code;
+      var infoResult = eval(result);
+      if(infoResult.code==0){
+        window.location.href="home_page";
+      }
+    });
 }
