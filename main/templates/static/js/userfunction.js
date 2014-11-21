@@ -310,16 +310,12 @@ function modifyInfo(){
               }
     );  
 }
-//初始化信息
+//setInfo初始化信息
 function initInfo(){
   api.user.GetUserInfo(function(result){
     var infoResult = eval(result);
-    if(infoResult.code==0){
-      window.location.href="home_page";
-    }else if(infoResult.UserInfo.tag=='0')$("#addarea").hide();
-    else {
       //header头像显示
-      $("#head-avatar").css('background', 'url(infoResult.UserInfo.avatar) no-repeat center center');
+      $("#head-avatar").css('background', 'url('+'infoResult.UserInfo.avatar'+') no-repeat center center');
       //设置昵称
       $("#nick").attr("value",infoResult.UserInfo.realname);
       //我是
@@ -354,6 +350,14 @@ function initInfo(){
       }else{
         alert("性别sex错误");
       }      
+  });
+}
+//判断当前是否已经登录，未登录将跳转到首页
+function isLogin(){
+    api.user.GetUserInfo(function(result){
+    var infoResult = eval(result);
+    if(infoResult.code==0){
+      window.location.href="home_page";
     }
-        });
+    return infoResult.code;
 }

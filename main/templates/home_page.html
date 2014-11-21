@@ -41,19 +41,19 @@ $(document).ready(function(){
   api.user.GetUserInfo(function(result){
     var infoResult = eval(result);
     if(infoResult.code==0){
-      window.location.href="home_page";
         $(".begin-btn").click(function(event) {
           window.location.href="regist";
         });
-    }else if(infoResult.UserInfo.tag=='0')$("#addarea").hide();
-    else {
+    }else {
       $(".begin-btn").click(function(event) {
         window.location.href="inform";
       });
       $("#div1").hide();
       $("#welcome").show();
       $("#infoSetting").text(infoResult.UserInfo.realname);
-});
+    }
+  });
+}
 </script>
 
 	<style type="text/css">
@@ -71,35 +71,33 @@ $(document).ready(function(){
                  color: #FFF;
 }
 #div1{       /*登陆，注册*/    
-    width:100px;
     height:80px;
     line-height:80px;
-    position:absolute;
-    right:100px;
+    float:right;
+    margin-right:100px;
     font-family:"Microsoft Yahei";
     font-size:16px;
     font-weight:bold;
-}
-#welcome{
-    width:100px;
-    height:80px;
-    line-height:80px;
-    position:absolute;
-    right:120px;
-    font-family:"Microsoft Yahei";
-    font-size:16px;
     display:none;
 }
+#welcome{
+    height:80px;
+    line-height:80px;
+    float:right;
+    margin-right:100px;
+    font-family:"Microsoft Yahei";
+    font-size:16px;
+}
 #welcome a{
+  /*color:#03a9f4;*/
   color:#ff5722;
-  font-size: 1em;
-  text-decoration:underline;
+  font-size: 1.3em;
 }
 #div2{                   /*myclass*/
    width: 300px;
    height: 100px;
-   position: absolute;
-   left: 50px;
+   float:left;
+   margin-left: 50px;
   font-size:40px;
 }
 #div3{                 /*我的班级从这里开始*/
@@ -139,13 +137,13 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="div1">
-    <a href="login">登录</a>
+    <a href="login">登录登录登录登录登录登录登录登录登录登录</a>
 	&nbsp;&nbsp;&nbsp;
     <a href="regist">注册</a>
 </div>
 <div id="welcome">
   <span>欢迎你,</span>
-  <a href="setinfo" id="infoSetting"></a>
+  <a href="setinfo" id="infoSetting">MineClass</a>
 </div>
 <div id="div2">
     <img src="static/images/ic_logo_withtext.png" height="80">

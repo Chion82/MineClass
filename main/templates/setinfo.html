@@ -18,6 +18,8 @@
 <!--初始化-->
 <script type="text/javascript">
 $(document).ready(function(){
+    isLogin();
+    initInfo();
     //退出
     $("#logout").click(function(event) {
         /* Act on the event */
@@ -25,7 +27,6 @@ $(document).ready(function(){
     });
     //点击头像显示菜单
     showOverflow();
-    initInfo();
     modifyInfo();
 });
 </script>
