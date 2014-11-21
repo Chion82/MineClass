@@ -316,21 +316,31 @@ function initInfo(){
     var infoResult = eval(result);
     if(infoResult.UserInfo.code==0){
       window.location.href="home_page";
-              $(".begin-btn").click(function(event) {
-    window.location.href="regist";
-        });
-    }
-    else if(infoResult.UserInfo.tag=="平民")$("#addarea").hide();
-    else {
         $(".begin-btn").click(function(event) {
-    window.location.href="inform";
+          window.location.href="regist";
         });
+    }else if(infoResult.UserInfo.tag=='0')$("#addarea").hide();
+    else {
+      $(".begin-btn").click(function(event) {
+        window.location.href="inform";
+      });
       $("#div1").hide();
       $("#welcome").show();
       $("#infoSetting").text(infoResult.UserInfo.realname);
       $("#nick").attr("value",infoResult.UserInfo.realname);//设置昵称
-      $("#job option[value=infoResult.UserInfo.tag]").attr('selected', true);//我是
-
+      //我是
+      if(infoResult.UserInfo.tag==0)
+        $("#job option[value='0']").attr('selected', true);//平民
+      }else if(infoResult.UserInfo.tag==1){
+        $("#job option[value='1']").attr('selected', true);//班长
+      }else if(infoResult.UserInfo.tag==2){
+        $("#job option[value='2']").attr('selected', true);//团支书
+      }else if(infoResult.UserInfo.tag=3){
+        $("#job option[value='3']").attr('selected', true);//学习委员
+      }else{
+        alert("职位job错误");
+      }
+      //班级部分
       if(infoResult.UserInfo.classindex==0){
         $("#level option[value='0']").attr('selected', true);
       }else if(infoResult.UserInfo.classindex==1000){
@@ -339,9 +349,17 @@ function initInfo(){
         $("#level option[value='1']").attr('selected', true);
       }else if(infoResult.UserInfo.classindex==3000){
         $("#level option[value='1']").attr('selected', true);
-      }//班级部分
-
-      $("input[name='sex'][value=infoResult.UserInfo.sex]").attr("checked",true);//性别
+      }else{
+        alert("班级classindex错误");
+      }
+      //性别
+      if(infoResult.UserInfo.sex==1){
+        $("input[name='sex'][value='1']").attr("checked",true);//女生
+      }else if(infoResult.UserInfo.sex==0){
+        $("input[name='sex'][value='0']").attr("checked",true);//男生
+      }else{
+        alert("性别sex错误");
+      }      
     }
         });
 }
