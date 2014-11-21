@@ -32,18 +32,20 @@
 
 <!--API引入-->
 <script type="text/javascript" src="static/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="static/js/mineclassapi.js"></script>
+<script type="text/javascript" src="static/js/userfunction.js"></script>
 
+<!--初始化-->
 <script type="text/javascript">
-$(function() {
-  $(".begin-btn").click(function(event) {
-    /* Act on the event */
-    window.location.href="regist";
-  });
+$(document).ready(function(){
+    initInfo();
 });
 </script>
+
 	<style type="text/css">
              body{
                  background:url('static/images/bg_index.jpg');
+                     font-family:"Microsoft Yahei";
                  width:100%;
                  height:100%;
                  background-size:cover;
@@ -58,17 +60,30 @@ $(function() {
     width:100px;
     height:80px;
     line-height:80px;
-    //border:2px red solid;
     position:absolute;
     right:100px;
     font-family:"Microsoft Yahei";
     font-size:16px;
     font-weight:bold;
 }
+#welcome{
+    width:100px;
+    height:80px;
+    line-height:80px;
+    position:absolute;
+    right:120px;
+    font-family:"Microsoft Yahei";
+    font-size:16px;
+    display:none;
+}
+#welcome a{
+  color:#ff5722;
+  font-size: 1em;
+  text-decoration:underline;
+}
 #div2{                   /*myclass*/
    width: 300px;
    height: 100px;
-   //border:2px red solid;
    position: absolute;
    left: 50px;
   font-size:40px;
@@ -76,7 +91,6 @@ $(function() {
 #div3{                 /*我的班级从这里开始*/
    width: 100px;
    height: 50px;
-   //border: 2px red solid; 
    position:absolute;
    right: 476px;
    bottom:200px;   
@@ -93,7 +107,7 @@ $(function() {
 }
 .begin-btn{
   color:#fff;
-  font-size:16px;
+  font-size:20px;
   border: 0;
   background-color:#ff5722;
   text-align:center;
@@ -114,6 +128,10 @@ $(function() {
     <a href="login">登录</a>
 	&nbsp;&nbsp;&nbsp;
     <a href="regist">注册</a>
+</div>
+<div id="welcome">
+  <span>欢 迎 你，</span>
+  <a href="setinfo" id="infoSetting">x x</a>
 </div>
 <div id="div2">
     <img src="static/images/ic_logo_withtext.png" height="80">

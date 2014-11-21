@@ -33,7 +33,7 @@ function Logout(){
       else alert("退出似乎出了点问题，你可以反馈给我们。");
     });
 }
-
+//test
 function showDiscuss(){
   var disButton=document.getElementById('showDiscuss');
   var disArea=document.getElementById('discussArea');
@@ -291,7 +291,7 @@ function modifyInfo(){
                       //API
                     api.user.UpdateSelfInfo({
                       "realname":$("#nick").val(),//昵称
-                      tag:[$("#job option:selected").text()],//我是，获取text而不是val
+                      tag:[$("#job option:selected").val()],//我是
                       "classindex":classindex,//班级
                       "sex":1*($("input[name='sex']:checked").val()),//性别
                     },
@@ -312,5 +312,36 @@ function modifyInfo(){
 }
 //初始化信息
 function initInfo(){
-  $("input[name='sex'][value='1']").attr("checked",true);
+  api.user.GetUserInfo(function(result){
+    var infoResult = eval(result);
+    if(infoResult.UserInfo.code==0){
+      window.location.href="home_page";
+              $(".begin-btn").click(function(event) {
+    window.location.href="regist";
+        });
+    }
+    else if(infoResult.UserInfo.tag=="平民")$("#addarea").style.display='none';
+    else {
+        $(".begin-btn").click(function(event) {
+    window.location.href="inform";
+        });
+      $("#div1").style.display='none';
+      $("#welcome").style.display='blcok';
+      $("#infoSetting").attr("text",infoResult.UserInfo.realname);
+      $("#nick").attr("value",infoResult.UserInfo.realname);//设置昵称
+      $("#job option[value='+infoResult.UserInfo.tag+']").attr('selected', true);//我是
+
+      if(infoResult.UserInfo.classindex==0){
+        $("#level option[value='0']").attr('selected', true);
+      }else if(infoResult.UserInfo.classindex==1000){
+        $("#level option[value='1']").attr('selected', true);
+      }else if(infoResult.UserInfo.classindex==2000){
+        $("#level option[value='1']").attr('selected', true);
+      }else if(infoResult.UserInfo.classindex==3000){
+        $("#level option[value='1']").attr('selected', true);
+      }//班级部分
+
+      $("input[name='sex'][value='+infoResult.UserInfo.sex+']").attr("checked",true);//性别
+    }
+        });
 }
