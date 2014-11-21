@@ -314,7 +314,7 @@ function modifyInfo(){
 function initInfo(){
   api.user.GetUserInfo(function(result){
     var infoResult = eval(result);
-    if(infoResult.UserInfo.code==0){
+    if(infoResult.code==0){
       window.location.href="home_page";
         $(".begin-btn").click(function(event) {
           window.location.href="regist";
