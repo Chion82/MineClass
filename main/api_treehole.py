@@ -35,4 +35,4 @@ def API_PublishTreehole(request):
 
 def API_GetTreehole(request):
 	dbobj = treehole.objects().order_by('-PublishmentTime').all()
-	return HttpResponse(TreeholeList.to_json(),{})
+	return HttpResponse(dbobj.to_json(),{})

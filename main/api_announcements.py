@@ -62,10 +62,10 @@ def API_GetAnnouncements(request):
 		if (len(request.GET.getlist('tag[]'))>0):
 			for SingleTag in RowObj.tag:
 				if (SingleTag in request.GET.getlist('tag[]')):
-					AnnouncementList.append(RowObj)
+					AnnouncementList.append(eval(RowObj.to_json()))
 					break
 		else:
-			AnnouncementList.append(RowObj)
+			AnnouncementList.append(eval(RowObj.to_json()))
 	return HttpResponse(json.dumps(AnnouncementList),{})
 
 #API_DeleteAnnouncement(request) Delete announcement specified by id
