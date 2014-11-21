@@ -38,7 +38,21 @@
 <!--初始化-->
 <script type="text/javascript">
 $(document).ready(function(){
-    initInfo();
+  api.user.GetUserInfo(function(result){
+    var infoResult = eval(result);
+    if(infoResult.code==0){
+      window.location.href="home_page";
+        $(".begin-btn").click(function(event) {
+          window.location.href="regist";
+        });
+    }else if(infoResult.UserInfo.tag=='0')$("#addarea").hide();
+    else {
+      $(".begin-btn").click(function(event) {
+        window.location.href="inform";
+      });
+      $("#div1").hide();
+      $("#welcome").show();
+      $("#infoSetting").text(infoResult.UserInfo.realname);
 });
 </script>
 

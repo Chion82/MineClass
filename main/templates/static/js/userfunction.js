@@ -5,25 +5,25 @@
 */
 
 /*实现点击头像弹出菜单*/
-function showOverflow()
-  {
-   var oBtn=document.getElementById('head-avatar');
-    var oDiv=document.getElementById('action-overflow');
+function showOverflow(){
+  var oBtn=document.getElementById('head-avatar');
+  var oDiv=document.getElementById('action-overflow');
  oBtn.onclick=function(ev)
- { var oEvent=ev||event;
+    { var oEvent=ev||event;
    if(oDiv.style.display=='block'){
         oDiv.style.display='none';
    }else{ 
    oDiv.style.display='block';
    oEvent.cancelBubble=true;
     }
-}              //取消冒泡
+  }              //取消冒泡
  document.onclick=function()
  {oDiv.style.display='none';} 
- }
+}
 
 /*点击add出现输入框*/
 //TODO
+//弃用
 
 //退出
 function Logout(){
@@ -316,18 +316,12 @@ function initInfo(){
     var infoResult = eval(result);
     if(infoResult.code==0){
       window.location.href="home_page";
-        $(".begin-btn").click(function(event) {
-          window.location.href="regist";
-        });
     }else if(infoResult.UserInfo.tag=='0')$("#addarea").hide();
     else {
-      $(".begin-btn").click(function(event) {
-        window.location.href="inform";
-      });
-      $("#div1").hide();
-      $("#welcome").show();
-      $("#infoSetting").text(infoResult.UserInfo.realname);
-      $("#nick").attr("value",infoResult.UserInfo.realname);//设置昵称
+      //header头像显示
+      $("#head-avatar").css('background', 'url(infoResult.UserInfo.avatar) no-repeat center center');
+      //设置昵称
+      $("#nick").attr("value",infoResult.UserInfo.realname);
       //我是
       if(infoResult.UserInfo.tag=='0'){
         $("#job option[value='0']").attr('selected', true);//平民
