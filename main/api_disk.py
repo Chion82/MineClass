@@ -41,9 +41,9 @@ def API_ExploreFolder(request):
 		input_folder[-1]=""
 		input_folder[-2]=""
 		input_folder[-3]=""
-	dbobj = disk.objects(folder=input_folder,FileName__ne="$FOLDER$")
-	if (dbobj.count()==0):
+	if (disk.objects(folder=input_folder,FileName="$FOLDER$").count()==0):
 		return HttpResponse('{"code":2,"message":"Folder doesn\'t exist"}',{})
+	dbobj = disk.objects(folder=input_folder,FileName__ne="$FOLDER$")
 	files = dbobj.all().to_json()
 	dbobj = disk.objects(folder__startswith=input_folder,folder__ne=input_folder,FileName="$FOLDER$").all()
 	FolderList = []
