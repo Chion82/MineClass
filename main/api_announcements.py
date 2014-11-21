@@ -22,7 +22,7 @@ def API_PublishAnnouncement(request):
 	if (request.POST.get("attachment")==None or request.POST.get("attachment")=='none' or request.POST.get("attachment")==''):
 		dbobj.attachment = 'none'
 	else:
-		dbobj.attachment = request.POST.get('attachment')
+		dbobj.attachment = QuoteEscapeContent(request.POST.get('attachment'))
 	tags = []
 	if (len(request.POST.getlist('tag[]'))>0):
 		for SingleTag in request.POST.getlist('tag[]'):

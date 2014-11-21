@@ -63,3 +63,9 @@ class comments(Document):
 	publisher = StringField()
 	PublishmentTime = LongField()
 	objid = StringField()
+
+class disk(Document):
+	FileName = StringField()
+	folder = StringField()
+	URL = StringField()
+	uploader = StringField()

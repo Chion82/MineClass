@@ -8,6 +8,7 @@ from main.api_treehole import *
 from main.api_schedule import *
 from main.api_classinfo import *
 from main.api_comments import *
+from main.api_disk import *
 
 @csrf_exempt
 def Render_API_CreateUser(request):
@@ -108,3 +109,17 @@ def Render_API_GetCommentsByID(request):
 
 def Render_API_DeleteCommentByID(request):
 	return API_DeleteCommentByID(request)
+
+#Online Disk Operations
+@csrf_exempt
+def Render_API_AddFile(request):
+	return API_AddFile(request)
+
+def Render_API_ExploreFolder(request):
+	return API_ExploreFolder(request)
+
+def Render_API_CreateFolder(request):
+	return API_CreateFolder(request)
+
+def Render_API_DeleteFileOrFolder(request):
+	return API_DeleteFileOrFolder(request)
