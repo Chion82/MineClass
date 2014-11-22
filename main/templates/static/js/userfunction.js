@@ -308,7 +308,7 @@ function modifyInfo(){
 //setInfo初始化信息
 function initInfo(infoResult){
       //设置昵称
-      $("#nick").attr("value",infoResult.UserInfo.realname);
+      $("#nick").attr("value",decodeURIComponent(infoResult.UserInfo.realname));
       //我是
       if(infoResult.UserInfo.tag=='0'){
         $("#job option[value='0']").attr('selected', true);//平民
