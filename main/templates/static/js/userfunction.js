@@ -8,17 +8,14 @@
 function showOverflow(){
   var oBtn=document.getElementById('head-avatar');
   var oDiv=document.getElementById('action-overflow');
- oBtn.onclick=function(ev)
-    { var oEvent=ev||event;
-   if(oDiv.style.display=='block'){
-        oDiv.style.display='none';
-   }else{ 
-   oDiv.style.display='block';
+ oBtn.onclick=function(ev){
+  var oEvent=ev||event;
+  $("#action-overflow").slideToggle('slow/200/fast', function() {});
    oEvent.cancelBubble=true;
-    }
   }              //取消冒泡
- document.onclick=function()
- {oDiv.style.display='none';} 
+ document.onclick=function(){
+  $("#action-overflow").slideUp('slow/200/fast', function() {});
+  } 
 }
 
 /*点击add出现输入框*/
@@ -35,15 +32,13 @@ function Logout(){
 }
 //test
 function showDiscuss(){
-  var disButton=document.getElementById('showDiscuss');
-  var disArea=document.getElementById('discussArea');
-  disButton.onclick=function(){
-    if(disArea.style.display=='block'){
-        disArea.style.display='none';
-   }else{ 
-   disArea.style.display='block';
+  $("#showDiscuss").click(function(event) {
+    if($("#discussArea").is(':hidden')){
+      $("#discussArea").slideDown('slow/400/fast', function() {});
+    }else{
+      $("#discussArea").slideUp('slow/400/fast', function() {});
     }
-  }  
+  }); 
 }
 //注册
 function  registValid() {
@@ -364,5 +359,21 @@ function showAvatar(){
     api.user.GetUserInfo(function(result){
       var infoResult = eval(result);
       $("#head-avatar").attr('src', infoResult.UserInfo.avatar);
+    });
+}
+//显示选择头像的预览图
+function showAvatarPreview(){
+    api.user.GetUserInfo(function(result){
+      var infoResult = eval(result);
+      $("#head-preview").attr('src', infoResult.UserInfo.avatar);
+    });
+}
+//显示编辑器
+function showInput(){
+    api.user.GetUserInfo(function(result){
+      var infoResult = eval(result);
+      if(infoResult.UserInfo.tag!='0'){
+        $("#addarea").slideDown('slow/400/fast', function() {});
+      }
     });
 }

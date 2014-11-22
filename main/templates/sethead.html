@@ -33,6 +33,7 @@
 $(document).ready(function(){
     isLogin();
     showAvatar();
+    showAvatarPreview();
     //退出
     $("#logout").click(function(event) {
         /* Act on the event */
@@ -40,6 +41,7 @@ $(document).ready(function(){
     });
     //点击头像显示菜单
     showOverflow();
+    //选择文件
     $("#headSubmit").click(function(event) {
         /* Act on the event */
         alert($("#selectFile").val());
