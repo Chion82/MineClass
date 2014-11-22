@@ -52,7 +52,7 @@ $(document).ready(function(){
       });
       $("#div1").hide();
       $("#welcome").show();
-      $("#infoSetting").text(infoResult.UserInfo.realname);
+      $("#infoSetting").text(decodeURIComponent(infoResult.UserInfo.realname));
     }
   });
 });
