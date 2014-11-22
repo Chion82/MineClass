@@ -35,7 +35,7 @@ def API_GetClassInfoByIndex(request):
 		return HttpResponse('{"code":1,"message":"Invalid Input."}',{})
 	result = classinfo.objects(classindex=query_index)
 	if (result.count()==0):
-		return HttpResponse('{"code":2,"message":"Class doesn\'t exit"}')
+		return HttpResponse('{"code":2,"message":"Class doesn\'t exist"}')
 	return HttpResponse('{"code":3,"message":"Success.","ClassInfo": %s}' % result.first().to_json(),{})
 
 def API_GetAllClassInfo(request):

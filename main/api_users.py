@@ -61,6 +61,7 @@ def API_UpdateSelfInfo(request):
 	username = GetUsernameByToken(AccessToken)
 	input_email = EscapeContent(request.POST.get("email"))
 	input_realname = QuoteEscapeContent(request.POST.get("realname"))
+	input_password = QuoteEscapeContent(request.POST.get("password"))
 	if (request.POST.get("birthday")!=None):
 		input_birthday = int(request.POST.get("birthday"))
 	else:
@@ -82,7 +83,7 @@ def API_UpdateSelfInfo(request):
 		input_sex = int(request.POST.get("sex"))
 	else:
 		input_sex = None
-	UpdateUserInfo(username,email=input_email,realname=input_realname,birthday=input_birthday,avatar=input_avatar,tag=input_tag,classindex=input_classindex,introduction=input_introduction,sex=input_sex)
+	UpdateUserInfo(username,email=input_email,realname=input_realname,birthday=input_birthday,avatar=input_avatar,tag=input_tag,classindex=input_classindex,introduction=input_introduction,sex=input_sex,password=input_password)
 	return HttpResponse('{"code":1,"message":"Update completed."}')
 
 
@@ -232,6 +233,11 @@ def UpdateUserInfo(username,**option):
 	else:
 		input_priority = None
 
+	if(option.has_key('password')):
+		input_password = option['password']
+	else:
+		input_password = None
+
 	if(option.has_key('realname')):
 		input_realname = option['realname']
 	else:
@@ -286,6 +292,8 @@ def UpdateUserInfo(username,**option):
 		dbobj.update(set__introduction=input_introduction)
 	if(input_sex!=None):
 		dbobj.update(set__sex=input_sex)
+	if(input_password!=None):
+		dbobj.update(set__password=input_password)
 
 def GetUserPriorityByRequest(request):
 	AccessToken = request.COOKIES.get("accesstoken")
