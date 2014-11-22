@@ -125,15 +125,15 @@ var api =
 		*/
 		"GetUserInfo" : function(callback)
 						{
-							/*$.get(API_ROOT + "api/getuserinfo",
+							$.get(API_ROOT + "api/getuserinfo",
 							function(data,status)
 							{
 								if(status=="success")
 									callback(eval("("+data+")"));
 								else
 									callback({"error":1,"message":"Connection failed."});
-							});*/
-							$.ajax({
+							});
+							/*$.ajax({
 								url: API_ROOT + "api/getuserinfo",
 								type: 'GET',
 								async: false,
@@ -145,8 +145,7 @@ var api =
 											else
 												callback({"error":1,"message":"Connection failed."});
 										},
-							});
-							
+							});*/							
 						},
 		/*
 		function GetUserInfoByUsername()
