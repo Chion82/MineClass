@@ -73,6 +73,7 @@ body{
 	}
 /*输入框*/
 .list-item .input-box{
+	padding-left: 5px;
 	color: black;
 	height: 30px;
 	width:400px;
