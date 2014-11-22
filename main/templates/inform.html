@@ -38,9 +38,9 @@
 $(document).ready(function(){
     api.user.GetUserInfo(function(result){
       var infoResult = eval(result);  
-        isLogin();
-        showAvatar();
-        showInput();
+        isLogin(infoResult);
+        showAvatar(infoResult);
+        showInput(infoResult);
         });
     //退出
     $("#logout").click(function(event) {
