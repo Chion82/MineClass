@@ -347,19 +347,13 @@ function initInfo(){
 }
 //判断当前是否已经登录，未登录将跳转到首页
 function isLogin(){
-    api.user.GetUserInfo(function(result){
-      var infoResult = eval(result);
       if(infoResult.code==0){
         window.location.href="home_page";
       }
-    });
 }
 //显示头像
 function showAvatar(){
-    api.user.GetUserInfo(function(result){
-      var infoResult = eval(result);
-      $("#head-avatar").attr('src', infoResult.UserInfo.avatar);
-    });
+    $("#head-avatar").attr('src', infoResult.UserInfo.avatar);
 }
 //显示选择头像的预览图
 function showAvatarPreview(){
@@ -370,10 +364,7 @@ function showAvatarPreview(){
 }
 //显示编辑器
 function showInput(){
-    api.user.GetUserInfo(function(result){
-      var infoResult = eval(result);
       if(infoResult.UserInfo.tag!='0'){
         $("#addarea").slideDown('slow/400/fast', function() {});
       }
-    });
 }
