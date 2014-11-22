@@ -18,9 +18,13 @@
 <!--初始化-->
 <script type="text/javascript">
 $(document).ready(function(){
-    isLogin();
-    showAvatar();
-    initInfo();
+    //初始化各种信息
+    api.user.GetUserInfo(function(result){
+      var infoResult = eval(result);  
+        isLogin(infoResult);
+        showAvatar(infoResult);
+        initInfo(infoResult);
+        });
     //退出
     $("#logout").click(function(event) {
         /* Act on the event */

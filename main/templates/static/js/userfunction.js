@@ -306,9 +306,7 @@ function modifyInfo(){
     );  
 }
 //setInfo初始化信息
-function initInfo(){
-  api.user.GetUserInfo(function(result){
-    var infoResult = eval(result);
+function initInfo(infoResult){
       //设置昵称
       $("#nick").attr("value",infoResult.UserInfo.realname);
       //我是
@@ -342,8 +340,7 @@ function initInfo(){
         $("input[name='sex'][value='0']").attr("checked",true);//男生
       }else{
         alert("性别sex错误");
-      }      
-  });
+      }
 }
 //判断当前是否已经登录，未登录将跳转到首页
 function isLogin(infoResult){
@@ -356,11 +353,8 @@ function showAvatar(infoResult){
     $("#head-avatar").attr('src', infoResult.UserInfo.avatar);
 }
 //显示选择头像的预览图
-function showAvatarPreview(){
-    api.user.GetUserInfo(function(result){
-      var infoResult = eval(result);
+function showAvatarPreview(infoResult){
       $("#head-preview").attr('src', infoResult.UserInfo.avatar);
-    });
 }
 //显示编辑器
 function showInput(infoResult){
