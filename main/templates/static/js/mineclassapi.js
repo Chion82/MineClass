@@ -239,7 +239,7 @@ var api =
 		},
 		"DeleteClassByIndex" : function(classindex,callback)
 		{
-			$.get(API_ROOT + "api/deleteclassbyindex",
+			$.get(API_ROOT + "api/deleteclassbyindex?classindex=" + encodeURIComponent(classindex),
 				function(data,status)
 				{
 					if (status=="success")
