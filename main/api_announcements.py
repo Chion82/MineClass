@@ -56,7 +56,11 @@ def API_GetAnnouncements(request):
 		return HttpResponse('{"code":0,"message":"AccessToken invalid. Please login first."}',{})
 	username = GetUsernameByToken(request.COOKIES.get("accesstoken"))
 	userclass = users.objects(username=username).first().classindex
-	dbobj = announcements.objects(classes=userclass).order_by("-PublishmentTime").all()
+	page = request.GET.get("page")
+	if (page==None or page==""):
+		dbobj = announcements.objects(classes=userclass).order_by("-PublishmentTime").all()
+	else:
+		dbobj = announcements.objects(classes=userclass).order_by("-PublishmentTime").skip((page-1)*20).limit(20)
 	AnnouncementList = []
 	for RowObj in dbobj:
 		if (len(request.GET.getlist('tag[]'))>0):
