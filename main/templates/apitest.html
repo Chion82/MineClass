@@ -48,15 +48,203 @@
 					alert(JSON.stringify(result));
 				});
 			}
-			function GetAllClassInfo(){
-				$.get('api/getallclassinfo', function(data,status) {
-						if(status=="success")
-							callback(eval("("+data+")"));
-							alert(eval("("+data+")")));
-						else
-							alert("error");
-				});
+			function SetUserPriority()
+			{
+				api.user.SetUserPriority("test",3,
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
 			}
+			function DeleteUser()
+			{
+				api.user.DeleteUser("helloworld",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function CreateClass()
+			{
+				api.class.CreateClass(555,"挖掘机2号","新东方2班","2014",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function GetClassInfoByIndex()
+			{
+				api.class.GetClassInfoByIndex(555,
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function GetAllClassInfo()
+			{
+				api.class.GetAllClassInfo(
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function DeleteClassByIndex()
+			{
+				api.class.DeleteClassByIndex(555,
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function PublishAnnouncement()
+			{
+				api.announcement.PublishAnnouncement(
+					"这是一条测试公告",
+					['test1','test2','haha'],
+					'',	//没有附件
+					[555,123,999],	//可见该公告的班级，对于权限为0或1的用户此参数无效，其发布的公告只有其所在班级可见
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+					);
+			}
+			function GetAnnouncements()
+			{
+				api.announcement.GetAnnouncements(
+					[],//传入tag数组可以按tag筛选公告
+					1,//page
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function DeleteAnnouncement()
+			{
+				api.announcement.DeleteAnnouncement(
+					"123456789012345678901234",	//必须为24位字符串
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function MarkAsRead()
+			{
+				api.announcement.MarkAsRead(
+					"123456789012345678901234",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function PublishTreehole()
+			{
+				api.treehole.PublishTreehole(
+					"老子今天萌萌哒！！",
+					"",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function GetTreehole()
+			{
+				api.treehole.GetTreehole(
+					1,
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function PublishComment()
+			{
+				api.comment.PublishComment(
+					0,
+					"测试评论 哈哈哈 testing",
+					"54717110306b5b3265a79746",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}					
+				);
+			}
+			function GetCommentsByID()
+			{
+				api.comment.GetCommentsByID(
+					0,
+					"54717110306b5b3265a79746",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function DeleteCommentByID()
+			{
+				api.comment.DeleteCommentByID(
+					"123456789012345678901234",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function AddFile()
+			{
+				api.disk.AddFile(
+					"testFile.jpg",
+					"home/subfolder",
+					"static/upload/avatars/1.jpg",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}					
+				);
+			}
+			function ExploreFolder()
+			{
+				api.disk.ExploreFolder(
+					"home/subfolder",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function CreateFolder()
+			{
+				api.disk.CreateFolder(
+					"home/newfolder",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
+			function DeleteFileOrFolder()
+			{
+				api.disk.DeleteFileOrFolder(
+					0,	/*Is Folder?*/
+					"home/subfolder",
+					"testFile.jpg",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);		
+			}
+
 		</script>
 		<title>Test</title>
 	</head>
@@ -67,6 +255,24 @@
 		<button onclick="GetUserInfoByUsername()">GetUserInfoByUsername()</button>
 		<button onclick="Logout()">Logout()</button>
 		<button onclick="CreateUser()">CreateUser()</button>
+		<button onclick="SetUserPriority()">SetUserPriority()</button>
+		<button onclick="DeleteUser()">DeleteUser()</button>
+		<button onclick="CreateClass()">CreateClass()</button>
+		<button onclick="GetClassInfoByIndex()">GetClassInfoByIndex()</button>
 		<button onclick="GetAllClassInfo()">GetAllClassInfo()</button>
+		<button onclick="DeleteClassByIndex()">DeleteClassByIndex()</button>
+		<button onclick="PublishAnnouncement()">PublishAnnouncement()</button>
+		<button onclick="GetAnnouncements()">GetAnnouncements()</button>
+		<button onclick="DeleteAnnouncement()">DeleteAnnouncement()</button>
+		<button onclick="MarkAsRead()">MarkAsRead()</button>
+		<button onclick="PublishTreehole()">PublishTreehole()</button>
+		<button onclick="GetTreehole()">GetTreehole()</button>
+		<button onclick="PublishComment()">PublishComment()</button>
+		<button onclick="GetCommentsByID()">GetCommentsByID()</button>
+		<button onclick="DeleteCommentByID()">DeleteCommentByID()</button>
+		<button onclick="AddFile()">AddFile()</button>
+		<button onclick="ExploreFolder()">ExploreFolder()</button>
+		<button onclick="CreateFolder()">CreateFolder()</button>
+		<button onclick="DeleteFileOrFolder()">DeleteFileOrFolder()</button>
 	</body>
 </html>
