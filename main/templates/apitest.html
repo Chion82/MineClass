@@ -52,7 +52,7 @@
 				$.get('api/getallclassinfo', function(data,status) {
 						if(status=="success")
 							callback(eval("("+data+")"));
-							alert(eval("("+data+")")));
+							alert(eval(data));
 						else
 							alert("error");
 				});

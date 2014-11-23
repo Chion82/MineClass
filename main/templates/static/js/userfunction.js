@@ -310,7 +310,7 @@ function initInfo(infoResult){
       //设置昵称
       $("#nick").attr("value",decodeURIComponent(infoResult.UserInfo.realname));
       //我是
-      if(infoResult.UserInfo.tag=='0'){
+      if(infoResult.UserInfo.tag=='0'||infoResult.UserInfo.tag==""){
         $("#job option[value='0']").attr('selected', true);//平民
       }else if(infoResult.UserInfo.tag=='1'){
         $("#job option[value='1']").attr('selected', true);//班长
@@ -358,7 +358,7 @@ function showAvatarPreview(infoResult){
 }
 //显示编辑器
 function showInput(infoResult){
-      if(infoResult.UserInfo.tag!='0'){
+      if(infoResult.UserInfo.tag!='0'&&infoResult.UserInfo.tag!=''){
         $("#addarea").slideDown('slow/400/fast', function() {});
       }
 }
