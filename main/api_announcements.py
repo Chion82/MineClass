@@ -60,7 +60,7 @@ def API_GetAnnouncements(request):
 	if (page==None or page==""):
 		dbobj = announcements.objects(classes=userclass).order_by("-PublishmentTime").all()
 	else:
-		dbobj = announcements.objects(classes=userclass).order_by("-PublishmentTime").skip((page-1)*20).limit(20)
+		dbobj = announcements.objects(classes=userclass).order_by("-PublishmentTime").skip((int(page)-1)*20).limit(20)
 	AnnouncementList = []
 	for RowObj in dbobj:
 		if (len(request.GET.getlist('tag[]'))>0):
