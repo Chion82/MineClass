@@ -30,4 +30,4 @@ def API_UploadFile(request):
 	arr = path.split('/')
 	del arr[0]
 	WebPath = "/".join(arr)
-	return HttpResponse('{"url":"%s","code":2,"message":"Success."}' % WebPath, {})
+	return HttpResponse('{"url":"%s","state":"SUCCESS"}' % WebPath, {})
