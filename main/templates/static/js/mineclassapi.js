@@ -372,7 +372,7 @@ var api =
 
 		"GetCommentsByID" : function(CommentType,id,callback)	/*注意：此处id是公告或树洞的id*/
 		{
-			$.get(API_ROOT + "api/getcommentsbyid?commenttype=" + CommentType + "id=" + encodeURIComponent(id),
+			$.get(API_ROOT + "api/getcommentsbyid?commenttype=" + CommentType + "&id=" + encodeURIComponent(id),
 				function(data,status)
 				{
 					if (status=="success")
