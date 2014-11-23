@@ -432,7 +432,7 @@ var api =
 
 		"CreateFolder" : function(folder,callback)
 		{
-			$.get(API_ROOT + "api/createfolder?folder" + encodeURIComponent(folder),
+			$.get(API_ROOT + "api/createfolder?folder=" + encodeURIComponent(folder),
 				function(data,status)
 				{
 					if (status=="success")
