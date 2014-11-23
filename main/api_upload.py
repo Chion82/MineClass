@@ -8,10 +8,10 @@ from main.config import *
 import string
 
 def API_UploadFile(request):
-	if (request.FILES.get("file")==None):
+	if (request.FILES.get("upfile")==None):
 		return HttpResponse('{"code":0,"message":"Invalid Input."}', {})
 
-	FileObj = request.FILES.get("file")
+	FileObj = request.FILES.get("upfile")
 	FileNameArr = FileObj.name.split(".")
 	if (len(FileNameArr)>0):
 		FileType = FileNameArr[len(FileNameArr)-1]
