@@ -443,7 +443,7 @@ var api =
 			);
 		},
 
-		"DeleteFileOrFolder" : function(IsFolder /* bool var*/,folder,filename/* use "" when deleting a folder*/, callback)
+		"DeleteFileOrFolder" : function(IsFolder /* bool var*/,folder,FileName/* use "" when deleting a folder*/, callback)
 		{
 			$.get(API_ROOT + "api/deletefileorfolder?isfolder=" + encodeURIComponent(IsFolder) + "&filename=" + encodeURIComponent(FileName) + "&folder=" + encodeURIComponent(folder),
 				function(data,status)
