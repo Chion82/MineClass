@@ -11,7 +11,7 @@ UMEDITOR_CONFIG = window.UMEDITOR_CONFIG || {};
 window.UM = {
     plugins : {},
 
-    commands : {},
+    commands : {},f
 
     I18N : {},
 
@@ -23,7 +23,7 @@ var dom = UM.dom = {};
  * 浏览器判断模块
  * @file
  * @module UE.browser
- * @since 1.2.6.1
+ * @since 1.2.6.1f
  */
 
 /**
@@ -8036,6 +8036,7 @@ UM.plugins['autoupload'] = function () {
                 var json = eval('('+e.target.response+')'),
                     link = json.url,
                     picLink = me.options.imagePath + link;
+                    alert(picLink);
                 editor.execCommand('insertimage', {
                     src: picLink,
                     _src: picLink
