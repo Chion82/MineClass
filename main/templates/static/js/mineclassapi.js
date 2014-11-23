@@ -169,6 +169,63 @@ var api =
 									callback({"error":1,"message":"Connection failed."});
 							});
 						},
+
+		"SetUserPriority" : function(username,priority,callback)
+		{
+			$.get(API_ROOT + "api/setuserpriority?username="+encodeURIComponent(username)+"&priority="+encodeURIComponent(priority),
+				function(data,status)
+				{
+					if (status=="success")
+						callback(eval("("+data+")"));
+					else
+						callback({"error":1,"message":"Connection failed."});
+				});
+		},
+		
+		"DeleteUser" : function(username,callback)
+		{
+			$.get(API_ROOT + "api/deleteuser?username="+encodeURIComponent(username),
+				function(data,status)
+				{
+					if (status=="success")
+						callback(eval("("+data+")"));
+					else
+						callback({"error":1,"message":"Connection failed."});				
+				});
+		}
+	},
+
+	"class":
+	{
+		"CreateClass" : function(classindex,major,classname,period,callback)
+		{
+			$.post(API_ROOT+"api/createclass",
+				{
+					"classindex" : classindex,
+					"major" : major,
+					"classname" : classname,
+					"period" : period,
+				},
+				function(data,status)
+				{
+					if (status=="success")
+						callback(eval("("+data+")"));
+					else
+						callback({"error":1,"message":"Connection failed."});				
+				}
+				);
+		},
+		"GetClassInfoByIndex" : function(classindex,callback)
+		{
+			$.get(API_ROOT+"api/getclassinfobyindex?classindex="+encodeURIComponent(classindex),
+				function(data,status)
+				{
+					if (status=="success")
+						callback(eval("("+data+")"));
+					else
+						callback({"error":1,"message":"Connection failed."});				
+				});
+		},
 		
 	}
 }; 
