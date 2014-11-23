@@ -34,5 +34,9 @@ def API_PublishTreehole(request):
 	return HttpResponse('{"code":1,"message":"Success."}',{})
 
 def API_GetTreehole(request):
-	dbobj = treehole.objects().order_by('-PublishmentTime').all()
+	page = request.GET.get("page")
+	if (page==None or page==""):
+		dbobj = treehole.objects().order_by('-PublishmentTime').all()
+	else:
+		dbobj = treehole.objects().order_by('-PublishmentTime').skip((int(page)-1)*20).limit(20)
 	return HttpResponse(dbobj.to_json(),{})
