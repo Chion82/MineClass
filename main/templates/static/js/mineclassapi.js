@@ -278,7 +278,7 @@ var api =
 			{
 				URLTags += ("&tag[]=" + encodeURIComponent(SingleTag));
 			}
-			$.get(API_ROOT + "api/getannouncements" + URLTags + "&page=" + page,
+			$.get(API_ROOT + "api/getannouncements?page=" + encodeURIComponent(page) + URLTags,
 				function(data,status)
 				{
 					if (status=="success")
