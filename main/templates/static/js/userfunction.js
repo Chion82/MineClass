@@ -44,17 +44,17 @@ function showDiscuss(){
 function  registValid() {
     $.validator.addMethod("isEmailExist",function(value,element){
                 var user = value;
-                var isExist=true;
+                var isExist=false;
                 api.user.CheckEmailAndUsername(
                     user,//验证邮箱
                     user,//验证用户名
                     function(result)
                       {
                         var checkResult = eval(result);
-                        if(checkResult.code==0||checkResult.code==1)isExist=false;
+                        if(checkResult.code==0||checkResult.code==1)isExist=true;
                       }
                 );
-                return inExist;
+                return isExist;
             },"邮箱已被注册");
 
     $("#regist").validate(
