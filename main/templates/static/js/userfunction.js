@@ -42,7 +42,7 @@ function showDiscuss(){
 }
 //注册
 function  registValid() {
-    $.validator.addMethod("isEmailExist",function(value,element){
+/*    $.validator.addMethod("isEmailExist",function(value,element){
                 var user = value;
                 var isExist=false;
                 api.user.CheckEmailAndUsername(
@@ -56,7 +56,7 @@ function  registValid() {
                 );
                 return isExist;
             },"邮箱已被注册");
-
+*/
     $("#regist").validate(
               {
                   /*自定义验证规则*/
@@ -64,7 +64,7 @@ function  registValid() {
                     email:{
                         email:true,
                         required:true,
-                        isEmailExist:$("#email").val()//自定义的验证方法，原始remote不好使
+                        //isEmailExist:$("#email").val()//自定义的验证方法，原始remote不好使
                       },
                     pass: {
                          required: true,
@@ -93,7 +93,7 @@ function  registValid() {
                     email: {
                         required: "请输入Email地址",
                         email: "请输入正确的email地址",
-                        isEmailExist:"邮箱已被注册"
+                        //isEmailExist:"邮箱已被注册"
                        },
                        pass: {
                         required: "请输入密码",
