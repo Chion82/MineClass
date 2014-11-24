@@ -11,6 +11,7 @@
 <link href="static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <!--API引入-->
 <script src="static/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="static/js/ajaxfileupload.js"></script>
 <script type="text/javascript" src="static/js/mineclassapi.js"></script>
 <script type="text/javascript" src="static/js/userfunction.js"></script>
 <!--上传预览-->
@@ -19,13 +20,6 @@
     $(function () {
             $("#selectFile").uploadPreview({ Img: "head-preview", Width: 180, Height: 180, ImgType: ["gif", "jpeg", "jpg", "bmp", "png"] });
         });
-	function UpdateSelfInfo()
-			{
-				api.user.UpdateSelfInfo({"avatar":0},
-										function(result){
-											alert(JSON.stringify(result));
-										});
-			}
 </script>
 
 <!--初始化-->
@@ -45,10 +39,7 @@ $(document).ready(function(){
     //点击头像显示菜单
     showOverflow();
     //选择文件
-    $("#headSubmit").click(function(event) {
-        /* Act on the event */
-        alert($("#selectFile").val());
-    });
+    uploadAvatar();
 });
 </script>
 </head>
@@ -120,7 +111,7 @@ $(document).ready(function(){
                        
                         <div class="form-list">
                         	<div class="list-item">
-                        	<span id="headSubmit" class="save-button">保存</span>
+                        	<input type="submit" id="headSubmit" class="save-button" value="保 存">
                             </div>
                         </div>
                     </form>
