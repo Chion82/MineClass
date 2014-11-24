@@ -48,7 +48,21 @@ function  registValid() {
                   rules: {
                     email:{
                         email:true,
-                        required:true
+                        required:true,
+                        remote:function(){
+                          //远端异步验证邮箱
+                          var isExist=false;
+                          api.user.CheckEmailAndUsername(
+                              $("#email").val(),//验证邮箱
+                              $("#email").val(),//验证用户名
+                              function(result)
+                              {
+                                var checkResult = eval(result);
+                                if(checkResult.code==0)isExist=true;
+                              }
+                          );
+                          return isExist;
+                        }
                       },
                     pass: {
                          required: true,
@@ -76,7 +90,8 @@ function  registValid() {
                   messages: {
                     email: {
                         required: "请输入Email地址",
-                        email: "请输入正确的email地址"
+                        email: "请输入正确的email地址",
+                        remote:"邮箱已被注册"
                        },
                        pass: {
                         required: "请输入密码",
@@ -108,13 +123,14 @@ function  registValid() {
                         var myresult = eval(result);
                         if(myresult.code==3){
                       //手动登录
-                      api.user.Login(
-                        $("#email").val(),
-                        $("#pass").val(),
-                          function(result){
-                          });
-                        //跳转到公告                                          
-                          window.location.href="inform";
+                          api.user.Login(
+                            $("#email").val(),
+                            $("#pass").val(),
+                            function(result){
+                              var loginResult = eval(result);
+                              if(loginResult.code!=2)alert("登录失败！");
+                              else window.location.href="inform";//跳转到inform
+                          });                                      
                         }
                         else if(myresult.code==0)alert("参数错误");
                         else if(myresult.code==1||myresult.code==2){
@@ -176,12 +192,15 @@ function  loginValid() {
                         $("#pass").val(),
                       function(result){
                             var myresult = eval(result);
-                        if(myresult.code==2)window.location.href="inform";     
+                        if(myresult.code==2){
+                          $("#infoSubmit").attr("value","保存");
+                          window.location.href="inform";
+                        }     
                         else if(myresult.code==0){
                           $("#infoSubmit").attr("value","保存");
                           $(".email-error").text('用户不存在，请先注册');
                         }
-                        else if(myresult.code==1||myresult.code==2){
+                        else if(myresult.code==1){
                           $("#infoSubmit").attr("value","保存");
                           $(".pass-error").text('密码错误，请重新输入');
                         }
