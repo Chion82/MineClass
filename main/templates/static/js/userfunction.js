@@ -387,8 +387,7 @@ function showInput(infoResult){
 function uploadAvatar(){
     $("#headSubmit").submit(function(event) {
       $("#headSubmit").attr("value","保存中……");
-      $.ajaxFileUpload
-                     (
+      $.ajaxFileUpload(
                        {
                             url:'api/upload', //你处理上传文件的服务端
                             secureuri:false,
@@ -403,13 +402,12 @@ function uploadAvatar(){
                                         if(infoResult.code==1)$("#headSubmit").attr("value","保存");
                                         else alert(infoResult.messages);
                                     });                                    
-                                  }
-                               },
+                                  },
                             error:function(data,status,e){
                               alert(data.messages);
                               alert(e);
                             }
                         }
-                      )
+                      );
     });
 }
