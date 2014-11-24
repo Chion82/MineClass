@@ -391,17 +391,18 @@ function uploadAvatar(){
                        {
                             url:'api/upload', //你处理上传文件的服务端
                             secureuri:false,
-                            fileElementId:'selectFile',
+                            fileElementId:'upfile',
                             dataType: 'json',
                             success: function (data,status)
                                   {
-                                    $("#head-avatar").attr('src', data.url);
+                                    alert(JSON.stringify(data));
+                                    /*$("#head-avatar").attr('src', data.url);
                                     api.user.UpdateSelfInfo({"avatar":data.url},
                                       function(result){
                                         var infoResult = eval(result);
                                         if(infoResult.code==1)$("#headSubmit").attr("value","保存");
                                         else alert(infoResult.messages);
-                                    });                                    
+                                    });  */                                  
                                   },
                             error:function(data,status,e){
                               alert(data.messages);
