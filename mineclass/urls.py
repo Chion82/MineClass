@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^api/getuserinfobyusername$','main.views.Render_API_GetUserInfoByUsername'),
     url(r'^api/setuserpriority$','main.views.Render_API_SetUserPriority'),
     url(r'^api/deleteuser$','main.views.Render_API_DeleteUser'),
+    url(r'^api/checkemailandusername','main.views.Render_API_CheckEmailAndUsername'),
 
     #API: class info
     url(r'^api/createclass$','main.views.Render_API_CreateClass'),

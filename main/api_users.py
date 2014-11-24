@@ -51,6 +51,17 @@ def API_CreateUser(request):
 	dbobj.save()
 	return HttpResponse('{"code":3,"message":"User created."}',{})
 
+def API_CheckEmailAndUsername(request):
+	input_username = request.GET.get("username")
+	input_email = request.GET.get("email")
+	if (input_username!=None and input_username!=""):
+		if (users.objects(username=input_username).count()>0):
+			return HttpResponse('{"code":0,"message":"Username exists."}',{})
+	if (input_email!=None and input_email!=""):
+		if (users.objects(email=input_email).count()>0):
+			return HttpResponse('{"code":1,"message":"Email exists."}',{})
+	return HttpResponse('{"code":2,"message":"OK."}',{})
+
 #API_UpdateSelfInfo(request) [web API function] Update the information of the user binded with the given token
 #input parameters: HttpRequest Object: COOKIE(token)(required) POST data (optional)
 #return value: HttpResponse Object: JSON Result of updating user details

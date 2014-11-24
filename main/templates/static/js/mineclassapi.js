@@ -192,6 +192,18 @@ var api =
 					else
 						callback({"error":1,"message":"Connection failed."});				
 				});
+		},
+		"CheckEmailAndUsername" : function(email,username,callback)
+		{
+			$.get(API_ROOT + "api/checkemailandusername?email=" + encodeURIComponent(email) + "&username=" + encodeURIComponent(username),
+				function(data,status)
+				{
+					if (status=="success")
+						callback(eval("("+data+")"));
+					else
+						callback({"error":1,"message":"Connection failed."});				
+				}				
+				);
 		}
 	},
 

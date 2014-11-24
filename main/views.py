@@ -123,3 +123,7 @@ def Render_API_CreateFolder(request):
 
 def Render_API_DeleteFileOrFolder(request):
 	return API_DeleteFileOrFolder(request)
+
+#AJAX Authentication
+def Render_API_CheckEmailAndUsername(request):
+	return API_CheckEmailAndUsername(request)

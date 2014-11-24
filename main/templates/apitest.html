@@ -66,6 +66,17 @@
 					}
 				);
 			}
+			function CheckEmailAndUsername()
+			{
+				api.user.CheckEmailAndUsername(
+					"123@qq.com",
+					"test",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+					}
+				);
+			}
 			function CreateClass()
 			{
 				api.class.CreateClass(555,"挖掘机2号","新东方2班","2014",
@@ -256,6 +267,7 @@
 		<button onclick="CreateUser()">CreateUser()</button>
 		<button onclick="SetUserPriority()">SetUserPriority()</button>
 		<button onclick="DeleteUser()">DeleteUser()</button>
+		<button onclick="CheckEmailAndUsername()">CheckEmailAndUsername()</button>
 		<button onclick="CreateClass()">CreateClass()</button>
 		<button onclick="GetClassInfoByIndex()">GetClassInfoByIndex()</button>
 		<button onclick="GetAllClassInfo()">GetAllClassInfo()</button>
