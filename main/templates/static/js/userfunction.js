@@ -42,6 +42,21 @@ function showDiscuss(){
 }
 //注册
 function  registValid() {
+    $.validator.addMethod("isEmailExist",function(value,element){
+                var user = value;
+                var isExist=true;
+                api.user.CheckEmailAndUsername(
+                    user,//验证邮箱
+                    user,//验证用户名
+                    function(result)
+                      {
+                        var checkResult = eval(result);
+                        if(checkResult.code==0||checkResult.code==1)isExist=false;
+                      }
+                );
+                return inExist;
+            },"邮箱已被注册");
+
     $("#regist").validate(
               {
                   /*自定义验证规则*/
@@ -49,20 +64,7 @@ function  registValid() {
                     email:{
                         email:true,
                         required:true,
-                        remote:function(){
-                          //远端异步验证邮箱
-                          var isExist=false;
-                          api.user.CheckEmailAndUsername(
-                              $("#email").val(),//验证邮箱
-                              $("#email").val(),//验证用户名
-                              function(result)
-                              {
-                                var checkResult = eval(result);
-                                if(checkResult.code==0)isExist=true;
-                              }
-                          );
-                          return isExist;
-                        }
+                        isEmailExist:$("#email").val()//自定义的验证方法，原始remote不好使
                       },
                     pass: {
                          required: true,
@@ -91,7 +93,7 @@ function  registValid() {
                     email: {
                         required: "请输入Email地址",
                         email: "请输入正确的email地址",
-                        remote:"邮箱已被注册"
+                        isEmailExist:"邮箱已被注册"
                        },
                        pass: {
                         required: "请输入密码",
