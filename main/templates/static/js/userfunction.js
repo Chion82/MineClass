@@ -385,13 +385,13 @@ function showInput(infoResult){
 }
 //上传头像
 function uploadAvatar(){
-    $("#headSubmit").submit(function(event) {
+    $("#headSubmit").click(function(event) {
       $("#headSubmit").attr("value","保存中……");
       $.ajaxFileUpload(
                        {
                             url:'api/upload', //你处理上传文件的服务端
                             secureuri:false,
-                            fileElementId:'upfile',
+                            fileElementId:'selectFile',
                             dataType: 'json',
                             success: function (data,status)
                                   {
