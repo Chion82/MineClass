@@ -395,14 +395,14 @@ function uploadAvatar(){
                             dataType: 'json',
                             success: function (data,status)
                                   {
-                                    alert(JSON.stringify(data));
-                                    /*$("#head-avatar").attr('src', data.url);
+
+                                    $("#head-avatar").attr('src', data.url);
                                     api.user.UpdateSelfInfo({"avatar":data.url},
                                       function(result){
-                                        var infoResult = eval(result);
+                                        var infoResult = result;
                                         if(infoResult.code==1)$("#headSubmit").attr("value","保存");
                                         else alert(infoResult.messages);
-                                    });  */                                  
+                                    });                                 
                                   },
                             error:function(data,status,e){
                               alert(data.messages);
