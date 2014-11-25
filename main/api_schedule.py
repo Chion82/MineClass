@@ -61,7 +61,7 @@ def API_GetEvent(request):
 
 	dbobj=schedule.objects(classes=userclass).order_by("-PublishmentTime").all()
 	eventlist=[]
-	for RowObj in dbobj
+	for RowObj in dbobj:
 		if (input_startdate<=RowObj.enddate or Rowobj.startdate<=input_enddate):
 			eventlist.append(eval(RowObj.to_json()))
 
