@@ -55,22 +55,27 @@ $(document).ready(function(){
       $("#infoSetting").text(decodeURIComponent(infoResult.UserInfo.realname));
     }
   });
+  setInterval(AdjPos,50);
 });
+
+function AdjPos()
+{
+  //alert($("BgImg").width() + " " + $("BgImg").height());
+  $("#titlediv").css("position","absolute");
+  $("#titlediv").css("left",($("#BgImg").width())+"px");
+  $("#titlediv").css("top",($("#BgImg").height()-50)+"px");
+  $("#BottomBanner").css("position","absolute");
+  $("#BottomBanner").css("top",($("#BgImg").height())+"px");
+}
 </script>
 
-	<style type="text/css">
-             body{
-                 background:url('static/images/bg_index.jpg');
-                     font-family:"Microsoft Yahei";
-                 width:100%;
-                 height:100%;
-                 background-size:cover;
-				         color:#FFF;
-                 background-repeat:no-repeat;
-             }
-             a{
-                 text-decoration:none;
-                 color: #FFF;
+<style type="text/css">
+body{
+   background-color:#191919;
+}
+a{
+   text-decoration:none;
+   color: #FFF;
 }
 #div1{       /*登陆，注册*/    
     height:80px;
@@ -127,7 +132,7 @@ $(document).ready(function(){
   text-align:center;
   display:block;
   width:404px;
-  height:50px;
+  height:80px;
   border-radius:10px;
   line-height:50px;
   cursor:pointer;
@@ -135,7 +140,17 @@ $(document).ready(function(){
 .begin-btn:hover{
   background-color:#e64a19;
   }
-        </style>
+
+#BgImg
+{
+  position:absolute;
+  top:0px;
+  left:0px;
+  width:100%;
+  z-index:-1;
+}
+
+</style>
 </head>
 <body>
 <div id="div1">
@@ -150,11 +165,21 @@ $(document).ready(function(){
 <div id="div2">
     <img src="static/images/ic_logo_withtext.png" height="80">
 </div>
-<div id="div3">
-    <img src="static/images/text_index.png">
+
+<img id="BgImg" src="static/images/bg_index.jpg" />
+
+<div id="titlediv">
+  <div id="div3">
+      <img src="static/images/text_index.png">
+  </div>
+  <div id="div4">
+  <button class="begin-btn"><span>开 始</span></button>
+  </div>
 </div>
-<div id="div4">
-<button class="begin-btn"><span>开 始</span></button>
+
+<div id="BottomBanner" style="width:100%;height:300px">
+  <span style="text-align:center;color:white;"><h1>COPYRIGHT GOES HERE</h1></span>
 </div>
+
 </body>
 </html>
