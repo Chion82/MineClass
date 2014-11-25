@@ -127,3 +127,13 @@ def Render_API_DeleteFileOrFolder(request):
 #AJAX Authentication
 def Render_API_CheckEmailAndUsername(request):
 	return API_CheckEmailAndUsername(request)
+
+#Schedule
+def Render_API_CreateEvent(request):
+	return API_CreateEvent(request)
+
+def Render_API_GetEvent(request):
+	return API_GetEvent(request)
+
+def Render_API_DeleteEvent(request):
+	return API_DeleteEvent(request)

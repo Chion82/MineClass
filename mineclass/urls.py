@@ -53,6 +53,10 @@ urlpatterns = patterns('',
     url(r'^api/createfolder$','main.views.Render_API_CreateFolder'),
     url(r'^api/deletefileorfolder','main.views.Render_API_DeleteFileOrFolder'),
 
+	#API: Schedule
+	url(r'^api/createevent$','main.views.Render_API_CreateEvent'),
+	url(r'^api/createevent$','main.views.Render_API_GetEvent'),
+	url(r'^api/createevent$','main.views.Render_API_DeleteEvent'),
 
     #Testing page
     url(r'^apitest$','main.views.Render_APITest'),
