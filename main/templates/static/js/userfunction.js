@@ -30,16 +30,6 @@ function Logout(){
       else alert("退出似乎出了点问题，你可以反馈给我们。");
     });
 }
-//test
-function showDiscuss(){
-  $("#showDiscuss").click(function(event) {
-    if($("#discussArea").is(':hidden')){
-      $("#discussArea").slideDown('slow/400/fast', function() {});
-    }else{
-      $("#discussArea").slideUp('slow/400/fast', function() {});
-    }
-  }); 
-}
 //注册
 function  registValid() {
 /*    $.validator.addMethod("isEmailExist",function(value,element){

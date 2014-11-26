@@ -133,7 +133,7 @@
     window.UMEDITOR_CONFIG = {
 
         //为编辑器实例添加一个路径，这个不能被注释
-        UMEDITOR_HOME_URL : "/static/umeditor/"
+        UMEDITOR_HOME_URL : "static/umeditor/"
 
 
         //图片上传配置区
