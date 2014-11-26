@@ -48,7 +48,7 @@ function createPage(num){
 						for(var i=0;i<result.length;i++){
 							
 						item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='static/images/ic_head.png' alt=''></div><div id='name'>"+result[i].publisher+"</div></div><div class='text'>"+result[i].announcement+"</div><div class='actionbar'><div class='time'>"+result[i].PublishmentTime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' id='showDiscuss'>评论</a></span></div></div></div></div></div></div>";
-						page.append(item);
+						page+=item;
 						}
 					}
 				);
