@@ -40,19 +40,22 @@ function publishInform(um){
 function createPage(num){
 	var page;
 	var item;
+	$(".mylist-wrap").append("<img id='loading' src='static/images/loading.gif'>");
 	api.announcement.GetAnnouncements(
 					[],//传入tag数组可以按tag筛选公告
 					num,//page
 					function(result)
 					{
 						for(var i=0;i<result.length;i++){
-							
-						item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='static/images/ic_head.png' alt=''></div><div id='name'>"+result[i].publisher+"</div></div><div class='text'>"+result[i].announcement+"</div><div class='actionbar'><div class='time'>"+result[i].PublishmentTime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' id='showDiscuss'>评论</a></span></div></div></div></div></div></div>";
+						var unixtime = new Date(result[i].PublishmentTime*1000);
+						unixtime = unixtime.toLocaleDateString();	
+						item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='static/images/ic_head.png' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' id='showDiscuss'>评论</a></span></div></div></div></div></div></div>";
 						page+=item;
 						}
+						$("#loading").remove();
+						$(".mylist-wrap").append(page);
 					}
 				);
-	return page;
 }
 //下拉到底部加载
 function scollToLoading(){
@@ -61,7 +64,7 @@ function scollToLoading(){
         var maxnum = 20;            //设置加载最多次数
         var num = 1;
         var totalheight = 0; 
-        var main = $(".input");                     //主体元素
+        var main = $(".mylist");                     //主体元素
         $(window).scroll(function(){
             var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)
             
@@ -71,7 +74,7 @@ function scollToLoading(){
 			
             totalheight = parseFloat($(window).height()) + parseFloat(srollPos);
     		if(($(document).height()-range) <= totalheight  && num != maxnum) {
-                main.append(createPage(num));
+                createPage(num);
                 num++;
             }
         });	

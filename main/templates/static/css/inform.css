@@ -12,7 +12,7 @@
 	margin: 0 auto;
 	background-color: #fff;
 	box-shadow:2px 4px 4px -2px rgba(0,0,0,.2);
-	display:block;
+	display:none;
 }
 .input .editor-area{
 	width: 550px;
@@ -102,9 +102,11 @@
 	clear: both;
 	text-align: left;
 	font-size: 14px;
+	width:550px;
 	color: #444;
 }
 .mylist .maincontent .actionbar{
+	clear:both;
 	margin-top: 15px;
 	height: 20px;
 	line-height: 20px;
