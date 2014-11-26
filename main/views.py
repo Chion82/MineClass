@@ -129,11 +129,14 @@ def Render_API_CheckEmailAndUsername(request):
 	return API_CheckEmailAndUsername(request)
 
 #Schedule
+@csrf_exempt
 def Render_API_CreateEvent(request):
 	return API_CreateEvent(request)
 
+@csrf_exempt
 def Render_API_GetEvent(request):
 	return API_GetEvent(request)
 
+@csrf_exempt
 def Render_API_DeleteEvent(request):
 	return API_DeleteEvent(request)
