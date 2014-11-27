@@ -310,7 +310,7 @@ api.announcement.GetAnnouncements(
 {"code":0,"message":"AccessToken invalid. Please login first."}
 
 /* SUCCEEDED */
-[{"classes": [999], "announcement": "HelloWorld", "tag": ["TAG1", "TAG2", "TAG3"], "PublishmentTime": 1414826581, "publisher": "test", "_id": {"$oid": "54548a55306b5b56636a6733"}, "ReadUsers": [], "attachment": "none"}, {"classes": [999], "announcement": "testing", "tag": [], "PublishmentTime": 1414825324, "publisher": "test", "_id": {"$oid": "5454856c306b5b5497754a0f"}, "ReadUsers": [], "attachment": "none"}]
+[{"classes":[999],"announcement":"HelloWorld","tag":["TAG1","TAG2","TAG3"],"PublishmentTime":1414826581,"publisher":"test","publisher_realname":"%E7%8E%8B%E5%B0%BC%E7%8E%9B","_id":{"$oid":"54548a55306b5b56636a6733"},"publisher_avatar":"static/upload/1416842959663394.jpg","ReadUsers":[],"attachment":"none"},{"classes":[999],"announcement":"testing","tag":[],"PublishmentTime":1414825324,"publisher":"test","publisher_realname":"%E7%8E%8B%E5%B0%BC%E7%8E%9B","_id":{"$oid":"5454856c306b5b5497754a0f"},"publisher_avatar":"static/upload/1416842959663394.jpg","ReadUsers":[],"attachment":"none"}]
 ```
 ##DeleteAnnouncement(id,callback)
 ```
@@ -415,7 +415,7 @@ api.comment.GetCommentsByID(
 ```
 {"code":0,"message":"Invalid AccessToken."}
 {"code":1,"message":"Invalid Input."}
-{"code":3,"message":"Success.","comments": [{"comment": "%E6%B5%8B%E8%AF%95%E8%AF%84%E8%AE%BA%26amp%3Bnbsp%3B%E5%93%88%E5%93%88%E5%93%88%26amp%3Bnbsp%3Btesting", "publisher": "test", "PublishmentTime": 1416759352, "CommentType": 0, "objid": "54717110306b5b3265a79746", "_id": {"$oid": "54720838306b5b3372863f57"}}, {"comment": "%E6%B5%8B%E8%AF%95%E8%AF%84%E8%AE%BA%26amp%3Bnbsp%3B%E5%93%88%E5%93%88%E5%93%88%26amp%3Bnbsp%3Btesting", "publisher": "test", "PublishmentTime": 1416759933, "CommentType": 0, "objid": "54717110306b5b3265a79746", "_id": {"$oid": "54720a7d306b5b3372863f5c"}}]}
+{"code":3,"message":"Success.","comments":[{"comment":"%E6%B5%8B%E8%AF%95%E8%AF%84%E8%AE%BA%26amp%3Bnbsp%3B%E5%93%88%E5%93%88%E5%93%88%26amp%3Bnbsp%3Btesting","publisher":"test","PublishmentTime":1416759352,"publisher_avatar":"static/upload/1416842959663394.jpg","CommentType":0,"objid":"54717110306b5b3265a79746","publisher_realname":"%E7%8E%8B%E5%B0%BC%E7%8E%9B","_id":{"$oid":"54720838306b5b3372863f57"}},{"comment":"%E6%B5%8B%E8%AF%95%E8%AF%84%E8%AE%BA%26amp%3Bnbsp%3B%E5%93%88%E5%93%88%E5%93%88%26amp%3Bnbsp%3Btesting","publisher":"test","PublishmentTime":1416759933,"publisher_avatar":"static/upload/1416842959663394.jpg","CommentType":0,"objid":"54717110306b5b3265a79746","publisher_realname":"%E7%8E%8B%E5%B0%BC%E7%8E%9B","_id":{"$oid":"54720a7d306b5b3372863f5c"}}]}
 ```
 ##DeleteCommentByID(id,callback)
 > 通过评论ID（_id.$oid）删除评论。注意：此处ID为评论的ID，而非公告或树洞的ID
