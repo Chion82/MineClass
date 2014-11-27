@@ -32,8 +32,7 @@
     $(function(){
         window.um = UM.getEditor('myEditor');
         publishInform(um);
-        createPage(1);
-    });
+    });          
 </script>
 <!--初始化-->
 <script type="text/javascript">
@@ -54,7 +53,26 @@ $(document).ready(function(){
     showDiscuss();
 });
 </script>
-
+<!--获取公告-->
+<script type="text/javascript">
+    var hght=0;//初始化滚动条总长
+    var top=0;//初始化滚动条的当前位置
+    var pageNum=1;
+    $(function(){
+        createPage(1);
+        $(window).scroll( function() {//定义滚动条位置改变时触发的事件。
+        hght=this.scrollHeight;//得到滚动条总长，赋给hght变量
+        top=this.scrollTop;//得到滚动条当前值，赋给top变量
+        });        
+    });
+    setInterval('cando();',2000);
+    function cando(){
+        if(top>parseInt(hght/3)*2){//判断滚动条当前位置是否超过总长的2/3，parseInt为取整函数
+            pageNum++;
+            createPage(pageNum);//如果是，调用show函数加载内容。
+        }
+    }          
+</script>
 </head>
 <body>
 <!--导航header-->

@@ -40,7 +40,7 @@ function publishInform(um){
 function createPage(num){
 	var page;
 	var item;	
-	$(".mylist-wrap").append("<img id='loading' src='static/images/loading.gif'>");
+	//$(".mylist-wrap").append("<img id='loading' src='static/images/loading.gif'>");
 	api.announcement.GetAnnouncements(
 					[],//传入tag数组可以按tag筛选公告
 					num,//page
@@ -49,17 +49,15 @@ function createPage(num){
 						for(var i=0;i<result.length;i++){
 						var unixtime = new Date(result[i].PublishmentTime*1000);
 						unixtime = unixtime.toLocaleString();	
-						item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='static/images/ic_head.png' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' id='showDiscuss'>评论</a></span></div></div></div></div></div></div>";
+						item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' id='showDiscuss'>评论</a></span></div></div></div></div></div></div>";
 						page+=item;
 						}
-						$("#loading").remove();
+						//$("#loading").remove();
 						$(".mylist-wrap").append(page);
-						num++;
-						scollToLoading(num);
 					}
 				);
 }
-//下拉到底部加载
+/*下拉到底部加载
 function scollToLoading(num){
 		var range = 50;             //距下边界长度/单位px
         var elemt = 500;           //插入元素高度/单位px
@@ -78,4 +76,4 @@ function scollToLoading(num){
                 createPage(num);
             }
         });	
-}
+}*/
