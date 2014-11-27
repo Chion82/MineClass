@@ -58,6 +58,7 @@ $(document).ready(function(){
     var totalheight = 0;
     var pageNum=1;
     $(document).ready(function(){
+        createPage(pageNum);
         $(window).scroll(function() {
             var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)
             totalheight = parseFloat($(window).height()) + parseFloat(srollPos);
@@ -69,7 +70,6 @@ $(document).ready(function(){
         console.log("totalheight--"+totalheight);
         if((parseFloat($(document).height())/4*3) <= totalheight){//判断滚动条当前位置是否超过总长的3/4，parseInt为取整函数
             pageNum++;
-            alert("生成第"+pageNum+"页");
             createPage(pageNum);//如果是，调用函数加载内容。
         }
     }          
