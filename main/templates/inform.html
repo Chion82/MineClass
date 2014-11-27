@@ -55,21 +55,22 @@ $(document).ready(function(){
 </script>
 <!--获取公告-->
 <script type="text/javascript">
-    var hght=0;//初始化滚动条总长
-    var top=0;//初始化滚动条的当前位置
+    var totalheight = 0;
     var pageNum=1;
-    $(function(){
-        createPage(1);
-        $(window).scroll( function() {//定义滚动条位置改变时触发的事件。
-        hght=this.scrollHeight;//得到滚动条总长，赋给hght变量
-        top=this.scrollTop;//得到滚动条当前值，赋给top变量
+    $(document).ready(function(){
+        $(window).scroll(function() {
+            var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)
+            totalheight = parseFloat($(window).height()) + parseFloat(srollPos);
         });        
     });
-    setInterval('cando();',2000);
+    setInterval("cando()",4000);//3秒询问一次
     function cando(){
-        if(top>parseInt(hght/3)*2){//判断滚动条当前位置是否超过总长的2/3，parseInt为取整函数
+        console.log("$(document).height()-range--"+parseFloat($(document).height()));
+        console.log("totalheight--"+totalheight);
+        if((parseFloat($(document).height())/4*3) <= totalheight){//判断滚动条当前位置是否超过总长的3/4，parseInt为取整函数
             pageNum++;
-            createPage(pageNum);//如果是，调用show函数加载内容。
+            alert("生成第"+pageNum+"页");
+            createPage(pageNum);//如果是，调用函数加载内容。
         }
     }          
 </script>
@@ -126,7 +127,6 @@ $(document).ready(function(){
                 <div class="umeditor">          
                 <!-- 加载编辑器的容器 -->
                 <script id="myEditor" name="content" type="text/plain">
-                <p><img src="http://img.baidu.com/hi/jx2/j_0008.gif" _src="http://img.baidu.com/hi/jx2/j_0008.gif"/></p>
                 </script>
                 </div>
                 <div class="actionbar">
@@ -142,7 +142,271 @@ $(document).ready(function(){
                 <div class="maincontentBG">
                 <div class="maincontent">
                     <div class="who">
-                        <div><img  class="head" src="static/images/ic_head.png" alt=""></div>
+                        <div><img  class="head" src="static/upload/avatars/none.png" alt=""></div>
+                        <div id="name">小A</div>
+                    </div>
+                    <div class="text">这是静态的</div>
+                    <div class="actionbar">
+                        <div class="time">2014-11-15 19:24</div>
+                        <div class="optiontab">
+                            <span class="option">
+                                <a href="javascript:void(0)">10已阅</a>
+                            </span>
+                            <span class="option">
+                                <a href="javascript:void(0)" id="showDiscuss">评论</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="discussBG" id="discussArea">
+                    <div class="discuss">
+                    <div class="adddiscuss">
+                        <input type="text" id="addDiscuss">
+                        <button id="commitDiscuss"><span>发 表</span></button>
+                    </div>
+                    <div class="alldiscuss">
+                        <ul>
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+        <div class="mylist">
+            <div class="head"></div>
+            <div class="content">
+                <div class="maincontentBG">
+                <div class="maincontent">
+                    <div class="who">
+                        <div><img  class="head" src="static/upload/avatars/none.png" alt=""></div>
+                        <div id="name">小A</div>
+                    </div>
+                    <div class="text">这是静态的</div>
+                    <div class="actionbar">
+                        <div class="time">2014-11-15 19:24</div>
+                        <div class="optiontab">
+                            <span class="option">
+                                <a href="javascript:void(0)">10已阅</a>
+                            </span>
+                            <span class="option">
+                                <a href="javascript:void(0)" id="showDiscuss">评论</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="discussBG" id="discussArea">
+                    <div class="discuss">
+                    <div class="adddiscuss">
+                        <input type="text" id="addDiscuss">
+                        <button id="commitDiscuss"><span>发 表</span></button>
+                    </div>
+                    <div class="alldiscuss">
+                        <ul>
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+            </div>
+            </div>
+        </div>        
+        <div class="mylist">
+            <div class="head"></div>
+            <div class="content">
+                <div class="maincontentBG">
+                <div class="maincontent">
+                    <div class="who">
+                        <div><img  class="head" src="static/upload/avatars/none.png" alt=""></div>
+                        <div id="name">小A</div>
+                    </div>
+                    <div class="text">这是静态的</div>
+                    <div class="actionbar">
+                        <div class="time">2014-11-15 19:24</div>
+                        <div class="optiontab">
+                            <span class="option">
+                                <a href="javascript:void(0)">10已阅</a>
+                            </span>
+                            <span class="option">
+                                <a href="javascript:void(0)" id="showDiscuss">评论</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="discussBG" id="discussArea">
+                    <div class="discuss">
+                    <div class="adddiscuss">
+                        <input type="text" id="addDiscuss">
+                        <button id="commitDiscuss"><span>发 表</span></button>
+                    </div>
+                    <div class="alldiscuss">
+                        <ul>
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+        <div class="mylist">
+            <div class="head"></div>
+            <div class="content">
+                <div class="maincontentBG">
+                <div class="maincontent">
+                    <div class="who">
+                        <div><img  class="head" src="static/upload/avatars/none.png" alt=""></div>
+                        <div id="name">小A</div>
+                    </div>
+                    <div class="text">这是静态的</div>
+                    <div class="actionbar">
+                        <div class="time">2014-11-15 19:24</div>
+                        <div class="optiontab">
+                            <span class="option">
+                                <a href="javascript:void(0)">10已阅</a>
+                            </span>
+                            <span class="option">
+                                <a href="javascript:void(0)" id="showDiscuss">评论</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="discussBG" id="discussArea">
+                    <div class="discuss">
+                    <div class="adddiscuss">
+                        <input type="text" id="addDiscuss">
+                        <button id="commitDiscuss"><span>发 表</span></button>
+                    </div>
+                    <div class="alldiscuss">
+                        <ul>
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+
+                            <li class="item">
+                                <div class="head">
+                                    <img src="static/images/ic_add_normal.png" alt="">
+                                </div>
+                                <div class="discusscontent">
+                                    <span class="who">小B</span>
+                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+        <div class="mylist">
+            <div class="head"></div>
+            <div class="content">
+                <div class="maincontentBG">
+                <div class="maincontent">
+                    <div class="who">
+                        <div><img  class="head" src="static/upload/avatars/none.png" alt=""></div>
                         <div id="name">小A</div>
                     </div>
                     <div class="text">这是静态的</div>
