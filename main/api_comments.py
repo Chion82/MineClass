@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from mongoengine import *
 import random
 from main.api_users import *
+import json
 
 def API_PublishComment(request):
 	if (not VerifyToken(request)):
@@ -40,7 +41,23 @@ def API_GetCommentsByID(request):
 	if (input_id==None or input_id=="" or input_CommentType==None or input_CommentType==""):
 		return HttpResponse('{"code":1,"message":"Invalid Input."}',{})
 	dbobj = comments.objects(objid=input_id,CommentType=int(input_CommentType))
-	return HttpResponse('{"code":3,"message":"Success.","comments": %s}' % dbobj.all().to_json(),{})
+	
+	CommentList = eval(dbobj.all().to_json())
+	FixedList = []
+	for SingleObj in CommentList:
+		publisher = SingleObj["publisher"]
+		dbobj = users.objects(username=publisher)
+		if (dbobj.count()>0):
+			NewObj = SingleObj
+			NewObj["publisher_realname"] = dbobj.first().realname
+			NewObj["publisher_avatar"] = dbobj.first().avatar
+		else:
+			NewObj = SingleObj
+			NewObj["publisher_realname"] = "USER_DELETED"
+			NewObj["publisher_avatar"] = "static/upload/avatars/none.png"
+		FixedList.append(NewObj)
+
+	return HttpResponse('{"code":3,"message":"Success.","comments": %s}' % json.dumps(FixedList),{})
 
 def API_DeleteCommentByID(request):
 	if (not VerifyToken(request)):
