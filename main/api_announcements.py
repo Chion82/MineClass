@@ -70,7 +70,22 @@ def API_GetAnnouncements(request):
 					break
 		else:
 			AnnouncementList.append(eval(RowObj.to_json()))
-	return HttpResponse(json.dumps(AnnouncementList),{})
+
+	FixedList = []
+	for SingleObj in AnnouncementList:
+		publisher = SingleObj.publisher
+		dbobj = users.objects(username=publisher)
+		if (dbobj.count()>0):
+			NewObj = SingleObj
+			NewObj["publisher_realname"] = dbobj.first().realname
+			NewObj["publisher_avatar"] = dbobj.first().avatar
+		else:
+			NewObj = SingleObj
+			NewObj["publisher_realname"] = "USER_DELETED"
+			NewObj["publisher_avatar"] = "static/upload/avatars/none.png"
+		FixedList.append(NewObj)
+
+	return HttpResponse(json.dumps(FixedList),{})
 
 #API_DeleteAnnouncement(request) Delete announcement specified by id
 #Input parameters: HttpRequest Object : GET data
