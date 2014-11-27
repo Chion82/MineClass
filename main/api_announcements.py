@@ -73,7 +73,7 @@ def API_GetAnnouncements(request):
 
 	FixedList = []
 	for SingleObj in AnnouncementList:
-		publisher = SingleObj.publisher
+		publisher = SingleObj["publisher"]
 		dbobj = users.objects(username=publisher)
 		if (dbobj.count()>0):
 			NewObj = SingleObj
