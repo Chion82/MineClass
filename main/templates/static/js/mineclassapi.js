@@ -468,4 +468,52 @@ var api =
 			);
 		}
 	}
+
+	"schedule" :
+	{
+		"CreateEvent" : function(title,introduction /*stringfield*/,classes/*listfield*/,startdate,enddate,/*longfield*/,callback)
+		{
+			$.post(API_ROOT + "api/createevent",
+				{
+					"title" : title,
+					"introduction" :introduction,
+					"classes" : classes,
+					"startdate" : startdate,
+					"enddate" : enddate
+				},
+				function(data,status)
+				{
+					if (status=="success")
+						callback(eval("("+data+")"));
+					else
+						callback({"error":1,"message":"Connection failed."});				
+				}
+			);
+		},
+		"GetEvent" : function(startdate,enddate,callback)
+		{
+			$.get(API_ROOT + "api/getevent?startdate=" + startdate +"&enddate=" + enddate,
+				function(data,status)
+				{
+					if (status=="success")
+						callback(eval("("+data+")"));
+					else
+						callback({"error":1,"message":"Connection failed."});					
+				}
+			);
+		},
+		
+		"DeleteEvent" : function(id,callback)
+		{
+			$.get(API_ROOT + "api/deleteevent?id=" + encodeURIComponent(id),
+				function(data,status)
+				{
+					if (status=="success")
+						callback(eval("("+data+")"));
+					else
+						callback({"error":1,"message":"Connection failed."});					
+				}
+			);
+		},
+	}
 }; 
