@@ -1,21 +1,49 @@
 <!DOCTYPE html>
 <html lang="cn">
 <head>
-	<meta charset="UTF-8">
-	<title>MineClass-班级公告</title>
+    <meta charset="UTF-8">
+    <title>MineClass-树洞</title>
+<link type="text/css" rel="stylesheet" href="static/css/inform.css"/>
 <link type="text/css" rel="stylesheet" href="static/css/header.css"/>
 <!--标签页、书签的logo显示-->
 <link href="static/images/favicon.ico" rel="bookmark" type="image/x-icon" /> 
 <link href="static/images/favicon.ico" rel="icon" type="image/x-icon" /> 
 <link href="static/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 <!--API引入-->
+<script type="text/javascript" src="static/js/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="static/js/mineclassapi.js"></script>
 <script type="text/javascript" src="static/js/userfunction.js"></script>
-<script src="static/js/jquery-1.11.1.min.js" type="text/javascript"></script>
 
+<!--UMEditor引入-->
+<!-- 样式文件 -->
+<link rel="stylesheet" href="static/umeditor/themes/default/css/umeditor.css">
+<!-- 引用jquery -->
+<script src="static/umeditor/third-party/jquery.min.js"></script>
+<!-- 配置文件 -->
+<script type="text/javascript" src="static/umeditor/umeditor.config.js"></script>
+<!-- 编辑器源码文件 -->
+<script type="text/javascript" src="static/umeditor/umeditor.min.js"></script>
+<!-- 语言包文件 -->
+<script type="text/javascript" src="static/umeditor/lang/zh-cn/zh-cn.js"></script>
+<!--引入informfunction.js-->
+<script type="text/javascript" src="static/js/informfunction.js"></script>
+<!-- 实例化编辑器代码 -->
+<script type="text/javascript">
+    $(function(){
+        window.um = UM.getEditor('myEditor');
+        publishTreehole(um);
+    });          
+</script>
 <!--初始化-->
 <script type="text/javascript">
 $(document).ready(function(){
+    api.user.GetUserInfo(function(result){
+        window.userInfoGlobal=result;
+      var infoResult = result;  
+        isLogin(infoResult);
+        showAvatar(infoResult);
+        showInput(infoResult);
+        });
     //退出
     $("#logout").click(function(event) {
         /* Act on the event */
@@ -23,45 +51,74 @@ $(document).ready(function(){
     });
     //点击头像显示菜单
     showOverflow();
+    showDiscuss1();//测试
+    showDiscuss(1);//显示评论
+    publishComment(1);
 });
+</script>
+<!--获取公告-->
+<script type="text/javascript">
+    var totalheight = 0;
+    var pageNum=1;
+    var isLoading=false;
+    var isEnd=false;
+    $(document).ready(function(){
+        createTreePage(pageNum);
+        $(window).scroll(function() {
+            var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)
+            totalheight = parseFloat($(window).height()) + parseFloat(srollPos);
+            cando();
+        });        
+    });
+    //setInterval("cando()",3000);//3秒询问一次
+    function cando(){
+        //console.log("$(document).height()-range--"+parseFloat($(document).height()));
+        //console.log("totalheight--"+totalheight);
+        console.log("isLoading--"+isLoading);
+        console.log("isEnd--"+isEnd);
+        if((parseFloat($(document).height())-50) <= totalheight&&(!isLoading)&&(!isEnd)){
+            pageNum++;
+            createTreePage(pageNum);//如果是，调用函数加载内容。
+        }
+    }          
 </script>
 </head>
 <body>
 <!--导航header-->
 <div id="header">
-	<div id="nav">
-    	<div id="logo">
-        	<a href="home_page" >MineClass</a>
+    <div id="nav">
+        <div id="logo">
+            <a href="home_page" >MineClass</a>
         </div>
         <ul class="nav-item">
-        	<li>
-            	<a href="inform">公告</a>
+            <li>
+                <a href="inform">公告</a>
             </li>
             <li>
-            	<a href="discuss">树洞</a>
+                <a href="discuss">树洞</a>
             </li>
             <li class="special">
-            	<a href="">资源共享</a>
+                <a href="">资源共享</a>
             </li>
             <li>
-            	<a href="">班级日历</a>
+                <a href="">班级日历</a>
             </li>
         </ul>
         <ul class="action-bar">
-        	<li class="addnew">
-            	<a id="add" href="javascript:void(0)" title="发布"></a>
+            <li class="addnew">
+                <a id="add" href="javascript:void(0)" title="发布"></a>
             </li>
             <li id="head-btn">
-            	<a href="javascript:void(0)">
+                <a href="javascript:void(0)">
                     <img id="head-avatar" src="" alt="">   
                 </a>
                 <div id="action-overflow">
                     <ul class="over-ul">
-                	   <li>
-                    	   <a id="setinfo" href="setinfo">个人设置</a>
+                       <li>
+                           <a id="setinfo" href="setinfo">个人设置</a>
                         </li>
                         <li>
-                     	  <a href="home_page" id="logout">退出</a>
+                          <a href="javascript:void(0)" id="logout">退出</a>
                         </li>
                     </ul>
                 </div>
@@ -70,6 +127,24 @@ $(document).ready(function(){
     </div>
 </div>
 <!--主体部分-->
-	
+<div id="main">
+    <div class="wrap">
+        <div class="input" id="addarea" style="display:block;">
+            <div class="editor-area">
+                <div class="title">发布公告</div>
+                <div class="umeditor">          
+                <!-- 加载编辑器的容器 -->
+                <script id="myEditor" name="content" type="text/plain"></script>
+                </div>
+                <div class="actionbar">
+                    <button id="clearAll" class="action-button"><span>清 空</span></button>
+                    <button id="commit" class="action-button"><span>发 布</span></button>
+                </div>
+            </div>
+        </div>
+        <div class="mylist-wrap">
+        </div>
+    </div>
+</div>
 </body>
 </html>

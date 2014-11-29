@@ -204,3 +204,22 @@
 .mylist .item .discusscontent .maincontent_ds{
 	color: #444;
 }
+/*到达底部提示*/
+.toEnd{
+	margin:20px auto;
+	font-size: 28px;
+	font-family: "幼圆";
+	color:#777;
+	text-align: center;
+}
+/*loading*/
+.loading{
+	width:200px;
+	margin:20px auto;
+}
+.loading span{
+	margin-left: 40px;
+	font-size: 26px;
+	line-height: 32px;
+	color:#666;
+}

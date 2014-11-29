@@ -52,6 +52,8 @@ $(document).ready(function(){
     //点击头像显示菜单
     showOverflow();
     showDiscuss1();//测试
+    showDiscuss(0);//显示公告评论
+    publishComment(0);
 });
 </script>
 <!--获取公告-->
@@ -141,65 +143,6 @@ $(document).ready(function(){
             </div>
         </div>
         <div class="mylist-wrap">
-
-        <div class="mylist">
-            <div class="head"></div>
-            <div class="content">
-                <div class="maincontentBG">
-                <div class="maincontent">
-                    <div class="who">
-                        <div><img  class="head" src="static/upload/avatars/none.png" alt=""></div>
-                        <div id="name">小A</div>
-                    </div>
-                    <div class="text">这是静态的</div>
-                    <div class="actionbar">
-                        <div class="time">2014-11-15 19:24</div>
-                        <div class="optiontab">
-                            <span class="option">
-                                <a href="javascript:void(0)">10已阅</a>
-                            </span>
-                            <span class="option">
-                                <a href="javascript:void(0)" class="showDiscuss1">评论</a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="discussBG" id="discussArea">
-                    <div class="discuss">
-                    <div class="adddiscuss">
-                        <input type="text" class="discussInput">
-                        <button class="commitDiscuss"><span>发 表</span></button>
-                    </div>
-                    <div class="alldiscuss">
-                        <ul>
-                            <li class="item">
-                                <div class="head">
-                                    <img src="static/images/ic_add_normal.png" alt="">
-                                </div>
-                                <div class="discusscontent">
-                                    <span class="who">小B</span>
-                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
-                                </div>
-                            </li>
-
-                            <li class="item">
-                                <div class="head">
-                                    <img src="static/images/ic_add_normal.png" alt="">
-                                </div>
-                                <div class="discusscontent">
-                                    <span class="who">小B</span>
-                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
-                    </div>
-            </div>
-            </div>
-        </div>
-
         </div>
     </div>
 </div>

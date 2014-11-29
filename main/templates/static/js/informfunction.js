@@ -36,11 +36,35 @@ function publishInform(um){
 		}
 	});
 }
-//生成一页的内容
+
+//树洞
+function publishTreehole(um){
+	$("#clearAll").click(function(event) {
+        um.execCommand('cleardoc');//清空输入框
+	});
+	$("#commit").click(function(event) {
+		if(!um.hasContents()){
+			um.setContent("不说点什么吗？");
+		}else{
+			var content=um.getContent();
+			api.treehole.PublishTreehole(
+					content,
+					"",
+					function(result)
+					{
+						alert(JSON.stringify(result));
+						//TODO 处理发布公告后的事件
+					}
+			);
+		}
+	});
+}
+
+//生成公告一页的内容
 function createPage(num){
 	isLoading=true;
 	console.log("createPage开始时的isLoading--"+isLoading);	
-	//$(".mylist-wrap").append("<img id='loading' src='static/images/loading.gif'>");
+	$(".mylist-wrap").append("<div class='loading'><img src='static/images/loadm.gif' alt=''><span>加载中……</span></div>");
 	api.announcement.GetAnnouncements(
 					[],//传入tag数组可以按tag筛选公告
 					num,//page
@@ -50,7 +74,7 @@ function createPage(num){
 						var item="";
 						if(result==""){
 							isEnd=true;
-							$(".mylist-wrap").append("<h1>已到达底部</h1>");
+							$(".mylist-wrap").append("<div class='toEnd'>没有更多内容了~~(>_<)~~</div>");
 						}else{
 							for(var i=0;i<result.length;i++){
 							var unixtime = new Date(result[i].PublishmentTime*1000);
@@ -58,11 +82,38 @@ function createPage(num){
 							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' area-id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' class='discussInput'><button class='commitDiscuss' btn-id='"+result[i]._id.$oid+"'><span>发 表</span></button></div><div class='alldiscuss'><ul class='fillComment' content-id='"+result[i]._id.$oid+"'></ul></div></div></div></div></div>";
 							page+=item;
 							}
-						//$('#loading').remove();
+						$('.loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
-    					showDiscuss(0);//显示公告评论
-    					publishComment(0);
+						}
+					}
+				);
+}
+
+//生成树洞一页的内容
+function createTreePage(num){
+	isLoading=true;
+	console.log("createPage开始时的isLoading--"+isLoading);	
+	$(".mylist-wrap").append("<div class='loading'><img src='static/images/loadm.gif' alt=''><span>加载中……</span></div>");
+	api.treehole.GetTreehole(
+					num,//page
+					function(result)
+					{
+						var page="";
+						var item="";
+						if(result==""){
+							isEnd=true;
+							$(".mylist-wrap").append("<div class='toEnd'>没有更多内容了~~(>_<)~~</div>");
+						}else{
+							for(var i=0;i<result.length;i++){
+							var unixtime = new Date(result[i].PublishmentTime*1000);
+							unixtime = unixtime.toLocaleString();	
+							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='static/images/unknow.png' alt=''></div><div id='name'>某同学</div></div><div class='text'>"+decodeURIComponent(result[i].treehole)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' area-id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' class='discussInput'><button class='commitDiscuss' btn-id='"+result[i]._id.$oid+"'><span>发 表</span></button></div><div class='alldiscuss'><ul class='fillComment' content-id='"+result[i]._id.$oid+"'></ul></div></div></div></div></div>";
+							page+=item;
+							}
+						$('.loading').remove();
+						$('.mylist-wrap').append(page);
+						isLoading=false;
 						}
 					}
 				);
@@ -103,14 +154,20 @@ function showDiscuss(type){
 				var commentItem="";
 				var commentAll="";
     			var i=0;
-    			console.log("result--"+result);
-        		while(result.comments!=""&&result.comments[i]!=undefined){
-        			commentItem="<li class='item'><div class='head'><img src='"+result.comments[i].publisher_avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(result.comments[i].publisher_realname)+"</span><span class='maincontent_ds'>"+decodeURIComponent(result.comments[i].comment)+"</span></div></li>"
-        			commentAll+=commentItem;
-        			i++;
+    			if(type==0){
+        			while(result.comments!=""&&result.comments[i]!=undefined){
+        				commentItem="<li class='item'><div class='head'><img src='"+result.comments[i].publisher_avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(result.comments[i].publisher_realname)+"</span><span class='maincontent_ds'>"+decodeURIComponent(result.comments[i].comment)+"</span></div></li>"
+        				commentAll+=commentItem;
+        				i++;
+        			}
+        		}else{
+        			while(result.comments!=""&&result.comments[i]!=undefined){
+        				commentItem="<li class='item'><div class='head'><img src='static/images/unknow.png' alt=''></div><div class='discusscontent'><span class='who'>某同学</span><span class='maincontent_ds'>"+decodeURIComponent(result.comments[i].comment)+"</span></div></li>"
+        				commentAll+=commentItem;
+        				i++;
+        			}
         		}
-        		console.log(commentAll);
-        		$('ul[content-id='+btnID+']').replaceWith(commentAll);
+        		$('ul[content-id='+btnID+']').append(commentAll);
     		}
 		);
 
@@ -133,12 +190,23 @@ function publishComment(type){
     		function(result)
     		{
     			//TODO
-    			if(result.code==3){
-   	    			var	newComment="<li class='item'><div class='head'><img src='"+userInfoGlobal.UserInfo.avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(userInfoGlobal.UserInfo.realname)+"</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>";
-   	    			input.val("");
-        			content.prepend(newComment);
+    			if(type==0){
+    				if(result.code==3){
+   	    				var	newComment="<li class='item'><div class='head'><img src='"+userInfoGlobal.UserInfo.avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(userInfoGlobal.UserInfo.realname)+"</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>";
+   	    				input.val("");
+        				content.prepend(newComment);
+        			}else{
+        				alert("说点什么吧。");
+        			}
         		}else{
-        			alert("说点什么吧。");
+    				if(result.code==3){
+   	    				var	newComment="<li class='item'><div class='head'><img src='static/images/unknow.png' alt=''></div><div class='discusscontent'><span class='who'>某同学</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>";
+   	    				input.val("");
+        				content.prepend(newComment);
+        			}else{
+        				alert("说点什么吧。");
+        			}
+
         		}
     		}                   
 		);
