@@ -74,6 +74,7 @@ function createPage(num){
 						var item="";
 						if(result==""){
 							isEnd=true;
+							$('.loading').remove();
 							$(".mylist-wrap").append("<div class='toEnd'>没有更多内容了~~(>_<)~~</div>");
 						}else{
 							for(var i=0;i<result.length;i++){
