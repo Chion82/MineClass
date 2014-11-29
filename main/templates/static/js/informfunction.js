@@ -40,7 +40,8 @@ function publishInform(um){
 function createPage(num){
 	var page;
 	var item;
-	isLoading=true;	
+	isLoading=true;
+	console.log("createPage开始时的isLoading--"+isLoading);	
 	//$(".mylist-wrap").append("<img id='loading' src='static/images/loading.gif'>");
 	api.announcement.GetAnnouncements(
 					[],//传入tag数组可以按tag筛选公告
@@ -50,7 +51,7 @@ function createPage(num){
 						console.log("result--"+result);
 						if(result==""){
 							isEnd=true;
-							$(".mylist-wrap").append("已到达底部");
+							$(".mylist-wrap").append("<h1>已到达底部</h1>");
 						}else{
 							for(var i=0;i<result.length;i++){
 							var unixtime = new Date(result[i].PublishmentTime*1000);
@@ -90,7 +91,9 @@ function showDiscuss(){
 	var commentItem;
 	var commentAll;
 	$(".showDiscuss").click(function(event) {
+		console.log("评论被点击");
 		var btnID=$(this).attr("id");
+		console.log("ID是"+btnID);
 		$('#'+btnID).slideToggle(slow/400/fast);
 		api.comment.GetCommentsByID(
     		0,

@@ -51,7 +51,6 @@ $(document).ready(function(){
     //点击头像显示菜单
     showOverflow();
     showDiscuss1();//测试
-    showDiscuss();
 });
 </script>
 <!--获取公告-->
@@ -65,7 +64,8 @@ $(document).ready(function(){
         $(window).scroll(function() {
             var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)
             totalheight = parseFloat($(window).height()) + parseFloat(srollPos);
-        });        
+        });
+        showDiscuss();        
     });
     setInterval("cando()",3000);//3秒询问一次
     function cando(){
