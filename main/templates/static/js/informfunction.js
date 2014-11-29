@@ -4,7 +4,7 @@
 
 //test
 function showDiscuss1(){
-  $("#showDiscuss").click(function(event) {
+  $(".showDiscuss1").click(function(event) {
     if($("#discussArea").is(':hidden')){
       $("#discussArea").slideDown('slow/400/fast', function() {});
     }else{
@@ -106,5 +106,5 @@ function showDiscuss(){
 		);
 
 	});
-	
+
 }
