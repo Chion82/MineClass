@@ -4,10 +4,10 @@ import hashlib
 def EscapeContent(text):
 	if (text==None):
 		return None
+	text = text.replace("&","&amp;")
 	text = text.replace(" ","&nbsp;")
 	text = text.replace("\n","<br />")
 	text = text.replace('"',"&quot;")
-	text = text.replace("&","&amp;")
 	text = text.replace("<","&lt;")
 	text = text.replace(">","&gt;")
 	return text
@@ -15,10 +15,10 @@ def EscapeContent(text):
 def QuoteEscapeContent(text):
 	if (text==None):
 		return None
+	text = text.replace("&","&amp;")
 	text = text.replace(" ","&nbsp;")
 	text = text.replace("\n","<br />")
 	text = text.replace('"',"&quot;")
-	text = text.replace("&","&amp;")
 	text = text.replace("<","&lt;")
 	text = text.replace(">","&gt;")
 	return urlquote(text)
