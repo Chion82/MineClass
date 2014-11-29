@@ -52,8 +52,11 @@ function publishTreehole(um){
 					"",
 					function(result)
 					{
-						alert(JSON.stringify(result));
-						//TODO 处理发布公告后的事件
+						if(result.code==2){
+							location.reload();
+						}else{
+							alert(JSON.stringify(result));
+						}
 					}
 			);
 		}
