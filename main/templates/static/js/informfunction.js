@@ -38,8 +38,6 @@ function publishInform(um){
 }
 //生成一页的内容
 function createPage(num){
-	var page="";
-	var item="";
 	isLoading=true;
 	console.log("createPage开始时的isLoading--"+isLoading);	
 	//$(".mylist-wrap").append("<img id='loading' src='static/images/loading.gif'>");
@@ -48,6 +46,8 @@ function createPage(num){
 					num,//page
 					function(result)
 					{
+						var page="";
+						var item="";
 						if(result==""){
 							isEnd=true;
 							$(".mylist-wrap").append("<h1>已到达底部</h1>");
@@ -89,8 +89,6 @@ function scollToLoading(num){
 }*/
 //显示评论区
 function showDiscuss(type){
-	var commentItem="";
-	var commentAll="";
 	$(".showDiscuss").click(function(event) {
 		console.log("评论被点击");
 		var btnID=$(this).attr("id");
@@ -102,6 +100,8 @@ function showDiscuss(type){
     		btnID,
     		function(result)
     		{
+				var commentItem="";
+				var commentAll="";
     			var i=0;
     			console.log("result--"+result);
         		while(result.comments!=""&&result.comments[i]!=undefined){
@@ -109,6 +109,7 @@ function showDiscuss(type){
         			commentAll+=commentItem;
         			i++;
         		}
+        		console.log(commentAll);
         		$('ul[content-id='+btnID+']').replaceWith(commentAll);
     		}
 		);
@@ -124,9 +125,6 @@ function publishComment(type){
 		var content=$('ul[content-id='+id+']');
 		console.log(inputVal);
 		console.log(id);
-   	    var	newComment="<li class='item'><div class='head'><img src='"+userInfoGlobal.UserInfo.avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(userInfoGlobal.UserInfo.realname)+"</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>"
-   	    input.val("");
-        content.prepend(newComment);
 
 		api.comment.PublishComment(
     		type,  //0为公告评论，1为树洞评论
@@ -135,6 +133,13 @@ function publishComment(type){
     		function(result)
     		{
     			//TODO
+    			if(result.code==3){
+   	    			var	newComment="<li class='item'><div class='head'><img src='"+userInfoGlobal.UserInfo.avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(userInfoGlobal.UserInfo.realname)+"</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>"
+   	    			input.val("");
+        			content.prepend(newComment);
+        		}else{
+        			alert("说点什么吧。");
+        		}
     		}                   
 		);
 
