@@ -65,9 +65,9 @@ $(document).ready(function(){
             var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)
             totalheight = parseFloat($(window).height()) + parseFloat(srollPos);
         });
-        showDiscuss();        
+        cando();        
     });
-    setInterval("cando()",3000);//3秒询问一次
+    //setInterval("cando()",3000);//3秒询问一次
     function cando(){
         //console.log("$(document).height()-range--"+parseFloat($(document).height()));
         //console.log("totalheight--"+totalheight);
@@ -131,8 +131,7 @@ $(document).ready(function(){
                 <div class="title">发布公告</div>
                 <div class="umeditor">          
                 <!-- 加载编辑器的容器 -->
-                <script id="myEditor" name="content" type="text/plain">
-                </script>
+                <script id="myEditor" name="content" type="text/plain"></script>
                 </div>
                 <div class="actionbar">
                     <button id="clearAll" class="action-button"><span>清 空</span></button>

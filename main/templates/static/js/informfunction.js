@@ -62,6 +62,7 @@ function createPage(num){
 						//$('#loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
+						showDiscuss();
 						}
 					}
 				);
