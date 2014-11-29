@@ -48,7 +48,6 @@ function createPage(num){
 					num,//page
 					function(result)
 					{
-						console.log("result--"+result);
 						if(result==""){
 							isEnd=true;
 							$(".mylist-wrap").append("<h1>已到达底部</h1>");
@@ -102,9 +101,12 @@ function showDiscuss(type){
     		btnID,
     		function(result)
     		{
+    			var i=0;
+    			console.log("result--"+result);
         		while(result[i]!=""){
         			commentItem="<li class='item'><div class='head'><img src='"+result[i].publisher_avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(result[i].publisher_realname)+"</span><span class='maincontent_ds'>"+decodeURIComponent(result[i].comment)+"</span></div></li>"
         			commentAll+=commentItem;
+        			i++;
         		}
         		$('.fillComment').append(commentAll);
     		}
