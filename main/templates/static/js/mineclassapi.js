@@ -467,7 +467,7 @@ var api =
 				}
 			);
 		}
-	}
+	},
 
 	"schedule" :
 	{
