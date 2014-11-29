@@ -38,8 +38,8 @@ function publishInform(um){
 }
 //生成一页的内容
 function createPage(num){
-	var page;
-	var item;
+	var page="";
+	var item="";
 	isLoading=true;
 	console.log("createPage开始时的isLoading--"+isLoading);	
 	//$(".mylist-wrap").append("<img id='loading' src='static/images/loading.gif'>");
@@ -56,7 +56,7 @@ function createPage(num){
 							for(var i=0;i<result.length;i++){
 							var unixtime = new Date(result[i].PublishmentTime*1000);
 							unixtime = unixtime.toLocaleString();	
-							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss'>评论</a></span></div></div></div></div>    <div class='discussBG' id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' id='addDiscuss'><button id='commitDiscuss'><span>发 表</span></button></div><div class='alldiscuss'>  <ul class='fillComment'></ul>  </div></div></div></div></div>";
+							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' id='area"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' id='addDiscuss'><button id='commitDiscuss'><span>发 表</span></button></div><div class='alldiscuss'>  <ul class='fillComment'></ul>  </div></div></div></div></div>";
 							page+=item;
 							}
 						//$('#loading').remove();
@@ -94,7 +94,7 @@ function showDiscuss(){
 		console.log("评论被点击");
 		var btnID=$(this).attr("id");
 		console.log("ID是"+btnID);
-		$('#'+btnID).slideToggle(slow/400/fast);
+		$("#area"+btnID).slideToggle(slow/400/fast);
 		api.comment.GetCommentsByID(
     		0,
     		btnID,
