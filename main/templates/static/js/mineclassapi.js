@@ -471,7 +471,7 @@ var api =
 
 	"schedule" :
 	{
-		"CreateEvent" : function(title,introduction /*stringfield*/,classes/*listfield*/,startdate,enddate,/*longfield*/,callback)
+		"CreateEvent" : function(title,introduction /*stringfield*/,classes/*listfield*/,startdate,enddate/*longfield*/,callback)
 		{
 			$.post(API_ROOT + "api/createevent",
 				{
