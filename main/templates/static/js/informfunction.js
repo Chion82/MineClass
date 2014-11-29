@@ -96,7 +96,7 @@ function showDiscuss(type){
 		var btnID=$(this).attr("id");
 		console.log("ID是"+btnID);
 		$('div[area-id='+btnID+']').slideToggle("slow/400/fast");
-		$('ul[content-id='+btnID+']').remove();
+		$('ul[content-id='+btnID+']').empty();
 		api.comment.GetCommentsByID(
     		type,
     		btnID,
@@ -119,7 +119,8 @@ function showDiscuss(type){
 function publishComment(type){
 	$('.commitDiscuss').click(function(event) {
 		var id=$(this).attr('btn-id');
-		var inputVal=$(this).prev(".discussInput").val();
+		var input=$(this).prev(".discussInput");
+		var inputVal=input.val();
 		var content=$('ul[content-id='+id+']');
 		console.log(inputVal);
 		console.log(id);
@@ -131,7 +132,8 @@ function publishComment(type){
     		{
     			//TODO
    	    		var	newComment="<li class='item'><div class='head'><img src='"+userInfoGlobal.UserInfo.avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(userInfoGlobal.UserInfo.realname)+"</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>"
-   	    		$(this).prev(".discussInput").val("");
+   	    		input.val("");
+   	    		console.log(newComment);
         		content.prepend(newComment);
     		}                   
 		);
