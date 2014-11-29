@@ -50,6 +50,7 @@ $(document).ready(function(){
     });
     //点击头像显示菜单
     showOverflow();
+    showDiscuss1();//测试
     showDiscuss();
 });
 </script>
@@ -68,9 +69,11 @@ $(document).ready(function(){
     });
     setInterval("cando()",3000);//3秒询问一次
     function cando(){
-        console.log("$(document).height()-range--"+parseFloat($(document).height()));
-        console.log("totalheight--"+totalheight);
-        if((parseFloat($(document).height())-50) <= totalheight&&(!isLoading)&&(!isEnd)){//判断滚动条当前位置是否超过总长的3/4，parseInt为取整函数
+        //console.log("$(document).height()-range--"+parseFloat($(document).height()));
+        //console.log("totalheight--"+totalheight);
+        console.log("isLoading--"+isLoading);
+        console.log("isEnd--"+isEnd);
+        if((parseFloat($(document).height())-50) <= totalheight&&(!isLoading)&&(!isEnd)){
             pageNum++;
             createPage(pageNum);//如果是，调用函数加载内容。
         }
@@ -189,15 +192,6 @@ $(document).ready(function(){
                                 </div>
                             </li>
 
-                            <li class="item">
-                                <div class="head">
-                                    <img src="static/images/ic_add_normal.png" alt="">
-                                </div>
-                                <div class="discusscontent">
-                                    <span class="who">小B</span>
-                                    <span class="maincontent_ds">個人愚見，孟的故事沒象牙塔之夢好聽。或者叫，夢的故事…？</span>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                     </div>

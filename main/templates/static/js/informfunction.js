@@ -3,7 +3,7 @@
 */
 
 //test
-function showDiscuss(){
+function showDiscuss1(){
   $("#showDiscuss").click(function(event) {
     if($("#discussArea").is(':hidden')){
       $("#discussArea").slideDown('slow/400/fast', function() {});
@@ -41,24 +41,25 @@ function createPage(num){
 	var page;
 	var item;
 	isLoading=true;	
-	$(".mylist-wrap").append("<img id='loading' src='static/images/loading.gif'>");
+	//$(".mylist-wrap").append("<img id='loading' src='static/images/loading.gif'>");
 	api.announcement.GetAnnouncements(
 					[],//传入tag数组可以按tag筛选公告
 					num,//page
 					function(result)
 					{
-						if(result==[]){
+						console.log("result--"+result);
+						if(result==""){
 							isEnd=true;
 							$(".mylist-wrap").append("已到达底部");
 						}else{
 							for(var i=0;i<result.length;i++){
 							var unixtime = new Date(result[i].PublishmentTime*1000);
 							unixtime = unixtime.toLocaleString();	
-							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' id='showDiscuss'>评论</a></span></div></div></div></div></div></div>";
+							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss'>评论</a></span></div></div></div></div>    <div class='discussBG' id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' id='addDiscuss'><button id='commitDiscuss'><span>发 表</span></button></div><div class='alldiscuss'>  <ul class='fillComment'></ul>  </div></div></div></div></div>";
 							page+=item;
 							}
-						$("#loading").remove();
-						$(".mylist-wrap").append(page);
+						//$('#loading').remove();
+						$('.mylist-wrap').append(page);
 						isLoading=false;
 						}
 					}
@@ -84,3 +85,26 @@ function scollToLoading(num){
             }
         });	
 }*/
+//显示评论区
+function showDiscuss(){
+	var commentItem;
+	var commentAll;
+	$(".showDiscuss").click(function(event) {
+		var btnID=$(this).attr("id");
+		$('#'+btnID).slideToggle(slow/400/fast);
+		api.comment.GetCommentsByID(
+    		0,
+    		btnID,
+    		function(result)
+    		{
+        		while(result[i]!=""){
+        			commentItem="<li class='item'><div class='head'><img src='"+result[i].publisher_avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(result[i].publisher_realname)+"</span><span class='maincontent_ds'>"+decodeURIComponent(result[i].comment)+"</span></div></li>"
+        			commentAll+=commentItem;
+        		}
+        		$('.fillComment').append(commentAll);
+    		}
+		);
+
+	});
+	
+}
