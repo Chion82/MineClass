@@ -197,7 +197,7 @@
 	height: 20px;
 	width: 20px;
 	border-radius: 11px;
-	border: 1px solid #ff9800;
+	border: 1px solid rgba(0,0,0,.1);
 }
 .mylist .item .discusscontent{
 	line-height: 24px;

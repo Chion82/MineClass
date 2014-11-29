@@ -86,11 +86,11 @@ function createPage(num){
 						$('.loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
+						showDiscuss(1);//显示公告评论,BUG
+						publishComment(1);
 						}
 					}
 	);
-	showDiscuss(0);//显示公告评论
-    publishComment(0);
 }
 
 //生成树洞一页的内容
@@ -118,11 +118,11 @@ function createTreePage(num){
 						$('.loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
+						showDiscuss(1);//显示公告评论,BUG
+						publishComment(1);
 						}
 					}
 	);
-	showDiscuss(1);//显示公告评论
-	publishComment(1);
 }
 /*下拉到底部加载
 function scollToLoading(num){
