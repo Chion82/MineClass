@@ -89,13 +89,14 @@ function scollToLoading(num){
 }*/
 //显示评论区
 function showDiscuss(type){
-	var commentItem;
-	var commentAll;
+	var commentItem="";
+	var commentAll="";
 	$(".showDiscuss").click(function(event) {
 		console.log("评论被点击");
 		var btnID=$(this).attr("id");
 		console.log("ID是"+btnID);
 		$('div[area-id='+btnID+']').slideToggle("slow/400/fast");
+		$('ul[content-id='+btnID+']').remove();
 		api.comment.GetCommentsByID(
     		type,
     		btnID,
@@ -108,7 +109,7 @@ function showDiscuss(type){
         			commentAll+=commentItem;
         			i++;
         		}
-        		$('.fillComment').append(commentAll);
+        		$('ul[content-id='+btnID+']').append(commentAll);
     		}
 		);
 
@@ -129,7 +130,9 @@ function publishComment(type){
     		function(result)
     		{
     			//TODO
-        		content.append(inputVal);
+   	    		var	newComment="<li class='item'><div class='head'><img src='"+userInfoGlobal.UserInfo.avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(userInfoGlobal.UserInfo.realname)+"</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>"
+   	    		$(this).prev(".discussInput").val("");
+        		content.prepend(newComment);
     		}                   
 		);
 
