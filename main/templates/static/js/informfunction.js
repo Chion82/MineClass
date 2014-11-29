@@ -86,8 +86,8 @@ function createPage(num){
 						$('.loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
-						showDiscuss(1);//显示公告评论,BUG
-						publishComment(1);
+						showDiscuss(0);//显示公告评论,BUG
+						publishComment(0);
 						}
 					}
 	);
@@ -118,7 +118,7 @@ function createTreePage(num){
 						$('.loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
-						showDiscuss(1);//显示公告评论,BUG
+						showDiscuss(1);//显示树洞评论,BUG
 						publishComment(1);
 						}
 					}
