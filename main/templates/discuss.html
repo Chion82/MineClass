@@ -52,8 +52,8 @@ $(document).ready(function(){
     //点击头像显示菜单
     showOverflow();
     showDiscuss1();//测试
-    showDiscuss(1);//显示评论
-    publishComment(1);
+    
+    gotoTop()；
 });
 </script>
 <!--获取公告-->
@@ -65,6 +65,14 @@ $(document).ready(function(){
     $(document).ready(function(){
         createTreePage(pageNum);
         $(window).scroll(function() {
+        /*返回顶部按钮*/
+        var scrollt = document.documentElement.scrollTop + document.body.scrollTop; //获取滚动后的高度 
+        if( scrollt >500 ){  //判断滚动后高度超过200px,就显示  
+            $("#gotop").fadeIn(400); //淡出     
+        }else{      
+            $("#gotop").stop().fadeOut(400); //如果返回或者没有超过,就淡入.必须加上stop()停止之前动画,否则会出现闪动   
+        }
+        /*加载页面*/
             var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)
             totalheight = parseFloat($(window).height()) + parseFloat(srollPos);
             cando();
@@ -143,7 +151,7 @@ $(document).ready(function(){
             </div>
         </div>
         <div class="mylist-wrap">
-            
+
         </div>
     </div>
 </div>

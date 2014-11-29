@@ -79,17 +79,17 @@ function createPage(num){
 							for(var i=0;i<result.length;i++){
 							var unixtime = new Date(result[i].PublishmentTime*1000);
 							unixtime = unixtime.toLocaleString();	
-							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' area-id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' class='discussInput'><button class='commitDiscuss' btn-id='"+result[i]._id.$oid+"'><span>发 表</span></button></div><div class='alldiscuss'><ul class='fillComment' content-id='"+result[i]._id.$oid+"'></ul></div></div></div></div></div>";
+							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)' class='markRead'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' area-id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' class='discussInput'><button class='commitDiscuss' btn-id='"+result[i]._id.$oid+"'><span>发 表</span></button></div><div class='alldiscuss'><ul class='fillComment' content-id='"+result[i]._id.$oid+"'></ul></div></div></div></div></div>";
 							page+=item;
 							}
 						$('.loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
-    					showDiscuss(0);//显示公告评论
-    					publishComment(0);
 						}
 					}
-				);
+	);
+	showDiscuss(0);//显示公告评论
+    publishComment(0);
 }
 
 //生成树洞一页的内容
@@ -111,7 +111,7 @@ function createTreePage(num){
 							for(var i=0;i<result.length;i++){
 							var unixtime = new Date(result[i].PublishmentTime*1000);
 							unixtime = unixtime.toLocaleString();	
-							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='static/images/unknow.png' alt=''></div><div id='name'>某同学</div></div><div class='text'>"+decodeURIComponent(result[i].treehole)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' area-id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' class='discussInput'><button class='commitDiscuss' btn-id='"+result[i]._id.$oid+"'><span>发 表</span></button></div><div class='alldiscuss'><ul class='fillComment' content-id='"+result[i]._id.$oid+"'></ul></div></div></div></div></div>";
+							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='static/images/unknow.png' alt=''></div><div id='name'>某同学</div></div><div class='text'>"+decodeURIComponent(result[i].treehole)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)' class='markRead'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' area-id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' class='discussInput'><button class='commitDiscuss' btn-id='"+result[i]._id.$oid+"'><span>发 表</span></button></div><div class='alldiscuss'><ul class='fillComment' content-id='"+result[i]._id.$oid+"'></ul></div></div></div></div></div>";
 							page+=item;
 							}
 						$('.loading').remove();
@@ -216,5 +216,11 @@ function publishComment(type){
     		}                   
 		);
 
+	});
+}
+//返回顶部
+function gotoTop(){
+	$("#gotop").click(function(){ //当点击标签的时候,使用animate在200毫秒的时间内,滚到顶部
+			$("html,body").animate({scrollTop:"0px"},200);
 	});
 }
