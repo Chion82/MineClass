@@ -55,7 +55,7 @@ function createPage(num){
 							for(var i=0;i<result.length;i++){
 							var unixtime = new Date(result[i].PublishmentTime*1000);
 							unixtime = unixtime.toLocaleString();	
-							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' area-id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' class='discussInput'><button class='commitDiscuss' btn-id='"+result[i]._id.$oid+"'><span>发 表</span></button></div><div class='alldiscuss'>  <ul class='fillComment' content-id='"+result[i]._id.$oid+"'></ul>  </div></div></div></div></div>";
+							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' area-id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' class='discussInput'><button class='commitDiscuss' btn-id='"+result[i]._id.$oid+"'><span>发 表</span></button></div><div class='alldiscuss'><ul class='fillComment' content-id='"+result[i]._id.$oid+"'></ul></div></div></div></div></div>";
 							page+=item;
 							}
 						//$('#loading').remove();
@@ -93,7 +93,7 @@ function showDiscuss(type){
 		console.log("评论被点击");
 		var btnID=$(this).attr("id");
 		console.log("ID是"+btnID);
-		$('div[area-id='+btnID+']').slideToggle("slow/400/fast");
+		$('div[area-id='+btnID+']').slideToggle("fast");
 		$('ul[content-id='+btnID+']').empty();
 		api.comment.GetCommentsByID(
     		type,
@@ -134,7 +134,7 @@ function publishComment(type){
     		{
     			//TODO
     			if(result.code==3){
-   	    			var	newComment="<li class='item'><div class='head'><img src='"+userInfoGlobal.UserInfo.avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(userInfoGlobal.UserInfo.realname)+"</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>"
+   	    			var	newComment="<li class='item'><div class='head'><img src='"+userInfoGlobal.UserInfo.avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(userInfoGlobal.UserInfo.realname)+"</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>";
    	    			input.val("");
         			content.prepend(newComment);
         		}else{
