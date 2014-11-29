@@ -85,14 +85,8 @@ function createPage(num){
 						$('.loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
-
-						$(".showDiscuss").click(function(event) {
-    						showDiscuss(0);//显示公告评论
-    					});
-    					$('.commitDiscuss').click(function(event) {
-    						publishComment(0);
-    					});	
-
+    					showDiscuss(0);//显示公告评论
+    					publishComment(0);
 						}
 					}
 				);
@@ -111,6 +105,7 @@ function createTreePage(num){
 						var item="";
 						if(result==""){
 							isEnd=true;
+							$('.loading').remove();
 							$(".mylist-wrap").append("<div class='toEnd'>没有更多内容了~~(>_<)~~</div>");
 						}else{
 							for(var i=0;i<result.length;i++){
@@ -122,15 +117,11 @@ function createTreePage(num){
 						$('.loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
-						$(".showDiscuss").click(function(event) {
-    						showDiscuss(0);//显示公告评论
-    					});
-    					$('.commitDiscuss').click(function(event) {
-    						publishComment(0);
-    					});	
 						}
 					}
-				);
+	);
+	showDiscuss(1);//显示公告评论
+	publishComment(1);
 }
 /*下拉到底部加载
 function scollToLoading(num){
@@ -154,6 +145,7 @@ function scollToLoading(num){
 }*/
 //显示评论区
 function showDiscuss(type){
+	$(".showDiscuss").click(function(event) {
 		console.log("评论被点击");
 		var btnID=$(this).attr("id");
 		console.log("ID是"+btnID);
@@ -184,11 +176,11 @@ function showDiscuss(type){
     		}
 		);
 
+	});
 }
-
 //发布评论
 function publishComment(type){
-
+	$('.commitDiscuss').click(function(event) {
 		var id=$(this).attr('btn-id');
 		var input=$(this).prev(".discussInput");
 		var inputVal=input.val();
@@ -224,4 +216,5 @@ function publishComment(type){
     		}                   
 		);
 
+	});
 }
