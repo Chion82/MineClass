@@ -29,10 +29,13 @@ function publishInform(um){
 					[],	//可见该公告的班级，对于权限为0或1的用户此参数无效，其发布的公告只有其所在班级可见
 					function(result)
 					{
-						alert(JSON.stringify(result));
-						//TODO 处理发布公告后的事件
+						if(result.code==2){
+							location.reload();
+						}else{
+							alert(JSON.stringify(result));
+						}
 					}
-					);
+			);
 		}
 	});
 }
