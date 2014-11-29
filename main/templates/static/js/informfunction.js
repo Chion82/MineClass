@@ -103,7 +103,7 @@ function showDiscuss(type){
     		{
     			var i=0;
     			console.log("result--"+result);
-        		while(result.comments[i]!=""){
+        		while(result.comments!=""&&result.comments[i]!=NULL){
         			commentItem="<li class='item'><div class='head'><img src='"+result.comments[i].publisher_avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(result.comments[i].publisher_realname)+"</span><span class='maincontent_ds'>"+decodeURIComponent(result.comments[i].comment)+"</span></div></li>"
         			commentAll+=commentItem;
         			i++;
@@ -117,16 +117,19 @@ function showDiscuss(type){
 //发布评论
 function publishComment(type){
 	$('.commitDiscuss').click(function(event) {
-		console.log($(this).find('input').val());
-		console.log($(this).find('ul').attr("content-id"));
+		var id=$(this).attr('btn-id');
+		var inputVal=$(this).prev(".discussInput").val();
+		var content=$('ul[content-id='+id+']');
+		console.log(inputVal);
+		console.log(id);
 		api.comment.PublishComment(
     		type,  //0为公告评论，1为树洞评论
-    		$(this).find('input').val(),
-    		$(this).find('ul').attr("content-id"), //公告或树洞的ID，通过_id.$oid获得
+    		inputVal,
+    		id, //公告或树洞的ID，通过_id.$oid获得
     		function(result)
     		{
     			//TODO
-        		$(this).find('ul').append($(this).find('input').val());
+        		content.append(inputVal);
     		}                   
 		);
 
