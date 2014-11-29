@@ -56,13 +56,12 @@ function createPage(num){
 							for(var i=0;i<result.length;i++){
 							var unixtime = new Date(result[i].PublishmentTime*1000);
 							unixtime = unixtime.toLocaleString();	
-							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' id='area"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' id='addDiscuss'><button id='commitDiscuss'><span>发 表</span></button></div><div class='alldiscuss'>  <ul class='fillComment'></ul>  </div></div></div></div></div>";
+							item="<div class='mylist'><div class='head'></div><div class='content'><div class='maincontentBG'><div class='maincontent'><div class='who'><div><img  class='head' src='"+result[i].publisher_avatar+"' alt=''></div><div id='name'>"+decodeURIComponent(result[i].publisher_realname)+"</div></div><div class='text'>"+decodeURIComponent(result[i].announcement)+"</div><div class='actionbar'><div class='time'>"+unixtime+"</div><div class='optiontab'><span class='option'><a href='javascript:void(0)'>10已阅</a></span><span class='option'><a href='javascript:void(0)' class='showDiscuss' id='"+result[i]._id.$oid+"'>评论</a></span></div></div></div></div>    <div class='discussBG' area-id='"+result[i]._id.$oid+"'><div class='discuss'><div class='adddiscuss'><input type='text' class='discussInput'><button class='commitDiscuss' btn-id='"+result[i]._id.$oid+"'><span>发 表</span></button></div><div class='alldiscuss'>  <ul class='fillComment' content-id='"+result[i]._id.$oid+"'></ul>  </div></div></div></div></div>";
 							page+=item;
 							}
 						//$('#loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
-						showDiscuss();
 						}
 					}
 				);
@@ -88,16 +87,16 @@ function scollToLoading(num){
         });	
 }*/
 //显示评论区
-function showDiscuss(){
+function showDiscuss(type){
 	var commentItem;
 	var commentAll;
 	$(".showDiscuss").click(function(event) {
 		console.log("评论被点击");
 		var btnID=$(this).attr("id");
 		console.log("ID是"+btnID);
-		$("#area"+btnID).slideToggle(slow/400/fast);
+		$('div[area-id='+btnID+']').slideToggle("slow/400/fast");
 		api.comment.GetCommentsByID(
-    		0,
+    		type,
     		btnID,
     		function(result)
     		{
@@ -110,5 +109,22 @@ function showDiscuss(){
 		);
 
 	});
+}
+//发布评论
+function publishComment(type){
+	$('.commitDiscuss').click(function(event) {
+		console.log($(this).find('input').val());
+		console.log($(this).find('ul').attr("content-id"));
+		api.comment.PublishComment(
+    		type,  //0为公告评论，1为树洞评论
+    		$(this).find('input').val(),
+    		$(this).find('ul').attr("content-id"), //公告或树洞的ID，通过_id.$oid获得
+    		function(result)
+    		{
+    			//TODO
+        		$(this).find('ul').append($(this).find('input').val());
+    		}                   
+		);
 
+	});
 }

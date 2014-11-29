@@ -148,12 +148,12 @@
 .mylist .discuss .adddiscuss{
 	margin-bottom: 10px;
 }
-.mylist .adddiscuss #addDiscuss{
+.mylist .adddiscuss .discussInput{
 	width: 400px;
 	max-height: 200px;
 	height: 30px;
 }
-.mylist .adddiscuss #commitDiscuss{
+.mylist .adddiscuss .commitDiscuss{
 	float: right;	
 	color: #fff;
 	background-color: #ff5722;	
