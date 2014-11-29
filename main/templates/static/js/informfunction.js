@@ -109,7 +109,7 @@ function showDiscuss(type){
         			commentAll+=commentItem;
         			i++;
         		}
-        		$('ul[content-id='+btnID+']').append(commentAll);
+        		$('ul[content-id='+btnID+']').replaceWith(commentAll);
     		}
 		);
 
@@ -124,6 +124,10 @@ function publishComment(type){
 		var content=$('ul[content-id='+id+']');
 		console.log(inputVal);
 		console.log(id);
+   	    var	newComment="<li class='item'><div class='head'><img src='"+userInfoGlobal.UserInfo.avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(userInfoGlobal.UserInfo.realname)+"</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>"
+   	    input.val("");
+        content.prepend(newComment);
+
 		api.comment.PublishComment(
     		type,  //0为公告评论，1为树洞评论
     		inputVal,
@@ -131,10 +135,6 @@ function publishComment(type){
     		function(result)
     		{
     			//TODO
-   	    		var	newComment="<li class='item'><div class='head'><img src='"+userInfoGlobal.UserInfo.avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(userInfoGlobal.UserInfo.realname)+"</span><span class='maincontent_ds'>"+inputVal+"</span></div></li>"
-   	    		input.val("");
-   	    		console.log(newComment);
-        		content.prepend(newComment);
     		}                   
 		);
 
