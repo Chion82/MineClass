@@ -103,8 +103,8 @@ function showDiscuss(type){
     		{
     			var i=0;
     			console.log("result--"+result);
-        		while(result[i]!=""){
-        			commentItem="<li class='item'><div class='head'><img src='"+result[i].publisher_avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(result[i].publisher_realname)+"</span><span class='maincontent_ds'>"+decodeURIComponent(result[i].comment)+"</span></div></li>"
+        		while(result.comments[i]!=""){
+        			commentItem="<li class='item'><div class='head'><img src='"+result.comments[i].publisher_avatar+"' alt=''></div><div class='discusscontent'><span class='who'>"+decodeURIComponent(result.comments[i].publisher_realname)+"</span><span class='maincontent_ds'>"+decodeURIComponent(result.comments[i].comment)+"</span></div></li>"
         			commentAll+=commentItem;
         			i++;
         		}
