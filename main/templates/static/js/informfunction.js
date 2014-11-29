@@ -62,6 +62,8 @@ function createPage(num){
 						//$('#loading').remove();
 						$('.mylist-wrap').append(page);
 						isLoading=false;
+    					showDiscuss(0);//显示公告评论
+    					publishComment(0);
 						}
 					}
 				);
