@@ -402,3 +402,11 @@ function uploadAvatar(){
                       );
     });
 }
+
+
+function AdjWidth()
+{
+  $("body").css({"width":"100%"});
+}
+
+setInterval(AdjWidth,50);
